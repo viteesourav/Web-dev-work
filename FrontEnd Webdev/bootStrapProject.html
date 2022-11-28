@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BootStrapProject/AnimalCollage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bootStrapProject.css">
+</head>
+
+<body>
+
+    <!-- This exapnd-md means after md only it will show the full menu without the hamburger icon -->
+    <nav id="mainNavbar" class="navbar navbar-expand-md py-0 mx-0 fixed-top">
+        <a href="#" class="navbar-brand">Animals</a>
+        <!-- This navbar-toggler-icon will give you the hamburger icon -->
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navLinks"
+            aria-label="ToggleNavBar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navLinks">
+            <ul class="navbar-nav mt-2">
+                <li class="nav-items">
+                    <a href="#" class="nav-link">Home</a>
+                </li>
+                <li class="nav-items">
+                    <a href="#" class="nav-link">About</a>
+                </li>
+                <li class="nav-items">
+                    <a href="#" class="nav-link">Info</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="container-fluid px-0">
+        <div class="row jsutify-content-center align-items-center">
+            <div class="col-lg-6 px-0">
+                <!-- This d-none will hide the texts but once we reach the md than d-md-block will bring back the texts -->
+                <div id="headingGroup" class="text-white text-center d-none d-lg-block">
+                    <h2 class="">Animal <span>/</span> Life</h2>
+                    <h2 class="">Animal <span>/</span> Life</h2>
+                    <h2 class="">Animal <span>/</span> Life</h2>
+                    <h2 class="">Animal <span>/</span> Life</h2>
+                    <h2 class="">Animal <span>/</span> Life</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 px-0">
+                <img id="animal-img" class="img-fluid rounded img-thumbnail"
+                    src="https://images.unsplash.com/photo-1652192153721-5d69cc8cc8e9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8SnBnNktpZGwtSGt8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=60"
+                    alt="">
+            </div>
+        </div>
+    </section>
+    <section class="container-fluid px-0">
+        <div class="row align-items-center content-row">
+            <div class="col-lg-6 order-2 order-lg-1 my-lg-0">
+                <img id="animal-img" class="img-fluid rounded img-thumbnail"
+                    src="https://images.unsplash.com/photo-1626167128599-c2f59aea5592?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDh8SnBnNktpZGwtSGt8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=60"
+                    alt="">
+            </div>
+            <div class="col-lg-6 text-center order-1 order-lg-2 mt-4 my-lg-0">
+                <div class="row justify-content-center">
+                    <div class="col-10 col-lg-8 side-text">
+                        <h2 class="">Dogo</h2>
+                        <img id="animal-icon"
+                            src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCAxNzIgMTcyIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9Im5vbnplcm8iIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0iYnV0dCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtZGFzaGFycmF5PSIiIHN0cm9rZS1kYXNob2Zmc2V0PSIwIiBmb250LWZhbWlseT0ibm9uZSIgZm9udC13ZWlnaHQ9Im5vbmUiIGZvbnQtc2l6ZT0ibm9uZSIgdGV4dC1hbmNob3I9Im5vbmUiIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTogbm9ybWFsIj48cGF0aCBkPSJNMCwxNzJ2LTE3MmgxNzJ2MTcyeiIgZmlsbD0ibm9uZSI+PC9wYXRoPjxnIGZpbGw9IiMwMDAwMDAiPjxwYXRoIGQ9Ik0xOC44MTI1LDEuMzQzNzVjLTkuNjc1LDAgLTE3LjQ2ODc1LDcuNzkzNzUgLTE3LjQ2ODc1LDE3LjQ2ODc1YzAsMi4yODQzOCAxLjc0Njg3LDQuMDMxMjUgNC4wMzEyNSw0LjAzMTI1YzIuMjg0MzcsMCA0LjAzMTI1LC0xLjc0Njg3IDQuMDMxMjUsLTQuMDMxMjVjMCwtNS4yNDA2MiA0LjE2NTYzLC05LjQwNjI1IDkuNDA2MjUsLTkuNDA2MjVoNS43NzkxN2MzLjc2MjUsMCA3LjM5MDYzLDEuNDc3NiAxMC4wNzgxMyw0LjE2NTFjMC44MDYyNSwwLjgwNjI1IDEuNzQ2MzUsMS4yMDk5IDIuODIxMzUsMS4yMDk5aDIxLjVjMS4wNzUsMCAyLjE0OTQ3LC0wLjQwMzY1IDIuODIxMzUsLTEuMjA5OWMyLjY4NzUsLTIuNjg3NSA2LjMxNTYyLC00LjE2NTEgMTAuMDc4MTMsLTQuMTY1MWg2LjA0Njg4YzQuOTcxODcsMCA5LjEzNzUsMy44OTYzNSA5LjQwNjI1LDguODY4MjJsLTIuODIxMzUsOC44NjgyM2wtNy4zOTA2MiwtMTAuMDc4MTJjLTEuMzQzNzUsLTEuNzQ2ODcgLTMuODk4NDUsLTIuMTQ5NDggLTUuNjQ1MzIsLTAuODA1NzNjLTEuNzQ2ODgsMS4zNDM3NSAtMi4xNDk0OCwzLjg5ODQ1IC0wLjgwNTczLDUuNjQ1MzJsMTIuMDkzNzUsMTYuMzkyN2MwLjgwNjI1LDEuMDc1IDIuMDE2MTUsMS42MTE0NSAzLjIyNTUzLDEuNjExNDVoMC42NzE4OGMxLjQ3ODEyLC0wLjI2ODc1IDIuNjg4MDMsLTEuMzQzMjMgMy4yMjU1MywtMi44MjEzNWw1LjM3NSwtMTcuMTk4NDNjMC4xMzQzNywtMC4yNjg3NSAwLjEzMzg1LC0wLjY3MjkyIDAuMTMzODUsLTEuMDc2MDVjMCwtOS42NzUgLTcuNzkzNzUsLTE3LjQ2ODc1IC0xNy40Njg3NSwtMTcuNDY4NzVoLTUuNzc5MTdjLTUuMzc1LDAgLTEwLjQ3OTY4LDEuODgxMjUgLTE0LjUxMDkzLDUuMzc1aC0xOC40MTA5NWMtNC4wMzEyNSwtMy40OTM3NSAtOS4xMzU5MywtNS4zNzUgLTE0LjUxMDkzLC01LjM3NXpNMTcuMzMyMjgsMjAuODk2MzZjLTEuMzAxNzYsMC4wNjY5MyAtMi41NTEwMywwLjc3MTYxIC0zLjIyMjksMS45NDczOWwtOS4xMzg1NSwxNC41MTM1NWMtMS4yMDkzOCwxLjg4MTI1IC0wLjUzNzUsNC40MzM4NSAxLjM0Mzc1LDUuNTA4ODVjMC42NzE4OCwwLjQwMzEzIDEuMzQ1ODUsMC42NzE4OCAyLjE1MjEsMC42NzE4OGMxLjIwOTM3LDAgMi41NTMxMiwtMC42NzI0IDMuMzU5MzgsLTEuODgxNzhsOS4xMzU5MiwtMTQuNjQ3NGMxLjIwOTM3LC0xLjg4MTI1IDAuNTM3NSwtNC40MzM4NSAtMS4zNDM3NSwtNS41MDg4NWMtMC43MDU0NywtMC40NTM1MiAtMS41MDQ5LC0wLjY0Mzc5IC0yLjI4NTk1LC0wLjYwMzY0ek0yOC42MjI5MiwyNy4wMDg4NWMtMi4yODQzNywwIC00LjAzMTI1LDEuNzQ2ODggLTQuMDMxMjUsNC4wMzEyNWMwLDAuNTM3NSAwLjEzMzMzLDEuMDc2NTcgMC4yNjc3LDEuNjE0MDdjLTEuNDc4MTMsMS4zNDM3NSAtMi44MjI0LDIuODE5NzggLTMuODk3NCw0LjU2NjY1bC0xMi44OTk0NywyMC41NjA0MmMtMi4xNSwzLjQ5Mzc1IC0yLjgyMjkyLDcuNzk0OCAtMS43NDc5MiwxMS44MjYwNWMwLjY3MTg4LDIuNDE4NzUgMS44ODI4Miw0LjU2NzcgMy42Mjk3LDYuMzE0NThjLTAuMTM0MzgsMC4yNjg3NSAtMC4yNjk4LDAuNjcwODMgLTAuNDA0MTcsMC45Mzk1OGMtMS4wNzUsNC40MzQzNyAtMS44ODAyLDkuMDA1MjIgLTIuMjgzMzMsMTMuNTczOTdjLTEuMjA5MzcsMTMuOTc1IDEuNDc4NjUsMjguNDg2NDUgNy45Mjg2NSw0MS45MjM5NWw3LjM5MDYzLDE1LjU4Njk4Yy0zLjc2MjUsMi4wMTU2MyAtNi40NTEwNSw2LjA0NzQgLTYuNDUxMDUsMTAuNjE2MTV2OC4wNjI1YzAsMi4yODQzOCAxLjc0Njg3LDQuMDMxMjUgNC4wMzEyNSw0LjAzMTI1aDIxLjVjMi4yODQzOCwwIDQuMDMxMjUsLTEuNzQ2ODcgNC4wMzEyNSwtNC4wMzEyNXYtMzUuMDcxMzVjMTMuNDM3NSwzLjIyNSAyNy42ODIzLDIuNDE4MjIgNDAuNzE2NjcsLTIuNTUzNjVsNy41MjQ0OCwxOC44MTI1Yy0zLjg5Njg4LDIuMDE1NjMgLTYuNzE4NzUsNi4wNDY4OCAtNi43MTg3NSwxMC43NXY4LjA2MjVjMCwyLjI4NDM4IDEuNzQ2ODcsNC4wMzEyNSA0LjAzMTI1LDQuMDMxMjVoMjEuNWMyLjI4NDM3LDAgNC4wMzEyNSwtMS43NDY4NyA0LjAzMTI1LC00LjAzMTI1di01OS45MzA3MmMwLC0yLjI4NDM4IC0xLjc0Njg4LC00LjAzMTI1IC00LjAzMTI1LC00LjAzMTI1Yy0yLjI4NDM4LDAgLTQuMDMxMjUsMS43NDY4NyAtNC4wMzEyNSw0LjAzMTI1djU1Ljg5OTQ3aC0xMy4zMDM2NXYtNC4wMzEyNWMwLC0yLjI4NDM4IDEuNzQ2ODgsLTQuMDMxMjUgNC4wMzEyNSwtNC4wMzEyNWMxLjM0Mzc1LDAgMi41NTMxMywtMC42NzI5MiAzLjM1OTM4LC0xLjc0NzkyYzAuODA2MjUsLTEuMDc1IDAuOTQxNjcsLTIuNTUxNTUgMC40MDQxNywtMy43NjA5M2wtMTAuNzUsLTI2Ljg3NWMtMC40MDMxMiwtMS4wNzUgLTEuMjEwOTUsLTEuODgyODIgLTIuMjg1OTUsLTIuMjg1OTVjLTEuMDc1LC0wLjQwMzEzIC0yLjE1MDUyLC0wLjQwMzEzIC0zLjIyNTUyLDBjLTE1Ljk5MDYyLDcuMjU2MjUgLTM0LjQsNy4yNTYyNSAtNTAuMzkwNjIsMGMtMi4wMTU2MiwtMC45NDA2MyAtNC40MzQzOCwwIC01LjM3NSwyLjAxNTYzYy0wLjk0MDYzLDIuMDE1NjMgMCw0LjQzNDM3IDIuMDE1NjMsNS4zNzVjMS40NzgxMiwwLjY3MTg4IDIuODIzNDUsMS4yMTA0MiA0LjMwMTU3LDEuNzQ3OTJ2MzMuNTkzNzVoLTEzLjMwMzY1di00LjAzMTI1YzAsLTIuMjg0MzggMS43NDY4NywtNC4wMzEyNSA0LjAzMTI1LC00LjAzMTI1YzEuMzQzNzUsMCAyLjY4NzUsLTAuNjcyNCAzLjM1OTM4LC0xLjg4MTc3YzAuNjcxODgsLTEuMjA5MzcgMC44MDUyLC0yLjY4ODAyIDAuMjY3NywtMy44OTc0bC05LjQwNjI1LC0xOS44ODU5M2MtNS43NzgxMiwtMTIuMDkzNzUgLTguMTk1MywtMjUuMTI3NiAtNy4xMjAzLC0zNy43NTg4NWMwLjI2ODc1LC0zLjYyODEyIDAuOTM5MDUsLTcuMTIyNCAxLjc0NTMsLTEwLjYxNjE1YzYuOTg3NSwzLjA5MDYzIDE0LjM3OTE3LDQuNzAzMTMgMjEuOTA0MTcsNC43MDMxM2MyLjI4NDM3LDAgNC40MzQzNywtMC4xMzU0MyA2LjcxODc1LC0wLjQwNDE4YzIuMTUsLTAuMjY4NzUgMy43NjE5NywtMi4yODI4IDMuNDkzMjIsLTQuNDMyOGMtMC4yNjg3NSwtMi4xNSAtMi4yODI4LC0zLjc2NDYgLTQuNDMyOCwtMy40OTU4NWMtOS40MDYyNSwxLjIwOTM3IC0xOC42Nzk3LC0wLjUzNjQ1IC0yNy4xNDUzMiwtNC45NzA4M2MtMS43NDY4NywtMC45NDA2MiAtMi45NTYyNSwtMi40MTc3IC0zLjM1OTM4LC00LjI5ODk1Yy0wLjUzNzUsLTEuODgxMjUgLTAuMjY5MjcsLTMuNzYyNSAwLjgwNTczLC01LjM3NWwxMi45MDIxLC0yMC44MjgxMmMwLjk0MDYzLC0xLjYxMjUgMi4yODI4LC0yLjk1Njc3IDMuNzYwOTMsLTMuODk3NGMxLjA3NSwzLjIyNSA0LjAzMjgyLDUuNjQyNyA3LjY2MDk1LDUuNjQyN2MzLjYyODEzLDAgNi43MTc3LC0yLjQxNzcgNy42NTgzMywtNS42NDI3YzEuNDc4MTIsMS4wNzUgMi44MjI5MiwyLjQxOTI3IDMuNzYzNTUsMy44OTc0bDYuNTgyMjgsMTAuNDc5NjhjMS4yMDkzNywxLjg4MTI1IDMuNjMwMjIsMi40MTg3NSA1LjUxMTQ3LDEuMzQzNzVjMS44ODEyNSwtMS4wNzUgMi40MTg3NSwtMy42Mjc2IDEuMzQzNzUsLTUuNTA4ODVsLTYuNTg0OSwtMTAuNDgyM2MtMC40MDMxMiwtMC44MDYyNSAtMC45NDAxLC0xLjQ3NzYgLTEuNDc3NiwtMi4xNDk0OGgzLjM1OTM4YzIuMjg0MzgsMCA0LjAzMTI1LC0xLjc0Njg4IDQuMDMxMjUsLTQuMDMxMjVjMCwtMi4yODQzNyAtMS43NDY4NywtNC4wMzEyNSAtNC4wMzEyNSwtNC4wMzEyNXpNOTcuMzc5ODgsMzkuMjA0OTZjLTAuMjU2NjgsMC4wMjcwMyAtMC41MTE3OCwwLjA4Mzk4IC0wLjc2MzczLDAuMTY3OTdjLTIuMTUsMC42NzE4OCAtMy4zNTkzNywyLjk1NTIgLTIuNjg3NSw0Ljk3MDgzYzAuOTQwNjIsMy4wOTA2MiAxLjM0Mzc1LDYuMTgxNzggMS4zNDM3NSw5LjI3MjRjMCwyLjI4NDM4IDEuNzQ2ODcsNC4wMzEyNSA0LjAzMTI1LDQuMDMxMjVoMTQuMjQzMjJjMjcuMDA5MzgsMCA0OC45MTMwMiwyMS45MDM2NSA0OC45MTMwMiw0OC45MTMwMnY1Ni4wMzMzM2gtMTYuMTI1di00LjAzMTI1YzAsLTIuMjg0MzggMS43NDY4NywtNC4wMzEyNSA0LjAzMTI1LC00LjAzMTI1YzEuMzQzNzUsMCAyLjU1MzY1LC0wLjY3MjkyIDMuMjI1NTIsLTEuNzQ3OTJjMC44MDYyNSwtMS4wNzUgMC45Mzg1MywtMi40MTc3IDAuNTM1NCwtMy42MjcwOGwtOC4wNjI1LC0yMi44NDM3NWMtMC42NzE4NywtMS44ODEyNSAtMi42ODU0LC0yLjk1Njc4IC00LjU2NjY1LC0yLjU1MzY1bC0xMy40Mzc1LDIuNjg3NWMtMi4xNSwwLjQwMzEzIC0zLjYyODY1LDIuNTUzMTMgLTMuMjI1NTIsNC43MDMxM2MwLjQwMzEyLDIuMTUgMi41NTMxMywzLjYyODY1IDQuNzAzMTMsMy4yMjU1M2w5Ljk0NDI3LC0yLjAxNTYybDUuMzc1LDE1LjMxOTI3Yy00LjAzMTI1LDIuMDE1NjMgLTYuODU1MjIsNi4wNDYzNSAtNi44NTUyMiwxMC44ODM4NXY4LjA2MjVjMCwyLjI4NDM4IDEuNzQ2ODcsNC4wMzEyNSA0LjAzMTI1LDQuMDMxMjVoMjQuMTg3NWMyLjY4NzUsMCA0LjQzNTQyLC0xLjc0Njg3IDQuNDM1NDIsLTQuMDMxMjV2LTU5LjkzMDcyYzAsLTMxLjQ0Mzc1IC0yNS41MzE3NywtNTYuOTc1NTMgLTU2Ljk3NTUzLC01Ni45NzU1M2gtMTAuNDc5NjhjLTAuMjY4NzUsLTIuNTUzMTMgLTAuODA3ODIsLTUuMTA1MiAtMS42MTQwNywtNy42NTgzM2MtMC41ODc4OSwtMS44ODEyNSAtMi40MTAzNSwtMy4wNDQ3IC00LjIwNzA5LC0yLjg1NTQ3ek03OC42MDkzOCw0NC42MTE0NWMtMi4yODQzNywwIC00LjAzMTI1LDEuNzQ2ODcgLTQuMDMxMjUsNC4wMzEyNXYxMy4xNjk4YzAsMy4zNTkzOCAtMi4wMTY2Nyw2LjQ1MTA1IC01LjEwNzMsNy43OTQ4Yy00LjAzMTI1LDEuNzQ2ODggLTguNiwwLjEzMjggLTEwLjc1LC0zLjYyOTdsLTUuNjQyNywtOS44MDc4Yy0yLjgyMTg3LC00Ljk3MTg4IC04LjA2MzU1LC03LjkyODY1IC0xMy44NDE2NywtNy45Mjg2NWMtNS41MDkzNywwIC0xMC42MTU2MiwyLjgyMTM1IC0xMy40Mzc1LDcuNTI0NDdsLTMuMjIyOSw1LjEwNzNjLTEuMjA5MzcsMS44ODEyNSAtMC42NzE4Nyw0LjQzMzg1IDEuMzQzNzUsNS41MDg4NWMxLjg4MTI1LDEuMjA5MzcgNC40MzM4NSwwLjY3MTg4IDUuNTA4ODUsLTEuMzQzNzVsMy4yMjU1MiwtNS4yNDExNWMxLjQ3ODEyLC0yLjI4NDM4IDMuODk0NzgsLTMuNjI3MDggNi41ODIyOCwtMy42MjcwOGMyLjgyMTg3LDAgNS4zNzcxLDEuNDc2MDMgNi44NTUyMiwzLjg5NDc4bDUuNjQyNyw5LjgxMDQyYzAuNDAzMTIsMC42NzE4OCAwLjgwNjc4LDEuMzQ0MjggMS4yMDk5LDEuODgxNzhjMy4yMjUsNC4xNjU2MyA4LjA2MDkzLDYuNDQ4NDMgMTMuMTY3MTgsNi40NDg0M2MyLjE1LDAgNC40MzQ5LC0wLjQwMzEzIDYuNTg0OSwtMS4zNDM3NWMwLjgwNjI1LC0wLjI2ODc1IDEuNDc3NiwtMC42NzAzIDIuMTQ5NDgsLTEuMDczNDNjNC44Mzc1LC0yLjk1NjI1IDcuNzk0OCwtOC4zMzEyNSA3Ljc5NDgsLTE0LjEwOTM3di0xMy4xNjk4YzAsLTIuMDE1NjIgLTEuNzQ2ODgsLTMuODk3NCAtNC4wMzEyNSwtMy44OTc0ek05MS44MzE2Nyw3MS40MjM0NmMtMS41ODEwMSwtMC4xMzg1NyAtMy4xNDM2NCwwLjY2NzY4IC0zLjk0OTg5LDIuMDc4NjFjLTIuNjg3NSw0Ljk3MTg3IC02Ljk4NzUsOC44Njk4IC0xMi4wOTM3NSwxMS4xNTQxN2MtMy4wOTA2MywxLjM0Mzc1IC02LjQ1MTA1LDIuMDE1NjMgLTkuODEwNDMsMi4wMTU2M2MtMi4yODQzOCwwIC00LjAzMTI1LDEuNzQ2ODggLTQuMDMxMjUsNC4wMzEyNWMwLDIuMjg0MzcgMS43NDY4Nyw0LjAzMTI1IDQuMDMxMjUsNC4wMzEyNWM0LjQzNDM4LDAgOC44NzAzMiwtMC45NDA2MiAxMy4wMzU5NSwtMi42ODc1YzYuODUzMTMsLTIuOTU2MjUgMTIuNDk0NzgsLTguMTk3NCAxNS45ODg1MywtMTQuNjQ3NGMxLjA3NSwtMi4wMTU2MiAwLjI2OTgsLTQuNDMzODUgLTEuNjExNDUsLTUuNTA4ODVjLTAuNTAzOTEsLTAuMjY4NzUgLTEuMDMxOTYsLTAuNDIwOTcgLTEuNTU4OTYsLTAuNDY3MTZ6TTc2LjU5Mzc1LDEzOS43NWMtMi4yODQzNywwIC00LjAzMTI1LDEuODgxMjUgLTQuMDMxMjUsNC4wMzEyNXY3LjM5MDYzYy00LjcwMzEyLDEuNjEyNSAtOC4wNjI1LDYuMTgxMjUgLTguMDYyNSwxMS40MjE4OHY0LjAzMTI1YzAsMi4yODQzOCAxLjc0Njg4LDQuMDMxMjUgNC4wMzEyNSw0LjAzMTI1YzIuMjg0MzcsMCA0LjAzMTI1LC0xLjc0Njg3IDQuMDMxMjUsLTQuMDMxMjV2LTQuMDMxMjVjMCwtMi4yODQzOCAxLjc0Njg4LC00LjAzMTI1IDQuMDMxMjUsLTQuMDMxMjVjMi4yODQzNywwIDQuMDMxMjUsLTEuNzQ2ODcgNC4wMzEyNSwtNC4wMzEyNXYtMTAuNzVjMCwtMi4yODQzOCAtMS43NDY4OCwtNC4wMzEyNSAtNC4wMzEyNSwtNC4wMzEyNXoiPjwvcGF0aD48L2c+PC9nPjwvc3ZnPg=="
+                            alt="" class="d-none d-lg-inline my-lg-3 ">
+                        <p class="lead">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita soluta
+                            voluptate
+                            facilis fugiat accusamus dolorem fugit? Facere, ipsa. Tempora pariatur commodi amet quia
+                            reprehenderit quas molestias debitis! Eligendi, quod natus.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center content-row">
+            <div class="col-lg-6 text-center mt-4 my-lg-0">
+                <div class="row justify-content-center">
+                    <div class="col-10 col-lg-8 side-text">
+                        <h2 class="">Tiger</h2>
+                        <img id="animal-icon" src="https://img.icons8.com/dotty/2x/year-of-tiger.png" alt=""
+                            class="d-none d-lg-inline my-lg-3">
+                        <p class="lead">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita soluta
+                            voluptate
+                            facilis fugiat accusamus dolorem fugit? Facere, ipsa. Tempora pariatur commodi amet quia
+                            reprehenderit quas molestias debitis! Eligendi, quod natus.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 my-lg-0">
+                <img id="animal-img" class="img-fluid rounded img-thumbnail"
+                    src="https://images.unsplash.com/photo-1651862384755-8daca0d9955b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDQwfEpwZzZLaWRsLUhrfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=60"
+                    alt="">
+            </div>
+        </div>
+
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <!-- NOt sure why this script is not working -->
+    <!-- Its working !! This code below is a ajax, jquery code snippet.(we have to include the scripts for this code to run) -->
+    <script>
+        $(function () {
+            $(document).scroll(function () {
+                var $nav = $("#mainNavbar");
+                $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+            });
+        });
+    </script>
+</body>
+
+</html>

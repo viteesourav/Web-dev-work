@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emmet Demo</title>
+    <h1>Check the Code Snippet to Understand Emmet</h1>
+    <nav>
+        <ul>
+            <li>Reference For this page: <a href="https://docs.emmet.io/abbreviations/syntax/">Emment Docs</a></li>
+        </ul>
+    </nav>
+</head>
+
+<body>
+    <h2>This are the Emmet Shortcuts in VS that we can use </h2>
+    <ul>
+        <li> &gt; is used to make Child instances eg: main>section>h3 <br>
+            <main>
+                <section>
+                    <h3> This is h3 content</h3>
+                </section>
+            </main>
+        </li>
+        <li>
+            &plus; this will sequentially add the elements eg: h4+h5+h6 <br>
+            <h4>This is h4 </h4>
+            <h5>This is h5</h5>
+            <h6>this is h6</h6>
+        </li>
+        <li> &times; it will add that many elemnts eg: ul>li*5 <br>
+            <ul>
+                <li>This is first</li>
+                <li>This is first</li>
+                <li>This is first</li>
+                <li>This is first</li>
+            </ul>
+        </li>
+        <li> $ sign is used to get numbers eg: section>ul>li.Items$*5 <br>
+            <section>
+                <ul>
+                    <li class="Items1">Item 1</li>
+                    <li class="Items2">Item 1</li>
+                    <li class="Items3">Item 1</li>
+                    <li class="Items4">Item 1</li>
+                    <li class="Items5">Item 1</li>
+                </ul>
+            </section>
+        </li>
+        <li>
+            &rcub; is used to define the content of the element eg: section>ul>li*5{Item $} <br>
+            <section>
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+                    <li>Item 5</li>
+                </ul>
+            </section>
+        </li>
+    </ul>
+
+    <p>Code snippet used to build this footer eg: footer>p>a[href=index.html]{Go Back} </p>
+    <footer>
+        <p><a href="index.html">Go Back</a></p>
+    </footer>
+</body>
+
+</html>

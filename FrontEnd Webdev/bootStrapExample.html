@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Example</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootStrapExample.css">
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <h1 class="display-1 text-center text-primary">Bootstrap playground</h1>
+        <h2 class="display-4">Typography</h2>
+        <p class="lead"><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur esse temporibus odio
+                facilis vel
+                laboriosam, incidunt, neque maxime hic iste officia ipsum possimus sapiente illum! Dolor dicta repellat
+                a distinctio.</span><span>Nihil minus nulla labore iure quibusdam. Assumenda, et cum ipsam eum ea natus
+                incidunt amet quasi aliquid culpa ab non illum accusantium voluptas vitae sed debitis impedit rerum
+                autem in.</span></p>
+        <figure class="text-end bg-info">
+            <blockquote class="blockquote">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt obcaecati
+                    nihil, consequuntur possimus sint et aliquam voluptatum consequatur distinctio sunt dicta veritatis,
+                    quibusdam iure suscipit corrupti maiores, dolor praesentium vel.</p>
+                <footer class="blockquote-footer">This is from Sourav</footer>
+            </blockquote>
+        </figure>
+        <div class="container">
+            <h2 class="display-4">Bootstrap buttons <span class="badge rounded-pill text-bg-primary">New</span></h2>
+            <button class="btn btn-primary btn-lg">Primary</button>
+            <button class="btn btn-secondary">normal secondary</button>
+            <button class="btn btn-info">Info</button>
+            <button class="btn btn-success btn-sm">small success</button>
+            <button class="btn btn-danger disabled">Disabled Red</button>
+            <button class="btn btn-warning">Primary</button>
+            <button class="btn btn-outline-warning">Warning</button>
+            <button class="btn btn-outline-danger">Danger</button>
+            <button class="btn btn-primary">Update <span class="badge text-bg-light">4</span></button>
+        </div>
+        <br>
+        <section class="container">
+            <h2>Grouping buttons Together</h2>
+            <div class="btn btn-group" role="group">
+                <button class="btn btn-primary">First</button>
+                <button class="btn btn-danger">Second</button>
+                <button class="btn btn-primary">Third</button>
+            </div>
+        </section>
+        <br>
+        <section class="container">
+            <h2>Alerts</h2>
+            <div class="alert alert-success alert-dismissible fade show">
+                <h4 class="alert-heading">Alert heading</h4>
+                Danger ! Okay this is an alert.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+            </div>
+        </section>
+    </div>
+    <br>
+    <!-- IMP** Any Row in bootstrap takes 12 units of space. -->
+    <div class="non-responsiveGrid">
+        <section class="container">
+            <h3 class="display-4 text-primary text-center">Grid system</h3>
+            <!-- The total here will always be 12. -->
+            <div class="row">
+                <div class="col-4 bg-primary">I am 4 units</div>
+                <div class="col-6 bg-warning">I am 6 units</div>
+                <div class="col-2 bg-danger">I am 2 units</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-3 bg-primary">I am 3 units</div>
+                <div class="col-7 bg-warning">I am 7 units</div>
+                <div class="col-2 bg-danger">I am 2 units</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col bg-primary">I am auto sized</div>
+                <div class="col bg-warning">I am auto sized</div>
+                <div class="col bg-danger">I am auto sized</div>
+            </div>
+        </section>
+    </div>
+    <div class="responsiveGridLayout">
+        <section class="container">
+            <h2 class="display-4 text-center text-primary"> Responsive Grid</h2>
+            <!-- To align the items vertically am using flex helpers. -->
+            <div class="row align-items-center">
+                <!-- After md breakpoint it will split in 6-6(2-column) below it the columns going to stack -->
+                <!-- When you reach xl breakpoint the col will split in 3-3-3-3(4-column) layout. -->
+                <div class="col-md-6 col-xl-3 bg-info">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae debitis, omnis itaque
+                    delectus officiis cupiditate a repellendus.
+                </div>
+                <div class="col-md-6 col-xl-3 bg-success">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae debitis, omnis itaque
+                    delectus officiis cupiditate a repellendus Lorem, ipsum dolor sit amet consectetur adipisicing
+                    elit. Et tempore delectus nam sapiente, ex alias? Alias iste veniam consequuntur dignissimos
+                    praesentium dolorum consequatur possimus recusandae, dolorem tenetur et quis pariatur.
+                    Fugit nostrum voluptate ipsam, eaque et fugiat sunt molestiae, quia laudantium incidunt in vero
+                    corrupti non sapiente quas unde modi ullam eius consectetur corporis aut. Molestias porro
+                    incidunt molestiae id?
+                </div>
+                <div class="col-md-6  col-xl-3 bg-info">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae debitis, omnis itaque
+                    delectus officiis cupiditate a repellendus Lorem ipsum dolor sit amet consectetur, adipisicing
+                    elit. Doloribus beatae quae nostrum est aut hic eius. Corrupti, iure, vero ipsa quod a
+                    necessitatibus dignissimos inventore repellendus assumenda provident, fugiat esse!
+                </div>
+                <div class="col-md-6 col-xl-3 bg-success align-self-start">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae debitis, omnis itaque
+                    delectus officiis cupiditate a repellendus.
+                </div>
+            </div>
+            <!-- Justify content using bootstrap -->
+            <h3 class="display-3 text-center text-primary border">Justify Content</h3>
+            <div class="row justify-content-sm-start justify-content-md-center justify-content-lg-end">
+                <div class="col-sm-4 bg-primary">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia
+                    natus magnam tempore sequi? Corporis totam, cumque eaque dignissimos assumenda rerum quos fuga,
+                    accusantium doloremque facilis sed voluptate tempora, officiis qui.</div>
+                <div class="col-sm-4 bg-info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia
+                    natus magnam tempore sequi? Corporis totam, cumque eaque dignissimos assumenda rerum quos fuga,
+                    accusantium doloremque facilis sed voluptate tempora, officiis qui.</div>
+            </div>
+        </section>
+        <br>
+        <section class="ResponsiveImgLayout">
+            <h3 class="text-primary text-center display-4">Responsive image layout</h3>
+            <div class="container">
+                <!-- This means after the lg breakpoint(col-lg-3) it will be 4 column layout, after md but below lg breakpoint(col-md-4) it will be 3 column layout -->
+                <!-- and after sm(col-sm-6) but below md it will two column layout and below sm it will stack -->
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <img class="img-fluid"
+                            src="https://images.unsplash.com/photo-1652291634355-77ff67f59232?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8cm5TS0RId3dZVWt8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60"
+                            alt="">
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <img class="img-fluid"
+                            src="https://images.unsplash.com/photo-1646011524159-cdb3ee82ffd2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDM4fHJuU0tESHd3WVVrfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60"
+                            alt="">
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <img class="img-fluid"
+                            src="https://images.unsplash.com/photo-1651900047611-41a80aa5a394?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDI1fHJuU0tESHd3WVVrfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60"
+                            alt="">
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <img class="img-fluid"
+                            src="https://images.unsplash.com/photo-1651879549848-ea16ec9f4b0a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDI3fHJuU0tESHd3WVVrfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60"
+                            alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- Few things to remember here is form-group(Group the label and input), form-control(for inputs), and use the grid system. -->
+    <div class="formsinBootstrap">
+        <section class="container">
+            <h3 class="display-4 text-primary text-center">Responsive Forms in BootStrap</h3>
+            <form action="#home">
+                <div class="row g-3">
+                    <div class="form-group col-md-6">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col">
+                        <label for="street">Street Address</label>
+                        <input type="text" class="form-control" id="street">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" id="city">
+                    </div>
+                    <div class="form-group col-md-4 col-6">
+                        <label for="state">State</label>
+                        <select name="" id="state" class="form-control">
+                            <option value="Alabama">Alabama</option>
+                            <option value="Missisipi">Missisipi</option>
+                            <option value="Dakota">Dakota</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4 col-6">
+                        <label for="zip">Zip-Code</label>
+                        <input type="text" class="form-control" id="zip">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Check the box
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-warning rounded-pill">Submit</button>
+            </form>
+        </section>
+    </div>
+    <br>
+
+    <!-- Important class: navbar, navbar-nav, nav-item, navbar-brand, navbar-toggle, navbar-collapse, sticky-bottom, fixed-top etc-->
+    <div class="navbarBootstrap">
+        <section class="container">
+            <h3 class="display-4 text-center text-primary">Nav bar in bootstrap</h3>
+            <h4>Adding some lorem to show the nav sticky bottom when you scroll up</h4>
+            <h4>NOTE: Nav will only stick in the scope of its parent div container.</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio illum perspiciatis pariatur,
+                necessitatibus officiis, quod, at voluptates earum tempore ea voluptatum modi! Quasi illo odio placeat
+                reiciendis perferendis, praesentium quia.
+                Asperiores quis error minima. Vitae molestiae fuga cupiditate vero laudantium quibusdam, expedita
+                minima, perferendis libero a ipsum doloribus quisquam hic quidem architecto non consequatur dolorum
+                accusantium earum voluptates repellat nulla.
+                Porro, aliquam sapiente. Quasi fugiat hic dignissimos porro labore ab fuga architecto, rerum id quod
+                modi voluptatibus? Saepe deleniti cumque natus corporis officiis eveniet placeat, alias dolorem quo
+                ducimus labore?
+                Repellendus libero, quia, ducimus quo nobis incidunt suscipit neque facere voluptatibus quisquam saepe
+                fugiat ratione modi sit. Eveniet, rem id! Rem debitis ipsam minus molestias iusto cumque, culpa aliquid
+                sequi.</p>
+            <nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-bottom">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Navbar</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#expandme">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="expandme">
+                        <div class="navbar-nav">
+                            <a href="#home" class="nav-item nav-link">Home</a>
+                            <a href="#home" class="nav-item nav-link">About</a>
+                            <a href="#home" class="nav-item nav-link">Contact</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </section>
+    </div>
+
+    <!-- Imp Class: you can copy any svg img from bootstrap lib and put it here -->
+    <!-- input-group, input-group-prepand, input-group-append, input-group-text -->
+    <div class="bootstrapIcons">
+        <section class="container">
+            <h3 class="display-4 text-center text-warning">BootStrap Icons <svg xmlns="http://www.w3.org/2000/svg"
+                    width="1em" height="1em" fill="currentColor" class="bi bi-boombox" viewBox="0 0 16 16">
+                    <path
+                        d="M2.5 5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm2 0a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm7.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Zm1.5.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm-7-1a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3Zm5.5 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z" />
+                    <path
+                        d="M11.5 13a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm0-1a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3ZM5 10.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z" />
+                    <path d="M7 10.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm-1 0a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Z" />
+                    <path
+                        d="M14 0a.5.5 0 0 1 .5.5V2h.5a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h12.5V.5A.5.5 0 0 1 14 0ZM1 3v3h14V3H1Zm14 4H1v7h14V7Z" />
+                </svg></h3>
+            <div class="container">
+                <button class="btn btn-danger btn-md"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                        fill="currentColor" class="bi bi-trash" viewBox="0 0 18 18">
+                        <path
+                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                        <path fill-rule="evenodd"
+                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                    </svg>Delete</button>
+            </div>
+        </section>
+        <section class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <div class="input-group-prepand">
+                            <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="1.4em"
+                                    height="1.8em" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 18 18">
+                                    <path
+                                        d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018Z" />
+                                    <path
+                                        d="M13 6.5a6.471 6.471 0 0 1-1.258 3.844c.04.03.078.062.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1.007 1.007 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5ZM6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z" />
+                                </svg></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <br>
+    <!-- Other examples of bootstrap class -->
+    <div class="bootstrapOther">
+        <!-- IMP classes: border, rounded, border-success and shadow-lg -->
+        <section class="borderbootstrap">
+            <div class="container">
+                <h1 class="display-1">Utilities</h1>
+                <div class="row">
+                    <div class="col-md-4 border rounded border-success shadow-lg">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti qui perspiciatis nulla
+                            minus magni
+                            quo nesciunt sit expedita laudantium exercitationem deleniti, sed nam! Ea quaerat, nisi
+                            distinctio
+                            labore sapiente omnis.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="margin&padding">
+            <!-- s: start and e:end -->
+            <!-- formula: {m or p}{t/b/s/e/x(s and e)/y(t and b)}-{0 to 5 or auto} -->
+            <div class="container">
+                <h1 class="display-4 text-primary">Test margin and padding</h1>
+                <button class="btn btn-primary pt-5 me-4">Padding 0</button>
+                <button class="btn btn-warning pb-5 me-3">Padding 1</button>
+                <button class="btn btn-danger px-5 me-2">Padding 2</button>
+                <button class="btn btn-success py-5 me-1">Padding 3</button>
+                <button class="btn btn-info ps-5">Padding 4</button>
+                <button class="btn btn-info pe-5">Padding 5</button>
+            </div>
+            <!-- Margin and padding with breakpoints example -->
+            <div class="container">
+                <button class="btn btn-danger p-0 p-sm-1 p-md-3 p-lg-5 mt-4">I Change !</button>
+            </div>
+        </section>
+    </div>
+
+
+
+
+
+    <br><br>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <footer class="container-fluid">
+        <a href="cssworkbook.html">Go Back</a>
+    </footer>
+
+</body>
+
+</html>

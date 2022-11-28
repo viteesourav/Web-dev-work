@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Comments</title>
+</head>
+<body>
+    
+    <h1>Showing Comments Details</h1>
+    <p>Comment Id: <%= commentRes.id %></p>
+    <ul>
+        <li>
+            <%= commentRes.text %> - <b><%= commentRes.username%></b>
+            <a href="/comments/<%= commentRes.id %>/edit">Edit</a>
+            <form action="/comments/<%= commentRes.id %>?_method=DELETE" method="POST">
+                <button>Delete</button>
+            </form>
+        </li>
+    </ul>
+    <a href="/comments">Go Back</a>
+</body>
+</html>

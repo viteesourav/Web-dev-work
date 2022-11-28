@@ -1,0 +1,131 @@
+html {
+    font-family: 'Raleway', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #60a9ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+.panel img {
+    width: 230px;
+    height: 180px;
+}
+
+
+/* So here we are first designed the layout for a mobile using column layout */
+/* When we start increasing the width of the screen it will shift to a web-layout */
+
+.panel {
+    border-radius: 25px;
+    padding: 45px 29px;
+    /* This means we will show 100% until we hit 960px since its the max width. */
+    /* after Screen size > 960px it's width is fixed to 960px will not increase */
+    width: 100%;
+    max-width: 960px;
+    background-color: white;
+    /* from here we will start working on the responsive part of the page */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.pricing-plan {
+    border-bottom: 2px solid #e1f1ff;
+}
+
+.pricing-plan:last-child {
+    border-bottom: none;
+}
+
+.pricing-img {
+    margin-bottom: 25px;
+    max-width: 100%;
+}
+
+.pricing-header {
+    color: #888;
+    font-weight: 600;
+    letter-spacing: 8px;
+}
+
+.pricing-features {
+    /* top horizontal bottom */
+    margin: 50px auto 25px;
+    color: #016ff9;
+    max-width: 60%;
+}
+
+.pricing-features-item {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1.5;
+    padding: 8px 0;
+    border-bottom: 3px solid #e1f1ff;
+}
+
+.pricing-features-item:last-child {
+    border: none;
+}
+
+.pricing-price {
+    color: #016ff9;
+    display: block;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.pricing-button {
+    border: 1px solid #9dd1ff;
+    border-radius: 10px;
+    color: #348efe;
+    padding: 15px 35px;
+    display: inline-block;
+    text-decoration: none;
+    margin: 20px 0;
+    transition: background-color 1s ease-out;
+
+}
+
+/* Focus is triggered when it is clicked or triggered */
+.pricing-button:hover,
+.pricing-button:focus {
+    background-color: #e1f1ff;
+}
+
+.pricing-button.isfeatured {
+    background-color: #48aaff;
+    color: white;
+}
+
+.pricing-button.isfeatured:hover,
+.pricing-button.isfeatured:focus {
+    background-color: #269aff;
+    color: white;
+}
+
+@media (min-width: 880px) {
+    .panel {
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 2px 3px;
+    }
+
+    .pricing-plan {
+        padding: 0 30px;
+        border-bottom: none;
+        border-right: 3px solid #e1f1ff;
+    }
+
+    .pricing-plan:last-child {
+        border-right: none;
+    }
+}

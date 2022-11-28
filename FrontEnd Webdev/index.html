@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My HTML WorkBook</title>
+    <p>NOTE: only the meta-Data included in Header</p>
+    <h1>WorkBook</h1>
+    <nav>
+        <ul>
+            <li> The Reference for HTML Elemnts ---> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">MDN
+                    HTML </a></li>
+        </ul>
+    </nav>
+</head>
+<br>
+<br>
+
+<body>
+    <main>
+        <p> This is where the body starts</p>
+        <p>This is a first paragraph details</p>
+        <div>
+            <p> Sourav </p>
+            <p> HI THis is Sourav </p>
+        </div>
+
+        <h2>heading Two</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse maiores modi, ipsa aliquam placeat similique
+            rerum
+            recusandae possimus sit atque fuga, blanditiis in eius odio praesentium incidunt quo magni nam.</p>
+        <h3>Sub-heading one</h3>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab voluptatibus fugit a repellat veritatis illum
+            sunt. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut nostrum eveniet perspiciatis ab
+            excepturi, atque provident accusantium ex! Quibusdam impedit, fugiat ullam provident quasi porro assumenda
+            dignissimos placeat libero incidunt.
+        </p>
+        <h4>sub-sub-heading two</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur veritatis temporibus ab minima! Impedit
+            at
+            nam porro similique sequi! Atque minima officiis nemo impedit amet, voluptatibus error quae porro? Eos.
+            Dolorem, architecto harum, numquam perferendis dolores exercitationem deserunt, magnam libero praesentium
+            debitis quod quaerat nemo. Voluptas, amet minus molestiae, neque quisquam quam doloribus consequatur ad
+            maxime</p>
+
+        <h2>heading Three</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus consequuntur voluptatum veniam
+            possimus</p>
+
+        <h2>heading Four</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam aliquid accusamus quaerat dicta
+            necessitatibus
+            id quas natus amet, mollitia maxime provident illo reprehenderit fugit earum ipsum quidem perferendis qui
+            pariatur.</p>
+
+        <h2>Lists in html</h2>
+        <h3>unordered List</h3>
+
+        <!--This is a comment for the unOrdered List-->
+        <section>
+            <ul>
+                <li>First element
+                    <ul>
+                        <li>Sub-elemnt one</li>
+                        <li>sub-element Two</li>
+                    </ul>
+                </li>
+                <li>Second elemnt
+                    <ol>
+                        <li>sub-element one</li>
+                        <li>sub-elemnt two</li>
+                        <ol>
+                            <li>sub-sub-element</li>
+                        </ol>
+                    </ol>
+                </li>
+                <li>Third element</li>
+            </ul>
+        </section>
+        <h3>ordered List</h3>
+        <ol>
+            <li>First elemnt</li>
+            <li>Second elemt</li>
+        </ol>
+
+        <!--This is an Anchor Tag example-->
+        <!-- command to comment a line (Cntrl + /) -->
+        <h3>Anchor Tags -- HyperLink </h3>
+        <nav>
+            <h4>My fav songs links :)</h4>
+            <ul>
+                <li><a href="https://www.youtube.com/"><img src="youTube.png" alt="Click ME"></a> for youtube </li>
+                <li><a href="https://www.youtube.com/watch?v=2v0InJbwc9E">love maybe</a></li>
+                <li><a href="https://www.youtube.com/watch?v=RUUI0PilSiE">My Dear love</a>
+                </li>
+                <li> <a href="https://www.youtube.com/watch?v=pcKR0LPwoYs">stay with me</a>
+                <li><a href="https://www.youtube.com/watch?v=WpLkJD5jKrQ">Say yes - Punch</a>
+                </li>
+                <li><a href="https://www.youtube.com/watch?v=gFV4ZRGU_Zk">Yours - chaneyolx Raiden</a></li>
+            </ul>
+        </nav>
+        <br>
+        <h3>Image in HTML</h3>
+        <p>Reference for all the icons you need. <a href="https://icons8.com/icons/set/food"> Icons Mela </a></p>
+        <img src="youTube.png" alt="YouTube Image" style="width:45px; width:44px">
+        <br>
+        <img src="https://img.icons8.com/stickers/344/mac-os.png" alt="apple Logo" style="height: 45px; width:43px">
+
+        <!--This is the Notes on the some of the commonly used attributes -->
+        <h3> Notes on some elements that will be used Later</h3>
+        <ul>
+            <li>Block Elements --> take the entire block eg: p,div,h2 </li>
+            <li>Inline Elements --> doesnt break the line eg: a,img,b </li>
+            <li>Divs --> This will occupy the entire block.</li>
+            <li>Spans --> this will be used to select and modify the inline words or content. </li>
+            <li>hr --> Its a horizontal Line </li>
+            <li>br --> Break the line</li>
+            <li>sup --> superscript. eg: Test<sup>2</sup></li>
+            <li>sub --> subscript. eg: H<sub>2</sub>O, <sup>1</sup>/<sub>2</sub> </li>
+        </ul>
+
+        <h3> HTML Entity </h3>
+        <p>Refernce for all the Entities you can use: <a href="https://dev.w3.org/html5/html-author/charref"> Enities
+                List
+            </a></p>
+        <ul>
+            <li>Less than and greater than bracket: &lt; 6 &gt; 5 </li>
+            <li>spaces (before sourav): My name &nbsp; Sourav &hearts; </li>
+        </ul>
+
+        <h3> Semantic Markup </h3>
+        <p> Very useful for screen Reader. It helps it to understand the code by providing anchor points like the
+            header, main section etc </p>
+        <ul>
+            <li> If you just properly name the divs like using main, article, aside, header, footer, section or nav
+                thats gives meaning to the markup text.
+            </li>
+            <li>
+                <aside>This aside element is used to seperate a specific part of the content which is just there but
+                    not a part
+                    of the main content OR Additional Info on the content.
+                </aside>
+            </li>
+            <li> We have other elements that we use like figure that goes with figcaption (img with caption)</li>
+            <li> time with datetime attribute to call out that the content is a date type. </li>
+        </ul>
+
+        <h3>Emmet Demo (Shortcut for Vs that works with HTML)</h3>
+        Click here to Go to <a href="emmetDemo.html">Emmet Demo</a>
+
+        <h3> HTML Tables </h3>
+        Click here to Go to <a href="htmlTables.html">HTML Tables</a>
+
+        <h3>Html forms </h3>
+        Click here to go to <a href="htmlforms.html">HTML Forms</a>
+
+        <h3 id="cssworkbench">The world of Css</h3>
+        For Refernce of css visit <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">MDN CSS</a>
+        <p>For Css Workbook <a href="cssworkbook.html">Click here</a></p>
+
+        <h3>The World of JavaScript</h3>
+        <p>WE can practise the basic JS in inspect console.</p>
+        <p>Click here to Go to Js Home and open console: <a href="javaScriptFolder/javaScriptHome.html">Click here</a>
+        </p>
+        NOTES: <ul>
+            <li>Console follows: REPL: Read Evaluate Print Loop </li><br>
+            **Basic Methods**
+            <li>5 primitive dataTypes: number, String, boolean, null and undefined</li>
+            <li>Order of invocation- <b>PEDMAS</b>: Parenthesis() > Exponential(**) > Divide(/) > Multi(*) > Addition(+)
+                > Subtraction(-)
+                (Wiser: USE *BODMAS* Always works)
+            </li>
+            <li>NaN is a special member of number. eg: 0/0 </li>
+            <li>variable declaration: let, const(value is fixed) and var(old implementation, similar not same as let)
+            </li>
+            <li>In Strings: If want to put some evalution inside the string we can do that using string literals. eg:
+                `Hello this is evaluation ${a + b}.`</li>
+            <li>Note: here we have to take care of putting the string inside `.....`</li>
+            <li>For Comparision, == Will not care about the type(it will convert both in one type and than compare) but
+                === will consider type.(It will not compare covert)</li>
+            <li>eg: '2' == 2 --> true (both converted to string and compared), '2' === 2 --> false. (one is int and
+                other is string so it is false.)</li>
+            <li>prompt can be used to accept inputs from the user in the browser.</li>
+            <li>All Script links make sure you put it at the end of the body.</li>
+            <li>everything in Js is truthy except these: false, 0 , "", null, undefined, NaN (this are falsy)</li>
+            <li>In String, We can't modify any letter in any String.</li>
+            <li>push and pop --> add and remove from the end, Shift(remove from the first) and unshift(add in the first)
+                --> from the begining of the array</li>
+            <li>Note: push returns post of the added ele, shift() returns the length, pop()/shift return the deleted
+                element.</li>
+            <li>Slice -> get a portion of the array(startIndex, endIndex(optional)), splice --> it replace the orignal
+                array.(stratIndex,deleteCount,element1,element2,.....)</li>
+            <li>Note: slice --> the last ele if not given goes till end. if given it will go till index-1. splice --> if
+                deleted returns the deleted ele else if added then return empty arr.</li>
+            <li>arr.includes(xyz) check if xyz present in the array or not.</li>
+            <li>Warning: For JS just sort() won't work for sorting numbers. We have to write a function for numeric sort
+            </li>
+            <li>[] === [] is false. == or === never compares the content of the array.</li><br>
+
+            **Arrays**
+            <li>In Js, Arrays is accessed using refrences. so when you say let num =[1,2,3] that means num points to
+                [1,2,3] i.e store the address of it, If i say letnumCopy = num than any changes in the num or numCopy
+                will modify the same array.</li>
+            <li>In above senario, num === numCopy why ? Because they are pointing to the same array.</li>
+            <li>In Js, Objects are the collection of properties. Properties contains key --> Value.</li>
+            <li>Every key is converted into a String.</li>
+            <li>To Way to access the data: use '.' operator eg: obj.keyName OR use obj["keyName"] to get the value.
+                (Advantage: inside the bracket we can write any exp or variable) </li>
+            <li>NOTE: To delete a key in Object we can use: delete Obj.keyName </li>
+            <li>Number guessing game using js: <a href="JavaScriptFolder/numberGuessingGame.html">Click here</a> to see
+            </li><br>
+            ***Important**
+            <li>For..Of Loop can be used to iterate in the loop.</li>
+            <li>For..in Loop used to iterate over the Object. It will return the keys.</li>
+            <li>Object.keys(ObjNames) --> Gives List of the keys, Objects.values(ObjName) --> Gives the List of Values,
+                Object.entries(ObjName) --> Gives all the entires of that Objects in 2-D List.</li>
+            ***
+            <li>Check Out the Console Based ToDoLsit APP ----> <a href="JavaScriptFolder/ToDoAPP.html">Clcik here</a>
+            </li><br>
+
+            **Functions**
+            <li>**Block Scoping --- > Any thing defined within {} then that variable is local within that scope.</li>
+            <li>**IMPortant ---> If we use var than we can use a block variable outside the block. *** </li>
+            <li>Lexical Scope --> Inner fucntion have access to parent function's variables.</li>
+            <li>Fucntion Expression : eg: const add = function(var1, var2) { return var1+var2; }, calling of this
+                function: add(4,5); Here the function has no name but we are storing the result in a variable. (One more
+                way of declaring functions).</li>
+            <li>Very Imp --> Function as parameter and function as return Type. (see the app.js)</li><br>
+            ***Methods:
+            <li>This are functions added inside the object and can be used using '.' operator after object name.</li>
+            <li>*this* keyword is used inside of an object mostly to access its own properties.</li>
+            <li>this mostly points to the object before the dot.</li>
+            <li>NOTE: If this doesn't find any reference point than it points to the "window" object.(The Parent Object
+                for everything like alert, prompt, functions etc.)</li><br>
+
+            **Important Array Methods**
+            <li>forEach(Not used now a days since we have for..of method) ---> it will execute a function for each
+                element of the array, where it will pass the element automatically..</li>
+            <li>Any parameter you give inside the callback Func in the forEach, is taken as an element of that array.
+            </li>
+            <li>Map --> same as forEach but the difference is it will create a new array i.e this will have a array as a
+                return type for using map.</li>
+            <li>ArrowFunction--> It's allows to write a function without writing the keyWord fucntion. eg: const add =
+                (x,y) => {return x+y}; </li>
+            <li>if you have multiple params ->const sum = (x,y,z..) => {return ...}, single -->cosnt sum = num =>
+                {return ...}, No params -->const sum = () => {return ...}</li><br>
+
+            **NOTE**
+            **just a reminder (How to declare a function 3 ways)
+            <li>1) use function keyword --> funciton sum(x,y) {return x+y;}; let output = sum(x,y);</li>
+            <li>2) use the return type(mostly used) --> const sum = function(x,y) {return x+y;}; let output = sum(x,y);
+            </li>
+            <li>3) use of arrow fucntion(mostly used in callbacks) --> const sum = (x,y) =>{return x+y;}; let output =
+                sum(x,y);</li>
+            ********
+            <li>Implicit arrow fun --> syntax: const add = (x,y) => (x+y;); //NO need to write return and use {} since
+                we have only one line to return.</li><br>
+
+            **New functions, Will use this later in Async JS.
+            <li>setTimeout --> it is used to delay the execution of the function. parmas--> setTimeout(function() {},
+                millisecond)
+            </li>
+            <li>setInterval --> same param structure as above, It will call that fucntion after every interval</li>
+            <li>NOte --> to stop this, we have clearInterval(id), pass the id retrun by the setInterval function here
+            </li><br>
+
+            **Filter method in Array.
+            <li>usecase --> it returns a new Array based on the condition of the callback fucntion.</li>
+            <li>example --> const newArr = arr.filter(element => {retutn condition if satisfy it will be put in the new
+                array.})</li>
+            **NOTE**
+            <li>MAP--> used to pick element from the List, FILTER --> based on a condition we will pick element from the
+                List.</li><br>
+
+            ***Bollean Array Methods --->**SOME and EVERY**
+            <li>Syntax --> Arr.some(element => condition), Based on the condition this will return either true or flase.
+            </li>
+            <li>Every --> if all the elements satisfy the condition then it return true else false</li>
+            <li>Some --> if any one of the element satisfy the condiiton then its true else false</li><br>
+
+            **Array Method --> Reduce
+            <li>syntax--> arr.reduce((accumulator, currenValue) => {return ...}, initalValueOfAccumulator(*optional*))
+            </li>
+            <li>accumulator --> it stores the result of the return code.</li>
+            <li>currentValue --> iterate one by one on the element.</li>
+            <li>example --> get the sum of all elements in the array.</li>
+            <li>usecase --> find the min or max value in the array.</li>
+            <li>**Reduce also allows to take the second params that specify the initial Value of accumulator.**</li><br>
+
+            **NOTE this keyword-- Very Important**
+            <li>ideally this refers to the windows object.</li>
+            <li>this by default points to the windows object</li>
+            <li>but when you use a normal function then, this points to the objet which is executing that function, in
+                this case nothing to do with the scope</li>
+            <li>Inside an Arrow function, this refers to the same Object where the function is created.</li>
+            <li>Never use arrow functions and this to define methods, by default it will point to the windows object
+                instead of the current Object</li><br>
+
+            **New Features in JS**
+            <li>*default parms -> check if the param has some value if not assign it a dafult one</li>
+            <li>syntax -> function rollDie(a, b = 6) {...} --> here if the b is coming it's fine else b will be 6
+                default</li>
+            <li>NOTE: Check for the order of the param, it matters here.</li>
+            <li>*Spread --> It will spread the elements of an iterable into seperate arguments</li>
+            <li>syntax --> we have an array Arr contains numbers, Math.max(...Arr), "..." this will convert the arrays
+                as different arguments.</li>
+            <li>usecase --> suppose we need to find the max element in the array using Math.max() method.</li>
+            <li>*Spread in Objects --> we can use this to copy Object</li>
+            <li>special case -> {...[2,3,4]}, here the obj will have indices as keys and element as value</li>
+            <li>useCase --> to combine various objects, to copy object, to add new add elements to the existing obj</li>
+            <li>*REST param --> it collects all the arguments you pass in the function in an array</li>
+            <li>syntax --> function sum(...nums) { //code }, all the elements you pass to sum will be collected by num.
+            </li>
+            <li>example --> collect all the params passed, const collectAllnums = (...nums) => { console.log(nums);};
+                here no matter what you put as param to sum, num will collect it in the array</li>
+            <li>*Destructure Array --> copy out values from array</li>
+            <li>syntax --> suppose we have arr= [1,2,3,4,5,6,7,8], const[first,second,...otherValues] = arr; then first
+                will be 1, second will be 2, otherValue will contain the rest of the values </li>
+            <li>*Destructure from Object --> To fetch properties in a seperate variable from the object.</li>
+            <li>syntax --> lets say you have an obj const class = {name: 'Sou', number: 50 }, then const {name:
+                className, number : classStrenght = 'N/A'} = class;</li>
+            <li> the above will create 2 variables className and classStrength and assgin them the Value from the
+                Object, If classStength not found then it will use the default value of N/A</li>
+            <li>*Destructuring in the param --> Mostly used in case of an Object.</li>
+            <li>syntax --> const profile = {firstName: "sou",lastName: "Mitra"}, function displayName({firstName,
+                lastName}) {//code...}</li>
+            <li>What happenes above is, the function is expecting an object and onEntry only we have destructure the obj
+                into firstName and lastName variable to be used inside the function.</li>
+        </ul>
+        <br>
+        <hr>
+        <h3>Integrating JS with Html and Css</h3>
+        <h4>The World of DOM</h4>
+        <p>Playing around with DOM using JS document Objects, html and css.</p>
+        Click the below to go the respective projects Folder.
+        <ul>
+            <li><b>Manipulating:</b> <a href="manipulating/index.html">Go here</a></li>
+            <li><b>Flexbox and Responsive:</b> <a href="flex_box+responsive/index.html">Go here</a></li>
+        </ul>
+        </p>
+        Notes:
+        <ul>
+            <li>DOM --> Document Object Model</li>
+            <li>This provides JSobjects to link JS with various html and css elements.</li>
+            <li>Document is a special OBject in JS, console.dir(document) --> this will show all the available DOM
+                objects for that particualr webpage.</li>
+            <li>JS will take this html and css element and it returns this Document objects for it to access.</li>
+            <li>document has one object called "all" --> shows all the html collection object in the page. it returns an
+                array of all the objects. </li>
+            <br>
+
+            <p>***DOM SELECTORS***</p>
+            <p>**Methods used for select elements from html using DOM</p>
+            <p>Ref: <b>Selecting and Manipulating:</b> <a href="selecting/index.html">Go here</a></p>
+            <li>1) getElementById --> it returns the object of that particular element for that id else return null</li>
+            <li>2) getElementsByTagName --> select more than one element at a time, returns all the elements with that
+                tag(eg: img,div,p,b etc) in form of html collections,
+                **NOTE: this collection is not an arrays but we can iterate over it, each of them are objects.</li>
+            <li>3) getElementsByClassName --> fetch all the elements object with that particular class name.</li>
+            **NOTE:
+            If getElementsByClassName and getElementsByTagName unable to find anything it will return an empty html
+            collections.
+            <li>4) querySelector --> just one method to select whatever we need, But it will just return the first
+                match.</li>
+            <li>5) querySelectorAll --> Same but it retruns a collection.</li>
+
+            *Properties and MEthods mostly used in DOM
+
+            *DOM Manipulation (basic) --> can manipulate the inner elements of an DOM Object.
+            <li> .innerText (fetch all the texts), .textContent (fetch every piece of content), .innerHTML (fetch the
+                entire html format for that content, you can straight modify the html content using this.) </li>
+            NOTE:
+            If suppose a text is hidden(display: none), then innerTexr will not show it but textContent will.
+            Attributes:
+            <li>we can manipulate the attribute of an element. eg: document.querySelector('#banner').src = "img.jpg"
+                //this will update the img with the id banner.</li>
+            <li>NOTE: we have getAttribute or setAttribute that can be used. </li>
+            <li> ***Imp: small diff: if you use getAttribute it will fetch from html content but if you do
+                .attribute_name then it will fetch from JS Object. (most of the both will be same.)</li>
+            **IMP -->
+            Style Attribute manipulation: eg: document.querySelector('h1').style.border = '2px solid blue';
+            <li>This style will change the stuff in the page but it is not what we have in the style sheet.</li>
+            <li>This looks for the inline style attribute that we add.(Which is a bad practise.)</li>
+            <li>NOTE: (**just to get we use this but cannot modify them**)
+                To get proper style we can use the windows object... </li>
+            eg: window.getComputedStyle(document.querySelector('h1')).fontSize;
+
+            <li>.ClassList --> This returns the list of all the class applied to a particular object. available functs :
+                .add(), .remove(), .contains(), .toggel() [this like turning this class on or off]</li>
+            <li>.parentElement --> This will take you up a level from your current position in the html file. (each
+                element an have only one parent)</li>
+            <li>.children --> multiple children of your current place, it will return a list of all children.</li>
+            <li>.nextSibling/.previousSibling --> take you the next or previous node. (IMP--> node is DOM NODE)</li>
+            <li>.nextElementSibling/.previousElementSibling --> take you the next or previous element in the html.</li>
+            <li>document.createElement() --> this will create a new element for you to use.</li>
+            <li>.appendChild --> this will append as the last child of the given class</li>
+            <li>.append/.preappend --> add some to the existing element.</li>
+            <li>firstH1.insertAdjacentElement(position, element) --> at an element at a very particular position.
+                (firstH1 is a DOM Object)</li>
+            <li>.removeChild() and .remove() --> use to remove a child element. for .removeChild()- Go to parentElement
+                and then delete it, .remove() works directly.</li>
+            <p>
+                Small Project for displaying all Pokemon using DOM :
+            <div><b>Pokemon List:</b> <a href="pokemonDemo/index.html">Go here</a></div>
+            </p>
+
+
+            <p>***Dom Events***</p>
+            <p>Ref for Events: <a href="DomEvents/index.html">Click here</a></p>
+            <li>JS Listen to every small action we do on the web page and react to it --> this called Events.</li>
+            <li>Total 3 ways in which one can choose how a Js will respond to an Event.</li>
+            <ol>
+                <li>Add the event as inline to the attribute in html code. (*Not Recommended)</li>
+                <li>use the Dom Element to bind any event. like document.queryselector().onclink = () => {...your
+                    code...}</li>
+                <li>using .addEventListener('click', function() {..Your Code..}) NOTE: go to mdn for the reference for
+                    all the actions</li>
+            </ol>
+            <br>
+            Note:
+            <li>Advantage of addEventListener, we can add multiple functions for the same event. older ones are
+                retained. Also provides additional options.</li>
+            <li>In sort its more flexible and also it has removeEventListner for removing a particular event.</li>
+            <li>The keyword this can be used in the callback function of the addEventListner function.</li>
+            <br>
+            Note: EventObject and keyboard Events.
+            <li>An EventObject is bydefault passed to the callback fun of the eventListner. contains info about that
+                event.</li>
+            <li>Keyboard events -> keydown (When you press any key) and keyup (when you release a pressed key)</li>
+            <li>the event Object here most used --> key (the key that is pressed) and code (actually location of the key
+                that is pressed)</li>
+
+            <p>**Form Events**</p>
+            <li>Refer the top link for Form Event Add Note Exercise.</li>
+            <li>Ideally when you submit a form the action attribute in the form will refresh the page.</li>
+            <li>But we can prevent the page from loading and redirecting to a new page.</li>
+            <li>Evt.preventDefault() --> Do the above work.</li>
+
+            <p>**Other imp Events**</p>
+            <li>change Event --> triggers when you type something and clicked out. basically it trak if any chnage
+                happened to the input.</li>
+            <li>input Event --> Basically track any activity if user click on the input bar.</li>
+            NOTE:
+            <li>Diff between change and input --> change triggers only when blurred out of the input field, input is
+                every activity on the input field.</li>
+            <li>Diff between input and keyboardEvent --> keyboard event just listen to any keyboard action, input event
+                listen to anything like copy, past, shift and all.</li>
+
+            <p>***Event Bubbling***</p>
+            <li>sometime when events are nestested like you have a button inside a para and both have events. then this
+                is messed up, all events will be triggered if you click on the child element !!! </li>
+            <li>*USE: sometime you want this feature. like if you click on the child element then parent element also
+                should do something. Mostly, In general not used.</li>
+            <li>EventObj.stopPropagation() --> this method on the event object restrict the click Event to only that
+                particular Element. RESTRICT BUBBLING !!! </li>
+
+            <p>***event delegation***</p>
+            <li>this feature is very handy when inside a parent event you want to perform specific child action.</li>
+            <li>Example--> for an action defined on an ul, you want to know the click when its a Li element
+                specifically.</li>
+            <li>Here we will mostly use <b>EventObject.target</b> to know which element is clicked inside the parent.
+            </li>
+
+            <p>****Small project using DomEvents****</p>
+            <li>Note: We will be using a different css library called <b>Burma</b>.</li>
+            <p>Click here to Go to Badminton Score Count Page: <a href="ScoreCounter/index.html">Click here</a></p>
+
+            <li>***Note:***</li>
+            <li>Never write the callback functions like a function call. It will execute the function without listening
+                to the event.</li>
+            <li>You either put the called function inside the callback. eg: function () {..calledFun(parm1,parm2);..}
+            </li>
+            <li>Or You can just pass the ref to that function, means just the function name. eg: see the example of rest
+                function in the above example.</li>
+            <li>fun() --> you wish to execute the fun then and there. fun --> you passing the fun as ref.</li>
+
+
+            <p>***** Async JavaScript (Important)**********</p>
+            <li>Note: (imp) Js practise for async: <a href="asyncJs/index.html">Click here</a></li>
+            <li>Call Stack: It's a mechanism that JS uses to know here it is currently in case of multiple fucntion
+                calls.</li>
+            <li>Note: This is same as call stack in any other programming. It keeps track of all the function calls
+                during run-time.</li>
+            <li>JS single threaded: Js can run at most one line of code at a time. (But it doesnot seems that way...)
+            </li>
+            <li>NOte: In case of request delay or server delay, The entire page just dont hang. This kind of tasks are
+                usually given to the browser(written in c++ can handle such tasks).</li>
+            <li>The browser call stack can identify such WEB API Functions (special requests like setTimeout or Request
+                calls) and it helps Js to manage that delayed response.</li>
+            <li>The browser makes the Js to run the callback functions after the response received.</li>
+            <li>callback functions: This are very useful and can be used while nesting functions. example:
+                successcallback, errorcallback.</li>
+            <li>callbacks mostly used in delayed code execution. and a single function can have multiple callbacks i.e
+                successcallback, errorcallbacks.</li>
+
+            <li>****Promises****</li>
+            <li>Obj representation for the event of failure or success of an async operation.</li>
+            <li>It is a new implementation. solves the problem of callback hell.</li>
+            <li>Promise is an Object. That initially have status pending but eventually depending upon the response it
+                will be either resolved(in latest version it shows fulfilled) or rejected.</li>
+            <li>after getting the promise obj. we use .then(()=>{...}) for success and .catch(()=>{...}) for failure for
+                the calling function.</li>
+            <li>To reduce the nesting you can return inner promise calls and chain its .then() one after another, use
+                single catch for catching error for all the service calls.</li>
+
+            <li>****Async Functions****</li>
+            <li>syntax "makeup" for promise i.e just make it easy to write.</li>
+            <li>async and await we will be using for making promise cleaner in syntax.</li>
+            <li>****async***</li>
+            <li>To make a function async add async infront of the function.</li>
+            <li>A Async function returns a promise object always.</li>
+            <li>If the function returns something then the promise is resolved and if it throw anything then it is
+                rejected.</li>
+            <li>****await***</li>
+            <li>add await keyword infront of the async func call.</li>
+            <li>It will basically wait for the async function to return the promise which is either resolved or
+                rejected.</li>
+            <li>****use of async and await***</li>
+            <li>It is easy to understand and look nice instead of .then() chain for promise implementation.</li>
+            <li>So you have a async fun or a fun that return promise object. Declare a new async function and use await
+                before the promise func calls.</li>
+            <li>if the promises are successfull store the resp in some var and use it.</li>
+            <li> put all this inside a try-catch block. the catch block will catch if any req failed in the try part.
+            </li>
+
+            <p>********Ajax and APIs********</p>
+            <li>AJAX -> async javascript and xml (Old implementation --> data from server used to return in formate of
+                xml.)</li>
+            <li>used for making/fetching/creating requests behind the scenes of a already loaded webpage.</li>
+            <li>APIs -> Application programming interface. basically its the communication medium how software talks to
+                one another.</li>
+            <li>Web Apis --> web based apis eg: http-based web server apis.</li>
+            <li>Web Apis returns data in form of JSON from the servers. That is further proccessed to put on the
+                website.</li>
+            <li>AJAJ --> Async javascript and json. Note: now a days all server req returns data in json format.</li>
+            <li>JSON --> JavaScript object notation. It is a way of formatting data.</li>
+            <li>JSON.parse(jsonResp) --> jsonResp is the string resp from the server. This function parse json data to
+                javascript object</li>
+            <li>JSON.stringfy(javascriptObj) --> It do the other way around. Convert JavaScript Object to valid JSON
+                Format for sending them over Apis.</li>
+            <li>NOTE: Basically JSON can be parsed into any Language using the inbuilt functions.</li>
+            <li>HTTP Verbs --> eg: GET, POST, PUT, DELETE</li>
+            <li>HTTP Status Code --> refer MDN WEbsite for general idea on differenet types of status code. Most common
+                -> 200, 201, 405, 404, 504, 301</li>
+            <li>http query --> the url that we hit contains the following</li>
+            <li>eg: :id --> id is a variable, query --> ?sort=desc&color=red(optional if added will not affect the url
+                even if its wrong. Returns only if that particular query is supported.)</li>
+            <li>? --> look for that particular values. commonly used for forming redirect urls on search</li>
+            <li>http Headers --> generally contains additional info on the req. ex: accept : application/json (you want
+                the resp in json formate)</li>
+
+            <p>***How to make Request from scripts ***</p>
+            <li>Click here to go the page. <a href="JSRequests/index.html">Click here</a></li>
+            <li>XHR --> XMLHttpRequest (old way of making a req from JS)</li>
+            <li>NOte: XHR doesnot support promises and includes a lot of callbacks and Have Clunky syntax.</li>
+            <li>Fetch --> Newer and better way of making request calls via JS. </li>
+            <li>Note: it supports promises and its better then XMLHttpRequest.</li>
+            <li>so fetch() returns a promise. it can either resolved(use .then()) or rejected.(use .catch())</li>
+            <li>IMP: we wont be able to see the data. so we need to parse it by adding resp.json() which agains return a
+                promise.</li>
+            <li>Axios --> 3rd party lib for requests and working with them and make it simple.</li>
+            <li>Note: Behind the scenes it uses fetch(). </li>
+            <li>Axios returns promise. But it fetch us the data that is already parsed in JSON(very very helpful !)</li>
+            <li>Click here to see the docs --> <a href="https://axios-http.com/docs/api_intro">Axios</a></li>
+            <li>NOTE: for including req headers: axios('url', obj). here obj container header, it may also contains
+                params</li>
+
+            <p>Example of <b>Tv Show Search web Application</b> which uses TvMaze APIs. <a
+                    href="TVShowSearchApp/index.html">Click here</a></p>
+
+            <hr>
+            <hr>
+
+            <p>Practise Space 1: Revise all previous topics from JS: <a href="JSPractise/index.html">Click Here</a></p>
+
+            <p>Observations and notes for revision before DOM:</p>
+            <p>Observation:<br>
+                1) when keys are inserted into the object they are stored in a sorted manner.
+                2) when we print the object.keys() it returns in the order they are inserted.
+                3) arr.includes(xyz) check if xyz present in the array or not.
+                4) var doesnot follow block scoping i.e available everywhere but let obeys block scoping i.e available
+                only in {}
+                5) function params dont need type declaration.
+                6) arrowFunction this points to windows obj, but function using function keyword's this point to the
+                same Obj.
+                7) forEach and Map same function. diff--> map returns a new array, forEach dont return anything.
+                8) filter --> the callback function returns a condition. based on the condition it returns a new array
+                of elements.
+                Note: param for forEach,map,filter is the element of the array.
+                9) Chain of filter-map possible. Filter will filter the data based on condition and map can then iterate
+                over the filtered list and return a new array.
+                10) reduce --> takes 2 params accumulate --> stores the value of the retrun. currentVal --> take the val
+                of the ele of the array.
+                NOTE: 3rd param is optional it defines the starting value of accumulate.
+                11) this behavior depends upon how you declare function.
+                NOTE: If function keyword is used then this points to the obj where it's created.
+                If arrow function is used this points to the obj which is executing that function.
+                12) spread(...) --> lot of uses.
+                --use to find min or max in an arr.
+                --use to copy or append or merge two objects into a new one i.e fetches all the keys and values from
+                others and create a new one.
+                --use for destructure of arrays.
+                Note: Destructre means createing new variables from the given array OR Object efficently.</p>
+
+            <p>Observations for DOM Events:</p>
+            <p>Observations: <br>
+                1) using document.querySelector to specifically select any element by id or by tagName or by className.
+                2) EventListner can be used efficently than using seperate onclick functions.
+                3) if you have looping on eventListner, use this in the callback function to access individual elements.
+                4) in frm action attribute if you use # it will stay in the same page. if you use / then it will try to
+                redirect.
+                5) redirect is a default behaviour that can be prevented using evt.preventDefault() in callback.
+                6) change keeps tracks of input change, input keeps track when the input changes
+                7) benfit of input --> it ignores arrow and special keys. only tracks when it detects an input change.
+                8) Event bubble can sometime helpful but sometime pain in ass :( , use evt.stopPropagation();
+                9)basically you can use evt.target.nodeName eg: LI or BUTTON to identify what is clicked inside
+                containers like div or ul.
+                10) very imp --> ways you can write the callback function
+                -- using arrow function. eg: () => {....your code whatever it is....}
+                -- calling a specific fucntion without any param. eg: .addEventListner('click', reset);
+                -- calling a specific fucntion with param. eg: .addEventListner('click', function() { reset(param1,
+                param2); });
+            </p>
+
+            <p>Observations for DOM Elements: </p>
+            <p>Observations: <br>
+                1) diff between .innerText and .textContent --> if something is hidden textContent will show it but
+                innerText won't.
+                -- Always Good to use textContent instead of innerText.
+                2) Note: .getAttribute fetchs from HTML content but .attribute_name fetchs from JS Object.
+                3) window.getComputedStyle(document.querySelector('')) --> just to view the current styles implemented
+                on a particular element.
+                NOTE: document.querySelector('') this is a domObj.
+                4) properties to navigate in HTML using DOM
+                -- .parentElement --> Goes to the parent element.
+                -- .children --> HTML Collections for all the children of that element.
+                -- .nextElementSibling/.previousElementSibling --> move around the children.
+                -- .createElement('LI') --> create a new Element.
+                -- .appendChild(domObj) --> append as a new child at the end.
+                -- .append(text)/.preappend(text) --> add some to the existing element.
+                -- .insertAdjacentElement(position, element) --> see MDN for what to type in postion eg: afterend i.e
+                after the specified element add
+                and element is the new element you want to add.
+                -- .removeChild(elementtag) or .remove(elementtag).
+            </p>
+
+            <p>Observations for DOM Sync Functions and promises: </p>
+            <p>Observations: <br>
+                1) Js is a single threaded language. At max only one line runs during execution.
+                2) delayed execution of callback functions are handled by browser(written in c++). It helps Js to manage
+                delayed execution.
+                3) Nested deep callbacks called callbackhell.
+                4) solution to callbacks hell --> we use promises Obj(return either fullfilled or rejected) based on the
+                status of the server call.
+                5) using chain of .then()-->if server call successfull and .catch() --> if server call failed make the
+                nested call more flat structure.
+                6) further optimised implementation is using async func(always returns a promise obj) and await fuc
+                call() (wait for the async funct to return a promise obj)
+                7) await works only inside a async function. put all the await calls in try block and add a catch block
+                at the end. --> Error handling in async function,
+                8) previously used AJAX --> Async Js and XML, now we use AJAJ --> Async JS and JSON. The format of
+                output now a days mostly is in json.
+                9) JSON --> JS Object Notation.
+                10) JSON.parse(jsresp) --> string resp from server to JSON Object; JSON.stringfy(JSONObject) -->
+                converts JSON Object to String.
+                11) For a Web based HTTP API contains --> HTTP verb(GET,POST,UPDATE), HTTP Headers --> info on the resp
+                eg: accept --> application/json , HTTP query --> '?' look for a match if the API supports that. eg:
+                ?houseNo='45'&streetNo='5'
+                12) FOR Making server calls:
+                -- XHR --> XMLHttpRequest, no support for promises and callbackshell is a headache. (*Not Recommended
+                Atall*)
+                -- fetch() --> uses promises. no callbackhell but the resp has to be extracted using resp.json() -->
+                returns a promise again. thus bit hassel.
+                -- axios --> 3rd party library. have to include script as script. uses promises behind the scenes. resp
+                can be extracted easy i.e resp.data (*Recommended*)
+                NOTE: you can pass a 2nd optional param to fetch and axios if you need to define specific headers value.
+                eg: { headers : {Accept : 'application/json'}}
+            </p>
+
+            <hr>
+            <hr>
+
+            <p>**Prototypes, classes and OOPS**</p>
+            <p>Click here to see the workSpace for prototypes and class: <a href="OOPS/index.html">Click here</a></p>
+            <li>objects have access to a Obj templates which are under a special keyword __proto__ or [[prototype]]</li>
+            <li>Instead of defining for every obj the same functions, we just define a template obj that the func can
+                use whenever needed. eg: Array.prototype, String.prototype</li>
+            <li>NOTE: you can add new methods or edit the existing methods for the prototype Obj, [[prototype]] is a
+                reference to the actual prototype obj.</li>
+            <li>Obj templates are used everywhere in JS. It basically frames the content of any Obj that we declare.
+            </li>
+            <li>factory function ---> Baiscally the function builds() and returns an object.(not used)</li>
+            DrawBack --> Everytime the methods are recreated for every new obj we make.
+            ***Constructor function***
+            <li>we difine a function starting with Cap Letter, use this inside it.</li>
+            <li>then we call this function with 'new' keyword. eg: new fun()</li>
+            <li>new --> it will create a new obj for me and the 'this' of the above fun will point to new obj and
+                returns it</li>
+            <li> --> Also it will add a constructor with the same fun name under [[prototype]].</li>
+            <li>New methods can be added under prototype, thus everytime during declaration it is not created again and
+                again, which solves the drawback of factory function.</li>
+            <li>NOTE: Better to use old school function() keyword for func declaration instead of Arrow function.
+                Reason: 'this' keyword behaves differently inside arrow funcitons.</li>
+            **Js Classes**
+            <li>Makes the above code, clean and pretty syntax.</li>
+            <li>class names starts with Caps, add a constructor for that class, this will points to the individual Obj.
+            </li>
+            <li>best part of using class --> any method you declare inside class will automatically put under prototype
+            </li>
+            <li>NOTE: Classes basically are the blueprints of anything so the above thing totally make sense.</li>
+            <li>NOTE: if two obj share the same prototype class then comparing the fun references i.e obj1.fun ===
+                obj2.fun is true. If these are same functions on individual obj then it is false. </li>
+            <li>Color system --> rgb/rgba, hex, hsl(hue, saturation, lightness) eg: rgba(0-255,0-255,0-255, 0-1),
+                #5f6f7f , hsl(0-360, 0-100%, 0-100%)</li>
+            <li>Inheritance --> use of extends or super keyword.</li>
+            <li>Extends --> child class can extends parent class to use there methods.</li>
+            <li>NOTE: same method name in the child and parent will be overwritten with the child's method during
+                inhertiance.</li>
+            <li>super --> Its forms a refernece to the parent class. eg: child class might wants to add additional
+                params, then we can use super</li>
+        </ul>
+        <br><br>
+
+        <h3>*****Backend World Welcomes you*****</h3>
+        <p>We will learn concepts of cmd, nodeJs, using express, mongoDb etc</p>
+        <p>Folder to Refer : /d/Desktop Files/Backend Webdev </p>
+        NOTEs:
+        <ul>
+            <li>static webpages --> means its always the same code with the data from the server.</li>
+            <li>Dynamic webpage --> On the server side, basically based on the data, the entire webpage is composed.
+            </li>
+
+            ***Basic of BASH Commands***
+            <li>why we have to use --> it is faster, a lot of access, installed and access to tools(main reason why we
+                need terminal).</li>
+            <li>Terminal --> A software interface for command line.</li>
+            <li>shell --> Programs that run on terminal. eg: CLI(command line interface) in windows.</li>
+            <li>Bash --> one of the most popular shell. Running Unix(Linux) shell on Window.</li>
+            <li>GIT --> version control software</li>
+            <li>NOTE: most web-servers runs on Linux and shell, so we need to have a shell to connect to them.</li>
+            <li>NOTE: the windows Terminal, Its MS DOS so its not the correct one. So need GIT BASH.</li>
+            <li>GIT BASH --> A package that installs both GIT and Bash at the same time. Provide GIT feature and BASH
+                Shell at once.</li>
+
+            ****Commands****
+            <li>ls --> shows all the files/folders at the current location.</li>
+            <li>pwd --> print working dir. Specify your current location.</li>
+            <li>cd ~ --> this takes you to home dir. ~ --> this symbols shows that you are at the home directory.</li>
+            <li>cd --> change directory. use to move around the directory. go forward and backward.</li>
+            <li>clear/cntrl + L --> to clear the console.</li>
+            <li>cd .. --> go backward in the fileSystem directory.</li>
+            <li>Relative path --> works if the folder is in the same dir eg: cd FolderName</li>
+            <li>Absolute path --> works from anywhere, basically you mention the full path. eg: cd
+                /user/backendFolder/FolderName</li>
+            <li>cd / --> this will go to the root directory.</li>
+            <li>NOTE: if you have space in file names. follow this, eg: cd /d/Desktop\ Files/Backend\ Webdev </li>
+            <li>NOTE: something like this also works --> cd ../../folderName i.e Go back two times and then go inside
+                folderName.</li>
+            <li>mkdir --> make directory. eg: mkdir newFolder --> creates a new folder at the current dir</li>
+            <li>NOTE: mkdir newFold1 newFold2 --> this creates 2 new folders with the given name at once.</li>
+            <li>man commandName --> man is for manual, it can be used to know about a particualr command.</li>
+            <li>NOTE: Type 'q' go close the page.</li>
+            <li>NOTE: we have flags that we can use along with the command. eg: ls -a --> shows all the hidden folders,
+                ls -l --> shows the details list of files/folders presents in the dir.</li>
+            <li>touch file.txt --> touch command makes new files in the current dir if it doesn't exist else it will
+                just update the file creation time.</li>
+            <li>NOTE: you can make multiple files in the same dir at once. eg: touch newFile.html app.css app.js -->
+                makes all 3 new files at once.</li>
+            <li>rm file.txt --> it removes the file from the dir. NOTE: Its just gone. it doesnot go to recycle bin.
+            </li>
+            <li>rmdir newFolder --> it will removes the folder. NOTE: but works only if the folder is empty.</li>
+            <li>rm -rf newFolder --> rf means recurssive forced i.e it will just remove the folder and Everything inside
+                it.</li>
+            <li>code filename.json --> open the file in the vs code. (****super important, very useful***)</li>
+            <li>code . --> open the current dir in a new Vs window.</li>
+            <li>cat index.js --> shows the content of the index.js file.</li>
+            <li>mv file.js newFile.js --> use to rename/move a file using bash command.</li>
+
+            <p>******NODE JS *************</p>
+            <li>Refer: /d/Desktop Files/Backend Webdev/nodeJS_WorkSpace</li>
+            <li>NodeJS --> Its a javascript runtime that executes code outside of the browser.</li>
+            <li>used for --> making servers(framework --> Express), command Line tool(eg: npm), native App (VS code),
+                gaming, </li>
+            <li>NOTE: electron --> single platform where with a single code base it can built native app as well as
+                support web applications i.e cross platform</li>
+            <li> -- basically if you have a website, you can make a native application for the same. use electron
+                framework.</li>
+
+            **NODE REPL BASIC COMMANDS**
+            <li>REPL --> Read Evaluate Print Loop. It will continue to listen and evaluate when we write any command and
+                print the result.(Type node in bash and it will open REPL)</li>
+            <li>Browser JS vs native Js(node) --> browser JS supports document(supports DOM) and windows(global obj in
+                browser). node dont have.</li>
+            <li>Node --> It comes with built-in module like access to OS and File system. Browser dont have. </li>
+            <li>NOTE: The global obj in node JS is called "global"</li>
+            <li>To run the js code in node --> node fileName.js (make sure you are in the correct dir.)</li>
+            <li>process --> this is availble in the global scope. It contains all the information on the current node.js
+                file i.e its version,release, its dir, memory etc</li>
+            <li>use of process.argv --> it returns a list.
+                -- first_index--> node path or execution path,
+                -- second_index-->js file path,
+                -- after that it will return all the argv passed in the command line.
+                eg: node filename.js arg1 arg2 </li>
+
+            **File System using node REPL**
+            <li>Two ways of file methods --> sync(it will stop the execution untill the work by the method is done) and
+                async</li>
+            <li>.rquire('fs') --> this will include the file system in the process.</li>
+            <li>fs.mkdirSync('folderName') --> creates a new folder in the current dir</li>
+            <li>fs.writeFileSync('fileName.html', '') --> creats an empty file at the current location.</li>
+            <li>NOTE: always use try and catch for sync methods as they dont have any callbacks.</li>
+
+            **require and module.exports***
+            <li>module.exports --> used to define what are the things from current file can be accessable to other files when you require it.</li>
+            <li>NOTE: require a file in the same dir, syntax --> require(./filename)</li>
+            <li>-- exports also can be used. NOTE: make sure we dont assign 'exports' keyword as a variable, then it wont refer to module.exports anymore.</li>
+            <li>-- by deafult module.exports is a empty object i.e {}</li>
+            <li>For require a directory --> it will look for the 'index.js' file in the dir. It will exports whatever this index.js has added to module.exports</li>
+            
+            **NPM command Line tool**
+            <li>NPM --> node package Manager. For Refernece: <a href="https://www.npmjs.com/">npm_guide</a></li>
+            <li>Storehouse of tones of library that we can use. and also managing the packages.</li>
+            <li>NOTE: package for react, package for express etc.</li>
+            <li>npm i packageName or npm install packageName --> to install a new package.</li>
+            <li>Once install, see the documentation, require it and use the available exports methods.</li>
+            <li>Global package -->  when you install a package add '-g'. that makes the package availble globally. eg: npm i -g cowsay</li>
+            <li>NOTE: 
+                -- Global packages added can be used just like normal command. eg: cowsay hellooo</li>
+                --  To link a global package to a folder, use npm link packageName. eg: npm link cowsay.</li>
+                -- This will ensure require('cowsay') works in the destination folder.
+                -- Mostly used for packages that give new commands. else mostly packages are isntall specific to one dir.</li>
+            <li>package.json --> contains meta-data of the given package.</li>
+            <li>index.js --> main or starting file for any npm package or node project folder.</li>
+            <li>Notes: 
+                -- npm init --> this command will ask few questions and create a properties.json file.
+                -- previously if this file is missing from the package install location it used to throw error. but now it will automatically create when we install a package.
+                -- All the packages that you install for that project dir will be automatically added to project.json file.
+            </li>
+
+            ***working with Project that has dependencies***
+            <li>-- node_module folder wont be shared. so visit the project.json file, check the dependencies and isntall them manually one by one.</li>
+            <li>-- npm install or npm i --> this command will look for the project.json file and download all the dependencies automatically.</li>
+            <li>Importance: property.json file in the project workspace keeps track and manages the required packages for the project. *Always maintain this one file*</li>
+            <li>Note: for uninstalling a pcakge: npm uninstall packageName</li>
+            <li>Note: eg: npm uninstall pack1 pack2; npm i pack1 pack2 --> pack1 and pack2 are being uninstalled and installed again fresh with latest version.</li>
+            <li>some npm package are purely ESM(ECMAScript Module) --> we have to use import instead of require(). also some changes to project.json file.</li>
+            <li>-- eg: import {franc} from 'franc';
+                -- NOTE: require only exists in cjs file(common js) not in ESM module. In ESM we use import
+                -- add in project.json --> "type": module, this will enable ES import/Export.
+                -- Note to use require in ESM add the following *IMP* 
+                import { createRequire } from "module";
+                const require = createRequire(import.meta.url);
+            </li>
+
+            **Express Package**
+            <li>It is a framework used to create servers for web development using node.</li>
+            <li>Reference to documentation: <a href="https://expressjs.com/">Click here to see Node documentation</a></li>
+            <li>uses: to build web applications i.e web servers and APIs. and Every processing involved in the processing the client data.(same as middleware layer)</li>
+            <li>Library vs framework:
+                -- both are codes that open source avaiable.
+                -- eg of library: bootstrap, axios(a http library) etc.
+                -- with library, you decide when to use it. it provides methods for a very particualr purpose.
+                -- with framework, framework is in control and you just need to follow it. It basically used to built big applications like web apps, games etc. eg: express
+            </li>
+            <li>Note: your app name should be all lowercase.</li>
+            <li>express keywords:
+                -- const express = require('express'); cosnt app = express(); --> this returns an express obj that we can use and it also starts the express server.
+                -- .listen(port, ()=>{...})  --> it listens if anything happening in that port.
+                -- .use(()=> {...})  --> it responds anytime we have an incomming request. basicallly any incoming request will trigger this.
+                -- cntrl + c --> this will down the server.
+            </li>
+            <li>NOTE: from here onwards in the below notes 'app' refers to const app = express();</li>
+            <li>httpRequest is a text information. 
+                -- express takes this data and pass it as req --> incomming req object and res --> outgoing obj</li>
+            <li>.use((req, res)=>{...}) --> this is how to use req and res.</li>
+            <li>res.send() --> this will send the response back to the client in form of html text, normal text or json Object.</li>
+            <li>Note: you cannot receive multiple response from a single request.
+                -- app.use responds to all incoming requests.
+                -- So for routing we will use a different method from express. </li>
+            <li>Any call from browser url is a get call to the server.</li>    
+            <li>Routing in servers:
+                -- it refers to taking incoming req the new path that is requested and matching that to some code in that path.
+                -- bsically you are at localhost:8080/home and wants to go to localhost:8080/dogs, routing needed in the server side code.
+            </li>
+            <li>app.get('/cats', (req, res)=> {...}) --> this will run whenever the request url matches this syntax.</li>
+            <li>Note: '/' --> refers to the home page. eg: app.get('/', (req,res)=>{...})</li>
+            <li>Note: app.get('*', (req,res)=>{...}) --> **this has to be added at the end**. It will match all path for the get call.</li>
+            <li>Note: 
+                -- app.get() just respond to any get calls
+                -- post calls can be handled by app.post eg: app.post('/cats', (req, res)=> {...})
+            </li>
+            <li>Note: route are match in order they are define. eg: All get calls route will be matched in order they are defined.</li>
+            <li>Express path parameter
+                -- ':' is used to define a path paramter in the requested path by the client.
+                -- eg: app.get('/r/:search', (req,res)=>{...}) --> here search is the param name and the value is taken whatever you pass.
+                -- req.params return an object for all the params in the request.eg: {search : "aboutpage"} if the call is for /r/aboutpage
+            </li>
+            <li>Express query Strings
+                -- '?' --> after this whatever is there in the url is a query string.
+                -- req.query --> this will return an object that contains info on the query 
+            </li>
+            <li>Note: multiple queries can be passed in the url. eg: /search?q=location&tag=dog.
+                -- req.query returns {q : "location", tag : "dog"}
+            </li>
+            **Automatically restart the server**
+            <li>Generally if we change out code base, server needs to be restarted for it to reflect.</li>
+            <li>we can use nodemon package.</li>
+            <li>install nodemon --> npm i -g nodemon  (install nodemon globally)</li>
+            <li>then run nodemon index.js --> this will watch for any change in code base in any of the js file and automatically restart the server.</li>
+            
+            **Templating***
+            <li>Instead of writing static html code, we can emmbed logic of a page as a template that can be reuse anytime we want </li>
+            <li>Templating engine used for it : EJS (embedded JavaScript), other examples: handlebars, jade, pugjs, Nunjucks all are have different syntax but used for making templates.</li>
+            
+            **EJS**
+            <li>Reference to this ejs : <a href="https://ejs.co/">Click here</a></li>
+            <li>app.set(name, value) --> we can specify a particular property and its value that will effect the configuration of the server </li>
+            <li>NOte: no need to require ejs in the script. app.set('view engine', 'ejs') will tell the express to use ejs behind the scenes.</li>
+            <li>-- By Deafult, Express assume our templates are in a folder called views. (*Important*).[its the deafault dir but you can change it using app.set()]</li>
+            <li>-- the views contains file with the format of .ejs</li>
+            <li>-- res.render() --> it will render the view(it will process the ejs file that has html and js) and send the formatted html file back to the client.</li>
+            **EJS views Folder:***
+            <li>
+                -- holds all the .ejs template files for the project. 
+                -- If you are running the server from current dir where views is present it will work.
+                -- If you are running the server from outside it will not work ! :(
+                -- solution: We use const path = require('path') and use a method called app.set('views', path.join('__dirname', '\views');
+                -- by default express takes current_dir/views. The above method change it to the project_dir/views.
+            </li>
+            
+            **EJS Syntax**
+            <li><%= ... %>  --> between this you can write any Javascipt code. '=' here means it will take that js value and render it in the html.</li>
+            <li>template should only handle display of the dynamic data. The logic can be written in the js file and passed to the template.</li>
+            <li>Note: pass the data from the js to ejs template file as key-value pair in form of json Object. In ejs file, access the value with the key.</li>
+            <li>eg: { num } is same as {num : num}</li>
+            <li><% ... %> --> this means it wont be rendered to the html but it will run as normal js code.</li>
+            <li>NOTE: for loop / If condition we write between this.</li>
+            <li>.json files usually contains the data to be displayed in the page. We need to require it in order to access it. eg: const data = require{./data.json}</li>
+            <li>Note: {...obj} --> this will spread the object. hence you can access each data just by there key.</li>
+            <li>NOTE: Remeber if you want to show some data value dont forget to use <%= ... %> and if you want to run some Js code in html then use <% ... %></li>
+            
+            **Include static files like cssFile, images, fonts etc***
+            <li>we put all the static files in a dir. eg: public and server it in our project using express.static('dirName')</li>
+            <li>Static is a express built-in middleware function to serve static file in the your project.</li>
+            <li>NOTE: include the absolute path of the public dir so that it can accessable from any place.</li>
+            <li>Once you server the contents of the public dir. they are literally avaiable for you to use in your template and also this works --> localhost:8080/app.css</li>
+            NOTE: Never try to include the public folder name in the template link path. What the folder contains is served not the folder.
+            
+            **Partials in EJS**
+            <li>It's a way of including templates in other templates.</li>
+            <li><%- include('templateName') %> -- this way you can include other templates in each other. </li>
+            
+            **GET and POST handling from FORM Data**
+            <li>GET --> Anything you request from the server.Refelects in the url as query String or param.</li>
+            <li>POST --> you send the content to the server in the body. The payload is a part of the body</li>
+            <li>Express has .get and .post to handle them seperate.</li>
+            <li>req.body --> This will have the body content that is sent via POST request. By default it is undefined(for Form payload) and {}(for json body payload)</li>
+            <li>NOTE: We need to explicitly make express to parse the body in a particular format.</li>
+            **use this middleware to handle the req.body data: const bodyParser = require('body-parser'); 
+            <li>app.use(bodyParser.json()) --> parse the data passed as json format.</li>
+            <li>app.use(bodyParser.urlencoded({ extended: true })) --> parsing frm encoded data.</li>
+            
+            **REST**
+            <li>REST --> representational State Transfer. System which follows REST guidlines are called RESTful.</li>
+            <li>To Crate a CRUD layer for APIs we generally follow the REST protocols.</li>
+            <li>Redirect of webpage</li>
+            <li>-- when you use res.redirect('url'), the default code that is sent is 302.</li>
+            <li>-- it follows up and makes a second call to the redirect url.</li>
+            <li>-- the redirect path is stored as location that is included in the response header </li>
+            **UUID npm package**
+            <li>-- Gives unique ids that we can use as unique elements while searching.</li>
+            <li>-- just require it and use it.</li>
+            
+            <li>PUT/PATCH --> Put updates everything in the payload for a particular id, Patch only partially update for a particular id.</li>
+            <li>NOTE: HTML FORMs can just send get or post method. For update we need to fake it.</li>
+            <li>**method-override**</li>
+            <li>-- this allows us to use http methods are Put and delete where they are not allowed. eg: in a HTML form</li>
+            <li>-- install it and then require it.</li>
+            <li>-- app.use(method-override(_method)) and in the from we use: form method ="post" action = "/comments/?_method=PATCH"</li>
+            <li>-- this tells express to look for a method that is being assigned in the _method.</li>
+            <li>-- Remember here the action url should be proper with the query and method should be post.</li>
+            
+            **Database**
+            <li>Why ?
+                -- data persistence --> stores the data even if the serves restarts.
+                -- should able to handle large volume of data, also makes handling of data easy.
+                -- provides lots of tools for insert, delete or query something.
+                -- offers Data security
+            </li>
+            <li>SQL vs No-SQL Database
+                -- SQL eg: oracle,mysql,mssql,postgresSql
+                -- No-SQL eg: mongoDB, cassandra, couch DB 
+            </li>
+            <li>SQL-> Data stored in form of tables. All the tables are related to each other. plan ahead before you have procced with the database.</li>
+            <li>No-sql --> deverse data it can store. no tables. more flexibility.</li>
+            
+            **Mongo**
+            <li>why ?
+                -- most commonly used with node or express
+                -- strong community and easy to start with.
+            </li>
+            <li>Installation is a headache really man !!!</li>
+            <li>Install the mongo server and shell. and then set it as the path parmater in the windows environment</li>
+            <li>Vs code connected to mongo using an extension and mongosh Repel we can run inside Vs code</li>
+            **Mongo Basic Commands**
+            <li>mongosh --> this starts the mongo Repel.</li>
+            <li>cls or cntrl+L -> clear the screen</li>
+            <li>NOTE: the syntax is similar to JS. also the reason why it is popular.</li>
+            <li>show dbs --> this command will show all the running dbs.</li>
+            <li>use dbName --> It will make a db for me if not present OR Switch to a particular db</li>
+            <li>NOte: if the db is empty, it will not show in the dbs list.</li>
+            <li>Mongo Expect a data format called BSON.</li>
+            <li>Why not use JSON ?
+                -- it's a text based format and text parsing is slow.
+                -- not space efficient.
+                -- supports a limited number of dataTypes.
+                -- eg: JSON can only store object,number,string,boolean, Array.
+                -- mongo can store all including different types of numbers(float, long etc), date (Mostly used), Raw Binary.
+            </li>
+            <li>BSON:
+                -- similar to JSON but not JSON.
+                -- BSON --> Binary JSON.
+                -- we can write normal JSON, Mongo converts it and store in Binary JSON Format.
+            </li>
+            <li>Insert in mongo
+                -- we insert into a collection. if collections not there db.collectionName will create a new collection.
+                -- db.collectionName.insertOne({}) -- one element inserted at a time, 
+                -- db.collectionName.insertMany([{},{},{}]) -- multiple elements added to the collections at a time.
+            </li>
+            <li>show collections -- will show the collections.</li>
+            <li>db.collectionName.find() --> It will list down all the collection Elements you inserted.</li>
+            <li>_id: primary key, unique for every entry in the collection.</li>
+            **MongoDB query**
+            <li>db.collectionName.find({key: "value"}) --> returns the data based on the match else retrun empty.</li>
+            <li>find() --> returns a cursor(kind of pointer) a refernece to the find Result from the collection.</li>
+            <li>find({qty:{ $lt: 30 }}) --> same as qty < 30.</li>
+            <li>find({$or:[{A},{B}]}) --> same as A or B {</li>
+            <li>find({A, B}) --> same as A and B</li>
+            **Mongo Update**
+            <li>db.collectionName.updateOne({}, {}) or use updateMany({},{})</li>
+            <li>Special Operator:
+                -- {$set: {A:"", B:""}} --> update A and B
+                -- $currentDate: {lastmodified: true} -- this will update the last modified Data with the current Date.
+            </li>
+            <li>NOTE: if the field is not there that you are updating and set will add a new field</li>
+            <li>db.collectionName.replaceOne({}, {}) --> replace the entire conent of the matched.</li>
+            **Mongo Delete**
+            <li>db.collectionName.deleteOne({}) or db.collectionName.deleteMany({})</li>
+            <li>-- based on the condition it will delete.</li>
+            <li>NOTE: db.collectionName.deleteMany({}) -- delete everything in the DB.</li>
+            <li>db.collectionName.drop()--> This will drop the collection entirely.</li>
+            <li>db.dropDatabase() --> this will drop the entire the db.</li>
+            **Additonal Commands in mongo Shell**
+            <li>If the key is nested and you want to search it. use: .find({parentkeyName.childKeyName : value})</li>
+            <li>Other Operators:</li>
+            <li>-- Refer here to see different kind of mongo operators: <a href="https://www.mongodb.com/docs/v6.0/reference/operator/query/">Click here</a></li>
+            <li>-- $gte,lte,gt,le --> ?=,<=,>,<               </li>
+            <li>-- $in --> checkes for multiple values. eg: find({breed : {$in : ['Mutt', 'Corgi']}})</li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </main>
+    <hr>
+    <footer>
+        <p>This is my HTML WorkBook </p>
+        <p>Thank You &excl; </p>
+        <a href="nextPage.html">Go to Next Page </a> -->
+    </footer>
+</body>
+
+</html>

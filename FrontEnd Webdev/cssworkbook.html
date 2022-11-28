@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css WorkBook</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <h1>Notes for Css</h1>
+    <ul>
+        <li>Reference for Font-family: <a href="https://www.cssfontstack.com/">Font-family options</a></li>
+        <li>Css: <b>Cascaded Style Sheet</b></li>
+    </ul>
+
+    <h2>This heading is h2</h2>
+    <div>
+        <button type="button">submitOne</button>
+    </div>
+
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus iste laudantium similique, illo molestias
+        veritatis rerum nesciunt earum sunt consequuntur voluptatum, enim eum atque doloribus odio neque amet? Debitis,
+        hic?</p>
+
+    <h3>Text Alignment wih h3</h3>
+    <hr>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque nobis, saepe ex ut non, vero ipsam officiis
+        ipsa, quibusdam odit sed quasi totam mollitia temporibus minus dolores aliquam itaque! Nesciunt!
+        Omnis iste hic quia, ratione dolore repellendus dolores iusto ea inventore veniam vel quam minus cupiditate
+        quas, quae mollitia nesciunt repellat! Voluptatem libero pariatur veritatis inventore quod. Voluptatem,
+        repellendus quasi.</p>
+    <hr>
+    <div>
+        <h3>Example of css selector </h3>
+        <p>To see the selectorCss in work: <a href="selectorcss.html">Click here</a></p>
+        <p>Notes: </p>
+        <ul>
+            <li>We have many types of selectors: id,element,class etc.</li>
+            <li>selectors can be grouped together using ','.</li>
+            <li>id selector can be used by using a '#' before the id name in css file.</li>
+            <li><b>class selector</b> can be used by using a dot(.) before the class name.
+                <br>Note: <b>Using something like element.className will make that more specific than using just
+                    .className</b>
+            </li>
+            <li><b>descendent selector</b> It selects all the nested element, used by declaring a space between the
+                element and the descndent element in css file.</li>
+            <li><b>pseudo</b> classes are adons comes with selector that specify its state eg: :hover, :checked,
+                :first-child
+                :nth-of-type(2n), :active etc
+            </li>
+            <li>pseduo element like ::selection, ::first-letter are example of the selectors selection.</li>
+            <li>The <b>Cascade</b> in CSs means order in which you write the code in css matter. Bascically it goes from
+                up to
+                down</li>
+            <li>In case of a conflict(when more styles is pointing to the same element) the brower will see which
+                selector
+                is more specific. this is called <b>Specificity</b>
+                <br><label>For Specitiy calculator: <a href="https://specificity.keegan.st/">Calculate
+                        Specificity</a></label>
+                <p id="orderofselction">Generally the order is: Id &gt; class &gt; element </p>
+                <p class="selectorRepresentation">The calculation will be like Count each one of them:
+                    <input type="number" min="0" max="50"><label for="">(ID Selector)</label>&nbsp;&nbsp;&nbsp;
+                    <input type="number" min="0" max="50"><label
+                        for="">(Class,Attribute,Sudo-Classes)</label>&nbsp;&nbsp;&nbsp;
+                    <input type="number" min="0" max="50"><label for="">(Element and Pseudo-Element)</label>
+                </p>
+                <p id="finalSelectorsConclusion">(The selection Crietaria is higher the number more specific and if
+                    it's a tie between 2 selectors then the last one wins)</p>
+            </li>
+            <li>
+                <p>What not to use (Bad Paractise)</p>
+                <ul>
+                    <li><b>Inline Style</b>is more specific than id selector eg: use style attribute in the element tag
+                        <label style="color:red">(avoid it)</label>
+                    </li>
+                    <li><b>! important</b> This will simply ignore specificity and make that line ovious no matters
+                        what.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <section>
+        <h3>Box Model in Css</h3>
+        Click here to view the working sheet for box model: <a href="boxModelcss.html">Css Box Model</a>
+        <p>
+        <h4>Notes:</h4>
+        <ul>
+            <li>Boder wont show up untill you give <b>border-width</b>,<b>border-color</b>,<b>border-style</b></li>
+            <li>Boder can be set at one go eg: border: 1px solid #000 (maintain this order->size,style and than color)
+                Ref: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius">Click here</a>
+            </li>
+            <li>Borders can be overloaded: <br>eg: border: 10px 20px / 15px 20px; (top-left and bottom-right | top-right
+                and
+                bottom-left(First Raduis) / top-left and bottom-right | top-right and bottom-left(Second Raduis) )</li>
+            <li>padding also can be done individually or at once. Ref: <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding">click here</a></li>
+            <li><b>Rememebr: </b>In case of when you using all the four values to define padding or border the order is
+                clockwise eg: in padding-> top,right,buttom and than left</li>
+            <li>Padding can be done like this also: padding: 10px 20px; (vertical | horizontal)</li>
+            <li>Margin is same as padding just it <b>adjust the distance of the box outside from other boxes or
+                    containers</b> <br><span class="noticeThis">If a margin is set to Auto it will center itself in that
+                    container.</span></li>
+            <li><b>display</b> property can change a block level element to inline or vise versa.</li>
+            <li>display can be inline(w/h ignored and mar/pad only horizontally), block(w/h/mar/pad all works) or inline
+                block(w/h/pad/mar all works)
+                inline-block</li>
+            <li>if display is none it is hidden.</li>
+        </ul>
+        </p>
+    </section>
+
+    <hr>
+
+    <section>
+        <h3>Units in css</h3>
+        <p>Ref: <a href="boxModelcss.html">Css unit testing</a></p>
+        <h4>Notes:</h4>
+        <ul>
+            <li>Two Types of Units we have: Absolute (px) and Relative(%, em, rem)</li>
+            <li><b>Absolute</b> units like px is fixed. It is now way depended upon anything.</li>
+            <li><b>Relative</b> units are depended upon there parent font-size or container's width and height.
+                <p>
+                <ul>
+                    <li>%: take's that much percentage of the parent container eg: width:50%; height:50%</li>
+                    <li>em: this is relative to the font-size. if section has font-size 50px and the child element has
+                        font-size: 2em
+                        than it means the child font size will be 2*50px.<br>For other things like margin and all 1em
+                        will be equal to the font-size of that element. </li>
+                    <li><b>One Drawback of ems:</b> They always based on the parent font-size so if have nested ul or
+                        element
+                        than as you dive deep in the list smaller or bigger the font-size will be.(<span
+                            class="noticeThis">avoid it !</span>)</li>
+                    <li>rem: (Root em) This will solve the issue with ems, the font-size of the child element will
+                        always be based on the root parent element.</li>
+                </ul>
+                </p>
+            </li>
+        </ul>
+    </section>
+
+    <hr>
+
+    <section>
+        <h3>Other Most used property in css</h3>
+        <p>eg: opacity, transitions, background properties</p>
+        <p>Ref: <a href="othercssproperty.html">Other Css Properties</a></p>
+        <h4>Notes:</h4>
+        <ul>
+            <li>rgb<span class="noticeThis">a</span> --> rgb is the normal color formate each varies from 0 to 255,
+                a (alfa channel) controls the opacity(0->
+                transparent and 1-> opace). <b>Only the background is affected.</b></li>
+            <li>opacity --> It's Value also ranges from 0(transparent) to 1(Opace) but <b>the entire content is
+                    affected.</b></li>
+            <li>position --> used to set the position of an element. eg: static, relative, absolute, fixed and sticky.
+                <ul>
+                    <li>static--> Its position in the document is fixed i.e (top, bottom, left and right <b>will not
+                            work</b>)</li>
+                    <li>relative --> ITs position is relative to other element i.e (top, bottom, left and right <b>will
+                            work</b>)</li>
+                    <li>Absolute(<span class="noticeThis">Imp</span>) --> The Enitre space collapse after this element
+                        and top, bottom, left and right will position wrt to the body. but If the parent has position
+                        other than static than it will position based on the parent.</li>
+                    <li>Fixed --> same as absolute just it will never be relative any parent or so. It's position is
+                        always fixed wrt entire page.(Kind of if you scroll also it's position will be fixed.)<br>
+                        eg:
+                        <b>Used for fixing nav bars fixed on top while scrolling</b>
+                    </li>
+                    <li><b>sticky</b>: It same as fixed but the position will fixed only when you start scrolling.</li>
+                </ul>
+            </li>
+            <li><b>Transition</b>: We can animate a css property. Four fields it takes: propertyname, duration,
+                timing-function
+                and delay.<br><b>Important here is the timing function that defined how it should trnasit from one state
+                    to
+                    another eg: ease-in, ease-out, linear etc.(Commonly used for hover)</b></li>
+            <li><b>Transform</b>: eg (all this have x,yz axis like rotateX, scaleX)<br>
+                <ul>
+                    <li>rotate(45deg) using <b>transfrom origin</b> we can control the point of rotation.</li>
+                    <li>Scale(0.5) using this we can scale the element, scale(2,1) width will be twice and height will
+                        be same.</li>
+                    <li>translate it is used to move the element around, tanslate(x,y) move x unit horizontally and y
+                        unit vertically</li>
+                    <li>Skew(10deg) IT wil skew the element, also skew(x,y) available.</li>
+                </ul>
+                <p>Note: All this can be used atonce in one line like: transform: rotate(200deg) scale(1.3)
+                    translateX(300px)</p>
+            </li>
+        </ul>
+        <p><span class="noticeThis">Note:</span> Whenever any property is written in one line eg: boder: 5px solid #000;
+            the same thing can be breakdown and can be written like<br>
+            border-width: 5px <br> border-style: solid <br> border-color: #000 (black)
+            <br>(<span class="noticeThis">Order Really matters here</span>) Same thing can be donw with
+            other properties that allows multiple values in the same line. eg: padding, margin, transition, transform
+            etc
+        </p>
+        </p>
+    </section>
+
+    <hr>
+
+    <section class="coolButtonHover">
+        <h3>Cool Button Hover Effect using css</h3>
+        <a href="coolButtonHover.html">Click here</a>
+    </section>
+
+    <hr>
+
+    <section class="backgroundPropertySection">
+        <h3>Css Background property</h3>
+        <ul>Notes:
+            <li>If we are writing all in one line one <b>Imp</b> thing to remeber is always use
+                background-position/background-Size <br>
+                eg: background: no-repeat center/cover url("img-url") (Note: Instead of cover you can have % values
+                also);
+            </li>
+            <li>The order really dont matter here.</li>
+        </ul>
+        <div class="backgroundProperty"></div>
+    </section>
+
+    <hr>
+
+    <section class="googleFontsSection">
+        <h3>Using google-fonts in css</h3>
+        <p id="googleFonts">Lorem ipsum dolor, sit amet consectetur adipisicing elit. In laudantium qui natus enim
+            temporibus eaque,
+            ducimus unde, maiores quisquam praesentium dolore sed. Nesciunt tempore rerum reiciendis dolore beatae,
+            repellendus repellat.</p>
+    </section>
+
+    <hr>
+
+    <section class="photoGallery">
+        <h3>Wanna Visit my Photo Gallery ?</h3>
+        <form action="photoGallery.html">
+            <button type="submit" class="clickherebtn" name="photoGallery" value="photoGallerypage">Click here</button>
+        </form>
+        <br>
+        <p><span class="noticeThis">Note: </span><br><b> When you write inline element like span or img and you have
+                them on two differnet line then<span class="noticeThis"> a whitespace character comes between
+                    them</span>.<br>This will screw up any
+                width
+                calculations and all.</b></p>
+    </section>
+    <hr>
+    <section class="FlexBox">
+        <h3>Flex Box in Css</h3>
+        <p>Click here to see the flexBox <a href="flexboxincss.html">Click here</a></p>
+        <ul>Notes:
+            <li>flexbox are just used to arrange the elemnets inside the space. <br>eg:display : flex (Always define in
+                some
+                box element like section, div, mian etc)</li>
+            <li>flexbox has main-axis(horizontal) and cross-axis(vertical) --> Flex direction decides the dir of the
+                flex-properties inside a flex.</li>
+            <li>flx-dir: row(left to right -> main-axis & top-bottom--> cross-axis), column(left to right -> cross-axis
+                & top-bottom--> main-axis)</li>
+            <span class="noticeThis">Note: All this are based on the dir of the flx direction.</span>
+            <li><b>justify content will have options to arrange the contents in the main-axis.</b> like evenly space btn
+                them or start from
+                begin or end etc</li>
+            <li>flex Wrap--> If the content is too much and its sqizing than use wrap to keep everthing within the flex.
+                use wrap or wrap-reverse.
+                <span class="noticeThis">flex wrap used to reverse the dir of cross-axis</span>
+                box
+            </li>
+            <li><b>Align-items</b> with will arrange the items in the cross-axis
+            </li>
+            <li><b>Align-content</b> will handle the spacing between the element on cross-axis.eg: flex-end, flex-start,
+                space-between (<span class="noticeThis">This will only work if we have flx wrap</span> )</li>
+            <li>align self is used to align a single element in a cross axis.</li>
+            (<span class="noticeThis">Below properties are defined for the elements inside the flexbox</span>)
+            <li><b>flex basic</b> will define the intial size of the element that is added in a flex-box</li>
+            <li><b>flex grow</b> will allow an element to take all of the additional space in the flex container.</li>
+            <li><b>flex sink</b> will allow the elemnt to srink if enough space is not available in the flex contanier.
+                (Higher the number more faster the element will shrink)
+            </li>
+            <li><b>flex</b> This property can define all 3 of the top <b>grow, shrink and basis </b>> in one go (Follow
+                this order))</li>
+        </ul>
+    </section>
+    <br>
+    <hr>
+    <section id="responsiveDesign">
+        <h3>Responsive Design in css</h3>
+        Allows us to design a single standard website that is responsive to all the Screen sizes and support the
+        features.
+        <br>&nbsp; we do this by using media queries. (eg: in <b>potrate mode</b> hide some feature or in <b>landscape
+            mode</b>
+        show some features).
+        <br>NOTE: <span class="noticeThis">Basically if you change the screen than your website should adjust
+            accordingly</span>
+        <br> here we will see the role of media querie <b>"width"</b>.
+        <ul> Media Queries: <a href="mediaQueries.html">Click here</a>
+            <li>Generally we use the min-width or max-width condition to change the layout.</li>
+            <li>see the css code of this section.</li>
+        </ul>
+    </section>
+    <br>
+    <hr>
+    <section>
+        <h3>EXAMPLE: Pricing Screen using html and css</h3>
+        <p>NOTE: Concepts used here <b>display flex property, transitions, padding and margins, media queries(for
+                responsive
+                design)</b></p>
+        <p>Wanna see my pricing screen <a href="pricingScreen.html">Click here</a></p>
+        <p>Note:
+            <br><span class="noticeThis"> If we write class name like this eg: class = "ricing-button isfeatured" than
+                it can be accessed in css
+                using .pricing-button.isfeatured{}</span>
+        </p>
+    </section>
+    <br>
+    <hr>
+    <section class="bootstrapLib">
+        <h3>Bootstrap Library in Css</h3>
+        <p>What is it ? ITs a bunch of css code written by 3rd person that we can just include and use to save time.</p>
+        <p>Wanna see bootstrap example ? <a href="bootStrapExample.html">Click here</a></p>
+        <p>For Reference: <a href="https://getbootstrap.com/docs/5.2">Click here</a></p>
+        Notes:<ul>
+            <li>Mainly consists of 2 things: <b>components and grid system</b></li>
+            <li>Components: pre-built components eg: nice looking buttons and all</li>
+            <li>grid system: To Organise the content, basically responsive layouts eg: containers </li>
+            <li>All you have to do in bootstrap is to see the <b>class name</b>.</li>
+            <li><span class="noticeThis">(No need to memorise all this, just learn how to refer the bootstrap docs and
+                    get your work done)</span></li>
+            <li>Every row in bootstrap has 12 units of space in div, you can divide your cols so that in a row the total
+                shall be 12 else it will show empty spaces.</li>
+            <li><span class="noticeThis">Imp: </span> There are breakpoints in bootstrap eg: sm, md, lg, xl. This can be
+                used with col to make responsive layout.</li>
+            <li>Untill you specify breakpoint it will maintain the layout, if specified eg: col-md-6(Two columns), below
+                md it will stack, after md it will maintain 6-6 layout.</li>
+        </ul>
+    </section>
+    <br>
+    <hr>
+    <section class="bootstrapProject">
+        <h3>Wanna Visit my BootStrap Project ?</h3>
+        <form action="bootStrapProject.html">
+            <button type="submit" class="clickherebtn" name="bootStrapProject" value="bootstrapProject">Click
+                here</button>
+        </form>
+    </section>
+
+
+
+
+
+
+
+
+
+    <br>
+    <hr>
+    <footer>
+        <p><a href="index.html">Go Back</a></p>
+    </footer>
+
+</body>
+
+</html>

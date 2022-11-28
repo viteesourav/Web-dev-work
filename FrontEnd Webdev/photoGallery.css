@@ -1,0 +1,32 @@
+body {
+    background-color: #9eeef6;
+}
+
+img {
+    width: 30%;
+    height: 216px;
+    /* 10% white space left so used 9% for left-right margin and 1% for the hover effect */
+    margin: calc(9%/6);
+}
+
+nav {
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'Parisienne', cursive;
+    font-size: 3em;
+    font-weight: 700;
+    letter-spacing: 22px;
+    border-bottom: 2px solid #8a8888;
+    margin: 2px calc(9%/6);
+    padding: 20px 0px;
+    background-color: #eed29566;
+}
+
+img:hover {
+    cursor: pointer;
+    transform: scale(1.07);
+    border: 5px solid black;
+    box-sizing: border-box;
+    box-shadow: 0 0.9em 1.5em -0.4em #1b1b1b;
+    transition: transform 1s ease-out, box-shadow 1.2s ease-out, border 0.5s;
+}

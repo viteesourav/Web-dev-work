@@ -1,0 +1,97 @@
+/* This here is an universal selector */
+/* * {
+    background-color: skyblue;
+} */
+
+body {
+    background-color: blanchedalmond;
+}
+
+button {
+    font-size: 15px;
+    background-color: cornflowerblue;
+}
+
+h1,
+h2 {
+    color: darkslategray;
+}
+
+/* id selector */
+#login {
+    background-color: skyblue;
+    font-weight: 600;
+    color: grey;
+}
+
+#signup {
+    background-color: rgb(0, 0, 94);
+    font-weight: 600;
+    color: white;
+}
+
+/* Class selector*/
+.tag {
+    background-color: rgb(183, 196, 13);
+    font-size: 11px;
+    color: white;
+}
+
+/* descendent selector */
+.bottomLink a {
+    color: teal;
+}
+
+footer a {
+    color: blueviolet;
+}
+
+/* Adjacent Selector */
+h2+button {
+    background-color: rgb(76, 76, 249);
+    font-size: 12px;
+}
+
+/* direct child Selector */
+div>h1 {
+    color: rgb(46, 74, 4);
+}
+
+/* Attribute Selector */
+input[type="password"] {
+    background-color: aquamarine;
+    color: red;
+}
+
+/* selector with pseudo classes */
+
+a:hover {
+    color: orangered;
+}
+
+.mainContainer button:hover {
+    color: black;
+    background-color: white;
+}
+
+.mainContainer button:active {
+    background-color: teal;
+}
+
+.subsection:nth-of-type(2n) {
+    background-color: #e2e2bf;
+}
+
+/* selector with pseudo element */
+h2::first-letter {
+    color: red;
+    font-size: 25px;
+}
+
+*::selection {
+    background-color: yellowgreen;
+}
+
+p::selection {
+    background-color: pink;
+}

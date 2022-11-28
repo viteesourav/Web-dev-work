@@ -1,0 +1,15 @@
+{
+  "name": "figlet_demo",
+  "version": "1.0.0",
+  "description": "to create facny texts and leraning npm for first time",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sourav",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "figlet": "^1.5.2"
+  }
+}

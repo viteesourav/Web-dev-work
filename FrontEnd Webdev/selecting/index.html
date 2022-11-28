@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Selecting</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+    <h1>Silkie Chickens</h1>
+    <img id="banner"
+        src="https://images.unsplash.com/photo-1563281577-a7be47e20db9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80"
+        alt="">
+    <p>The <b>Silkie</b> (sometimes spelled <b>Silky</b>) is a <a href="/wiki/List_of_chicken_breeds"
+            title="List of chicken breeds">breed</a> of <a href="/wiki/Chicken" title="Chicken">chicken</a> named for
+        its atypically fluffy <a href="/wiki/Plumage" title="Plumage">plumage</a>, which is said to feel like <a
+            href="/wiki/Silk" title="Silk">silk</a> and satin. The breed has several other unusual qualities, such as
+        black skin and bones, blue earlobes, and five toes on each foot, whereas most chickens only have four. They are
+        often exhibited in <a href="/wiki/Poultry" title="Poultry">poultry</a> shows, and appear in various colors. In
+        addition to their distinctive physical characteristics, Silkies are well known for their calm, friendly
+        temperament. It is among the most docile of poultry. Hens are also exceptionally <a href="/wiki/Broodiness"
+            title="Broodiness">broody</a>, and care for young well. Though they are fair layers themselves, laying only
+        about three eggs a week, they are commonly used to hatch eggs from other breeds and bird species due to their
+        broody nature. Silkie chickens are very easy to keep as pets. They are suitable for children, but like any pet,
+        should be handled with care.
+    </p>
+
+    <div id="toc" role="navigation" aria-labelledby="mw-toc-heading">
+        <input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" />
+        <div class="toctitle" lang="en" dir="ltr">
+            <h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel"
+                    for="toctogglecheckbox"></label></span>
+        </div>
+        <ul>
+            <li class="toclevel-1 tocsection-1"><a href="#History"><span class="tocnumber">1</span> <span
+                        class="toctext">History</span></a></li>
+            <li class="toclevel-1 tocsection-2"><a href="#Characteristics"><span class="tocnumber">2</span> <span
+                        class="toctext">Characteristics</span></a>
+                <ul>
+                    <li class="toclevel-2 tocsection-3"><a href="#Bantams"><span class="tocnumber">2.1</span> <span
+                                class="toctext">Bantams</span></a></li>
+                    <li class="toclevel-2 tocsection-4"><a href="#Polydactyly"><span class="tocnumber">2.2</span> <span
+                                class="toctext">Polydactyly</span></a></li>
+                </ul>
+            </li>
+            <li class="toclevel-1 tocsection-5"><a href="#In_cuisine"><span class="tocnumber">3</span> <span
+                        class="toctext">In cuisine</span></a></li>
+            <li class="toclevel-1 tocsection-6"><a href="#References"><span class="tocnumber">4</span> <span
+                        class="toctext">References</span></a></li>
+            <li class="toclevel-1 tocsection-7"><a href="#Further_reading"><span class="tocnumber">5</span> <span
+                        class="toctext">Further reading</span></a></li>
+        </ul>
+    </div>
+
+    <h2><span class="mw-headline" id="History">History</span></h2>
+    <p>It is unknown exactly where or when these fowl with their singular combination of attributes first appeared, but
+        the most well documented point of origin is ancient China (hence another occasionally encountered name for the
+        bird, <b>Chinese silk chicken</b>). Other places in <a href="/wiki/Southeast_Asia"
+            title="Southeast Asia">Southeast Asia</a> have been named as possibilities, such as India and <a
+            href="/wiki/Java" title="Java">Java</a>.<sup id="cite_ref-Ekarius_2-0" class="reference"><a
+                href="#cite_note-Ekarius-2">&#91;2&#93;</a></sup> The earliest surviving written account of Silkies
+        comes from <a href="/wiki/Marco_Polo" title="Marco Polo">Marco Polo</a>, who wrote of a "furry chicken" in the
+        13th century during his travels in Asia.<sup id="cite_ref-Graham_3-0" class="reference"><a
+                href="#cite_note-Graham-3">&#91;3&#93;</a></sup> In 1598, <a href="/wiki/Ulisse_Aldrovandi"
+            title="Ulisse Aldrovandi">Ulisse Aldrovandi</a>, a writer and <a href="/wiki/Naturalist" class="mw-redirect"
+            title="Naturalist">naturalist</a> at the <a href="/wiki/University_of_Bologna"
+            title="University of Bologna">University of Bologna</a>, <a href="/wiki/Italy" title="Italy">Italy</a>,
+        published a comprehensive <a href="/wiki/Treatise" title="Treatise">treatise</a> on chickens which is still read
+        and admired today. In it, he spoke on "wool-bearing chickens" and ones "clothed with hair like that of a black
+        cat".<sup id="cite_ref-4" class="reference"><a href="#cite_note-4">&#91;4&#93;</a></sup>
+    </p>
+
+    <img class="square"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Silky_bantam.jpg/440px-Silky_bantam.jpg" alt="">
+    <img class="square" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAH4AzgMBIgACEQEDEQH/xAAbAAACAgMBAAAAAAAAAAAAAAADBAIFAQYHAP/EADsQAAICAAUBBQYFAgUFAQEAAAECAxEABBIhMUEFE1FxkQYiYYGh8BQyscHhI9EVJEJS8QczYnKCkkP/xAAYAQADAQEAAAAAAAAAAAAAAAABAgMABP/EACIRAAICAgMAAgMBAAAAAAAAAAABAhEDIRIxQVFhEyJCBP/aAAwDAQACEQMRAD8AZWNi8rsx0NH0FHgcePXBFjj7nvS1BNzvyKu/P++CZq2eIRsFs72MKSuEy7RIbVnI2FiyB4dN8chzJJBM3J3tLGxIY2B4fZGMhAnd6yNWgbDgb/8AGFCndMIo7LqQoI4azQwwljQ8jGhJ7gHI4wids1btjBKZRZlDe+q6t+g4GIa3kKoqkmV6Tbmun1GK/Ms88sq1epCGJ6kG9v1xvHs0Oxcjluz1zU+X/GTrrhikYatyNwPMYrCNjJcnSNeTKZpEjc5d9RU0WXrtR+/HCvcKust7oI010H846pmJI5KVlVqG22Oce1gZMync92wPunQPeA6+Q+ODKGrQZqkLQaI40DtSuTbDwwXvowW1Wt718PhilWUvpUqWUe6QTRWzzhmZlChSzGRVA45oDbEG2TUtDzOY7rjYC/HApc4RrNEJHHqNbdRWBZjMoqA2Ndalo8ivv0xFis0ZFe+6++K6/YwqZkwUOYkcxigXfc0d68P1xOHMSyd9rG9Daul+PlhlYVhcPCisUVtOnm68cLxxPLLWkoNNLQ8KPpQrDcI+D6SCtGrKKABAtRfB8b9cTiRNI1FGOn+a+uB93ZZWW6BoXw3QYjplAStWkv7zKOlgcYyVE2MIglYFRSrZ6jHirCQ0xBI3PTBMtk2jvU51yChvsoBG/wBb+WGSgZgEoFlPO9CyBhlEaMWK5pAsjuRsrAb+WAlUkLLpNWOt38cO5lC9abDFyV8+BfqT8sKZhBGFCqSS1sBXAoD98Zr0EkFkoyPQGldzZoHwHphWlBGphYIPO2Mlm06PyhmbUON7r9APXEMzGuhQ0i69O3x+9sTbbQrITD+oWO61v+2MoqigoPFmvHEHmURIXbSaBAPXY/XY7YksqTQtIbBZa0+HNH78MB7MgmaRzEGiK6q5O9bbnz2xXxRZjLSFo3GpvzPX5vDFi1iNQLJbr4+OBxPHKxCKbHTmsHkwxtPRnO6o0DIzMQy6V8NiMRjO5IJ1KaK8b9MGeVI0c0V20ptt164XzLExKsZrUv5q35w7a7FfyHy7sI1DgKU1Gq2Xp86wsWIlmRtQjVufieuJ5ZZJvf1F0K3XxwZpEefSDsibAjnbwxlVhe0CPLC99JphyDX8DCPaBzHZ3amS7UVWniiAZoxY0hdlF0aF3uRic8sgksHkClA+/HF/7NZGHtWHO5TO20TwiM01NRvr6Yr/AJ51IbDkalRc+zvaHaedRe0M80f9RtMGWy4JAF9W8fli49reyY892ZJMELyxjUa31AfDDHYfZmS7OysOWyGXCRQgkb3bHk+eLlV0CsdEpKWjoas4mHjFsmxJohR4364N/TZXkervn03v5fXFz7bdh/4f2ik2TULDmr0Kq0EbqPI841yNJgkoI1Gr0+A6D6Y4pRaZyvTocoHvFIWmcUK56/viEcR395xrsix8bwTTKUSmtAKb7+WDUTROwPFePH9vTE72EgH0HSb2FE4JG6sCooDpYsG8CzGVksyOjCTYIDt88ZaOTSES7vUaFGt8FWzbGzIZNlaiRYvyxnZO7IqgPG/vrhBInTQJTb7Br/0874zbSMAlaSN6+Phgu0ayy76k1E8Ap6H+fpgP4llTvdJJ6BdzQuh54DG4K6mJBYm6xNCKGnbSeK2Jo43KhuYTLF9FuCNtQvY0fs4my94GCkCSRQFGxoDf9NsDeXShVwoCje+K+HpjwnHwY7/Ln+2GT1s3ICYykA1imq/ACumIzxd8LdT7wsG6sAc4YWVHlCHSefD0/XEhIvdi9LEcXgOSYEyimgDNIUGtK9wjaj5dOuHezwU7pitDdW24Ph5YeWOGNe7pNIFAcbG9sRy6JEr7DSRe/n/P6YFbsydOyuzSs2aZlsqdmUbfCh8uowPKLONS20bda5xbqkSszBVGs6q+P2cB0BGZoVVg1bbEYDXoW7YvKAY9Huvq6kc71gBdWy5idqAuiN+mFcwZUlUKlqBQobHxAwvIkg7zSVqgysepP5dvPD8SLLLKOpLFJGOgbi9+P4xJmCTiUBefDnf+cIZdXCSy0O8ZK01uTX+n0OIOZHhYVbJvQPIFA41G3Q7I8Sy6i++11xzeL72QlT/G1S1VZlO17ltjjT2icyMjN7r1qC8g3/b73xuv/Tfs1pO0JM5NX+XTSv8A7MN8NCL5IML5HQ9IirSPd22wbXY38MTSMaTfXA5IynG+Oh9nbRTe1cAn7FlfhoT3gb/b445w0hshaC8k+H3+2OsywLmYZIJAdEiFWrwIrGnZv2DmaY/gs0ojr/8AqN/LYYlkxyl0RyRb6NWR5Gfu0slzSBd9XG3rjf8A2W9lhlUTNdpBXzGkaI+RHt18ThnsD2VyvZREzn8RmdjrbhSBWwxsQ2wYYlHsbHjrbKfN9jZSQAyp3hJsk7fpWGYOzchCgCZaKtIBJUEmuLwPt3OxZTJs7buf+2oIBYjfFEntl2bIe6hmeVwNTLGjMRvXQeOLV6UHPaTsDK52CXMQx/5hUNBTQPjsOuOcgLCsaMGV0J3/AG9SPTHUsvnVzK2BerYgjHKe2A7dqS92ndRCZ/dAPA8bPjiGZekMuthVWOwUFgEk113H71jLwsiBlZiu1frt9+OK9VZTZI22083x9eMPd/qVlAGpTZbw2FV8sc+iKYcxXKdFmiaBFgfZxmQFW0MWJChW0nqAGvb4k4GstyJqoHoBtz/ycCEg1vq1aiBqB2A42+/hgqw2EhJICBNKu3PUgiwP0wYxh1KrY1EGzwu2MEpHCrNWrUKK8GsZSZDSAA3g1RrQvnH0rYXXtQTwrg4ZghlbLFXSnFkBttumA6rLk0tCjR3G3Tw4x5ppXU93sGel1m722J9cInTD9k53KxhTRqh4FsJgyER0nd6lLAXtV4ZkkHfqunYdRuPvjAM2kk6qkUrRkb6juSMGlZgU0luInQKrNunIBO5H34YhPG0vdnTHpAX8yj5H6n1w1HDG0S6u7JBJbQR7pNnfriOcbSkZdNGx92+tkfpXrin2BoBDNrV3QA6DRYCqayPrvt8MRhWNiSVNsCrX4WP74ZKxko4VFuiL4JqtsRU6MyxiKiNha+IN8ffwxqtg0JaWy9rLpVpDRoblvHG8f9PpQsnaEZujKH+Zv+2NRlmiUyjuwyGU25PC1x8N/wB8WXsp2smW7VWC/clBW/8AyHA9AcUx6kNCk7OuRNajEzVb4q8rnhwxsdMNifWtKaPUHFmtnXYwoW7GIu2g7dcQWRQOReIySDk1gpmYwpBG2MOaGElzaxyaSdjgk2YVQKIIPXCSuwpi+fjy+biMeYgilFbiRQ23zxXQ9m5XLI8GTjEYkNkIKw9rEuYVB1wxBlRFJqsknxw1ugGMrlocvEI44wqgVjmP/UJI8n7RSKgUHNRq5s1Z4OOrhdvjjTfb/wBnMz2pJlc5koe9liUxsBVgcg+XP0xOX7KieWNx0c7SVSpB3YA2AOfuvrgkcxnyveBWT3dlYVQ3r61geZyGcy83dzZeWJkrWzxlb8CD/wDI++X+yeye0O12aLI5R3UEFpX2S/Pz6b84n+NnLxYszlYVe1MhAPvfLBV0H+od1qxpvkbV8fDzxt3ZP/TybvxL2vm17peIsuTZ/wDravTD3bPsZ2asDSRPMhVdgDqoVvQ6n1OCsTrZRYpNGiSOVVGYoaU+8vA8K9KxLLPpXUxqS/eF8da+eEmBy0qQM6tRsEDYi692+R+2IrIGcxuBq2IHQ7/m89jhJJoj7sse8B1jc9QSd/MnzxFpTSIHVWO9t57+Z4wmsxedl20vXveO9V6V64lLBrRVU0XtF94EDcWfqfTE1H0oDz0r6iwZlXUFO/XpQ68NhNu0J4I0Z3VCRsFFnk9PTDD5VFjcZmXaOQi731UAdvGx+uJ5bs2NJmkBXdRqEg60Pjd884dRjLsMRx5Gl1qq0xujXLChinzGYkl0OzsrCiFG4428ucX2UXKOKD92WUBTpok0bPwNYrc1Ge8mWWZ4tBBOi/HceX7DFLSQZ9AYs8y5ISOGDBh+YnwO3z2x588FFRrbEXd8sem/3tiGbKGTSzlu7UB9gQdwb+hwnXeSnuVbSgV6PgaP74Vu+ifGgn4qeV/zaAWu24HFH64DJPMhkC60nD782rDwOHJcskcEyd68gZQTC5qgeg3qxv6DA+0IkzczSLIIZmALPZCybb+Rs/PbDRqzcXR0rsHtKTO9jZPNmySml633Bo/pi8jzokS2YKw640j2B7Why5zPZ8mpVlFw6lNbWTv4/wBsbDIHE2mhvyMdUWpI6ou0X8GZG7F7oYOZ1/NfPGKPKZcuK7wqemrDrZTNQxDSQ4u8BxpjkM3MTJ7h45wvH2gSFDHeyMQmEysXZCAdjfAxTdo5uLJwO8sgRyaS/E+Hjh6N4bp2HHrjM7bl/wApPgMWxGEey/6GRy0ZbVpjVdXjth8HEp90GPRgKTiVAY9jxOFSSGIuiuKZFYfEXjKqqgAAADoMesYi7AYZPYHRknAZXWuAx6bXWM94OoxGSRdJ0+6fHD+iWa97SZLJz5WR813KaR/3ZIz7gG/Q7/THNJYgs7RxSBgrUpUDSw46cf8AGOoduqk2RlV4VzJAtUeqJ6c7Y5hmmKZyeIgim0oGWj47j03xLMRypaYlkYZHnMnvJ3dhQR+Wh8PrhkDSqojHSsSVoH5WFk7df+MSE8aKQrliSQT4tX39cYEoTLpJ0BOwHgNr8q+mOZfRFvQo+XkmzJjOrSKbn3WJ636VhuZHKERMO8aV2OkHcbD9vrjKypAxbX74Ar/xU/Y2xOJl0glaQk6aq+njjLvQRNZDGlxaiumyp97U3FnBmVYF0MFdFtYwW45sE+HGFEkcrQSi1BR/uvw++mJ5tJFcCFjuzb1sBfX474LT6C5WiOfh/GIhibu5owCVU0Tt18cHlQRS5fLxORP+dXYbbWFvx23+eFCGjlNKH1KGBqj4H9vrg4TvzqoXHsjVyGBBH6Y1PwCCSvHpICKNIskng3Q58zvitnAZIg0ojC1YUbXe3ODFZmV7IuiUVuvWz88Qy8PezqCpa2AjKmgF2O/1xlpmQi7TNmcuuXVgDIIwy1sfHyxtPs17RZvMZ+KDPPGbjLoS3gRyT/7DFQcrFJCVQUquo9z3fe8Tv1/bFrFH2c8xzU8SNLsqGz0O+3ifvjFscqZRSSN+y3akEshBIF1x12GHZu0wkQSM3e4vjHM5My7dsfirUUIwDq2VANx8N8WM3bujNlU0GJlXTRujvfz4v+MdFxKc0bZmO04TG8jvqWrPxHOOYe1ef/xLtyJIG/pRKNLWdixrj5c9cWn+NSSp3SKtGMk6jwQOg+NYooULSgOXZFYMok535+t364nPImqQjmmjtHsb2n/ivs3lMy5BlEYVz01rs31xdrMeu2OTew3bT9lZuPs5jqy8khVaN6STt9VPzOOlrmYp01K291jdqykJWiw728e7w3d2PDC0V1sDWGO6BX5YUqZ77bisCkmxmRNqdd+hxXTsUBJOGihWNHMDi8AkzKhTd4ry4mc02wwDtDOR5TLSO8igKLs4tQpS+1/boyid1FO0UzWVA3DfOvLGgyznOZkgudSLV1YJP72cA7e7Yn7TzBmmkJKsQn+1djX1H3eBZFZXzEBKAqCGbU29qL+tY5sicmQm+THoJRI1JqoqaKnc0b/S8SnWRiIpXAX3SaNU3x+Fc4NHlYoM0kEbqO7bnmn/ADH6CvPCnaMGYExZFZkaTTJqHOybj1+uIpUL2ERws2lm/KQGN9PGvX1xYpEsoVXpyASdDadzv4j+flhKXKRRIpYqrMFaQBr2qtq35/QfHFj+FQP/AJl6G4A6Diq9ThZLitGSsRjzCwsgVFa2O9eFeHyxkurBiqVTAL434H0FYCQix98xCLfuhyBqNc3wMCGaVi4jA/p70Dsdtt/MD0wzTJoNHoFNIp7xudXma+/jgn4nXDsihrNWNia2v0/TAI5FljjhHvMBWnb64hPLHlyQZVcoaJDLd+XPT+Mbi6sPofMKSxRQdBLWPlx9+OCQQMskGZ1qFjskgDffwwr3rLMln3fe3vnkYZTNtaXbhFtidix54+N8YyRg2aEa3GoGokWgYV42fvwwrYjDufeY/liPrZ+WMTKzACwbJ/1fmBo1636nAdWYMzqUcovDEUV2P9/W/nq+DU2TknLSKZH95WK/E/xVYWzubbLFNO7SA7X0+XAO++MjLO0jku0gVgyhbFb8V1/N9MBeNknZnKCmBZ33vnb0oUfDDRGoLklP4ulspIpKsw6FWr57b4yoDrM0pI/qNGB1G9X+nrgsBMM0Qa1j0nulA46fuPXDABfOSImlVSRQxrjfffx2HzODYGlRCBBrEiB9grGjZFb43b2f7SZMnA08u9hH35a/j1qsaMsmvOxol+4gKqD+U6ev138sOZRmm1MgRX1EyQ9JTtsPA3069PDDQnTGhKjtuWzUYymoke6CN/EYDl8/FmcpFMWQIYhI7aqFV9+mObdn+1Bi0/i5S0cdJI17BxW525Ar0wlm/aHM/io4ctYjLKrNQphVcddiL8hh24l/ynVhnxLCzudC/wCi/D44pO3O1I8vljIo1A7IOjn4Y01vaBVhCyl2Ye6qu/JPwJon0GKLP57M5sM8/dhRsirsps7eJ9fhvvQZSXgHktG3dq+0eU7NgVu+Ek7D3QvB6n5ftjS+1Z832tPH/iTkxmQBY020+O/FUR684rX1SZqOOVVkLJZsHbf+9eeLTsqGOfT3msMXRioYLpI/Kx+Fe7hXN2TcrZVxwTyO3dqiQo4DN4Gr68+eLjJ5Y5G63Cxk7myxLHn6+vlgEUcTCdUiKIzGR9fLP915eHi9OhOaemUhAVYcdbBHzFfPCTla0I+yGQCvO8pBHetRsigCN29ASPnh6VvxGYkMQbu1kBDrVcm789vmcBytZXUgVms1Y4s7AV5EfXCzpIJoVjYIgIBSQ8rfT9fl6SSvQ380RWTv84J9B1RjpXvcEfO/1w5mYu9/pqQrg2Cx6Vx8rAwGCMZZy5UtrXyoADf49PlhiRopHGmMbM4YgdbB58jgdGRQZ6MyT6swslRgBUUFkYncbXx/AwBe9jR2UBDdjUv5q+FeeG8yWaeD3mFrdDxsgfQYy7JGJJWhjKpCWIrmj/GKuRJPZJbXLPJCGIYEkJeqjxXr9MI9wIwI443dh/3CybsetE9OeMMdmTmfKNmlGjWr2t86QSP2x7Lhjl3Lf1Go7uTyfv7rAcqVGk/2MQsXlCTONJ95aHB4P6g/LEJRLHDJJWppG0k/7QCCB+vrjGbzCpmsrkzGAZQup1224/XFpIAwYKL0LurcFzsCfHYj0xn1Y19CWb1LmUEQ2KJLuObUbHzrE4j3fZilGQKWrbwq/qdPpWGu200SJSoQIgTY5avHw59cDzEa5aBo5C0lbHz+zgMDezyKwiVEI21BgDVbc/HnHmy6aiBckgvcgk30auMRMjxpk0JpHLFwN9QJC0b+RwbM2czOhACCQkAHgBcbjoDkLxxTRzd7M+xU6WNHVe9+Wy/PDWej3kEbEd4zFmA2UD+ScTkk/wAmJpl1BAiqgO1gmzfPQYFmp3fMSLsA0jGq25/nAcQyZGWJFMk6gmRhZA5og7ffhictzJ3QB6jY8Dj6VgZkrKxyb1uQL8jvjDtrDuf9gY/EHCv5FTD5pI85CYZOGckvp94ghbvx8/h1wP3pJUldVVkXUAeL1bD54GWWYiIF1Wm4O9CwcRmz6OP6UZbbbvOnTphnbVhtkgATaMTIwq9Bahxt8Thc5WUOs0sklR3aizqJNeRAv57/ABohnZHhpipb82gVvqr03ww8neGBC0o75+6UB9lAG5rj/UMNF6MnsVnUtnIHk1ANpalPIBN/D4nzw1EjQsNOpQtSawbUgCtPmK8f9Xhg34YCIQs5lflC2wBPj8N8F7OQyZyWBaVFIu97tSN/E+7gpjJ2xJozLm8tJCCFmALhVvTyNQHmPhz8cPoGkjH9P3i2tnB3CW1/oMZ7OjjykBkXW3dyHlv9PBHHn6n5Ajcxe7HsqKQCeRXNemAZumYlzx/FNGxCh11qQOSACb9D8sShaRkI094WEgjAPOwP9x88KdoxmaVJL0ShO8XTwGVufh+YfdYlkZJO7XSFEbUwS9hWx28x8+cbjoe62M5zO/hniRmGlSUdjyOBf1x6BnkeRWciPatN7EWK2+9sBzy/iUijnNnvTHqHLXY3/wDyMC7Kzb5eRnA1MF7tmNW3BBPy+t40Y62ZSS2f/9k="
+        alt="">
+    <img class="square"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Partridge_Silkie_hen.jpg/900px-Partridge_Silkie_hen.jpg"
+        alt="">
+
+    <script src="app.js"></script>
+
+<footer>
+    <p>Click here to Go back</p>
+    <a href="/index.html">Go back</a>
+</footer>
+
+</body>
+
+</html>

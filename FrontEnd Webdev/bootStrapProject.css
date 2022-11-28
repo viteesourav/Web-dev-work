@@ -1,0 +1,79 @@
+body {
+    background-color: #d5deb7;
+    font-family: 'Playfair Display', serif;
+}
+
+h2 {
+    color: #403d39;
+}
+
+.content-row {
+    margin-top: 50px;
+}
+
+#animal-icon {
+    width: 35px;
+    height: 35px;
+}
+
+#mainNavbar {
+    font-size: 1.3rem;
+    font-weight: 100;
+}
+
+#mainNavbar .nav-link {
+    color: white;
+}
+
+#mainNavbar .nav-link:hover {
+    color: #2b450f;
+}
+
+#mainNavbar .navbar-brand {
+    color: #09280f;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 2.3em;
+}
+
+#headingGroup h2 {
+    font-weight: 100;
+    font-size: 2.4em;
+    text-transform: uppercase;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: 0.25em;
+    line-height: 1.7em;
+}
+
+#headingGroup h2:hover {
+    color: #354f52;
+}
+
+#headingGroup span {
+    color: #588157;
+    font-weight: 800;
+    font-size: 30px;
+}
+
+.side-text h2 {
+    font-weight: 600;
+    font-size: 4em;
+}
+
+.side-text p {
+    font-weight: 100;
+    font-size: 1.14rem;
+    line-height: 1.75;
+}
+
+.navbar.scrolled {
+    background: #403d39d9;
+    border-radius: 0 0 15px 15px;
+    transition: background 3s;
+}
+
+@media (max-width: 1010px) {
+    #headingGroup h2 {
+        font-weight: 100;
+        font-size: 2.1em;
+    }
+}

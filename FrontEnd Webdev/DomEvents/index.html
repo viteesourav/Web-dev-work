@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Events</title>
+</head>
+<body>
+
+    <h1>This is click Event</h1>
+    <p>Event is added inline to the element. (Not Recommended !)</p>
+    <button onclick="alert('Hey you clicked !'); alert('Second popup :<')" ondblclick="alert('You double cliked Mannn !')">Click me</button>
+    <button ondblclick="alert('You double cliked Mannn !')">Double Click me</button>
+    
+    <button id="newBtn">Click me using function</button>
+    <button id="newBtnnew">Click me using Listner function</button>
+
+    <!-- The Random Background color Exercise -->
+    <div id="randback">
+        <p>Random Background color Exercise</p>
+        <section>
+            <h2>Click Below button</h2>
+            <button>Click and change the Color</button>
+        </section>
+    </div>
+
+    <!-- The use of this keyword on eventListner -->
+    <div id="thisKeyword">
+        <h2>Use of this keyword</h2>
+        <section id="newBtn">
+            <button>Button 1</button>
+            <button>Button 1</button>
+            <button>Button 1</button>
+            <button>Button 1</button>
+        </section>
+        <br>
+        <section id="anotherBtn">
+            <button>button 2</button>
+            <button>button 2</button>
+            <button>button 2</button>
+            <button>button 2</button>
+        </section>
+    </div>
+    <br>
+    <!-- Keyboard event and Event object -->
+    <div id="keyboardEvent">
+        <h2>KeyBoardEvents and Use of Events Objects</h2>
+        <input type="text">
+        <button>click Me</button>
+    </div>
+    <br>
+    <!-- Form Events using Event prevent default -->
+    <!-- i.e we will try to stop redirect to a new page when we submit the form -->
+    <!-- Add Note Exercise -->
+    <h2>Form Events using Event Prevent default</h2>
+    <form action="/trynew" id="newfrm">
+        <input type="text" name="textInput" id="inputBar">
+        <button>Submit Note</button>
+    </form>
+    <h2>Added Notes For To Do</h2>
+    <ul id="noteList">
+    </ul>
+    <br>
+    <!-- EXample of event bubbling -->
+    <h2>Event bubbling example</h2>
+    <p>The div and button both have clicks for alert. when button is clicked both will be triggered.</p>
+    <p>Soln: use EventObject.stopPropagation() to restrict bubbling.</p>
+
+    <div id="bubbleDiv">
+        <p>This btn triggers bubbleEvent
+        <button id="bubbleBtn">clickBuubleEvent</button></p>
+    </div>
+    <br>
+
+    <!-- Example to show a Event delegation using a comment Box -->
+    <h2>Comment Box</h2>
+    <p>Click on the <b>Add</b> button to add a comment.Click on the <b>Delete btn</b> itself to delete it.</p>
+    <div id="commentBox">
+        <p><input type="text" id="commentText"> 
+           <button id="commentAdd">Add</button></p>
+        <ul id="commentList">      
+        </ul>
+    </div>
+
+
+    
+
+    <script src="app.js"></script>
+    <footer>
+        <br><br>
+        <p>Click here to Go back
+        <a href="/index.html">Go back</a></p>
+    </footer>
+</body>
+</html>

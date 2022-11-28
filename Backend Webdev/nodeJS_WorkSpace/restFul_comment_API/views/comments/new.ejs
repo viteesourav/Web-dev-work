@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Comment</title>
+</head>
+<body>
+    <h1>You can add your own comment here</h1>
+    <form action="http://localhost:8080/comments" method="post">
+    <section>
+        <input type="text" name="username" id="username" placeholder="Username" required> 
+    </section>
+    <br>
+    <section>
+        <textarea name="text" id="comment" cols="30" rows="8" placeholder="Please Enter your comment"></textarea>
+    </section>
+    <button>submit</button>
+    </form>   
+    <a href="/comments">Go Back</a>
+</body>
+</html>

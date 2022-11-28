@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Forms</title>
+</head>
+
+<body>
+    <h1>HTML Forms</h1>
+    <section>
+        <ul>Notes:
+            <li>Forms just group together various forms of inputs and handles them (If they needed to be send to the
+                server).</li>
+            <li>The Reference for input Type: <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">Click here</a></li>
+            <li> Labels and input can be linked by using attribute "for" and "id". </li>
+            <li><b>Button</b> inside a form will submit it by default(type is submit by default) but if you mention type
+                button than it wont submit.</li>
+            <li>For Input Type inside the form even if you dont have a button and press enter it will submit the form.
+            </li>
+            <li>By give same name to <b>radio input</b> you can group them.</li>
+            <li><b>Select</b> uses options element that will give you a drop down.</li>
+            <li>email and url are example of input attribute type with build in validation.</li>
+        </ul>
+    </section>
+    <!-- This form will just send data to some place using action url by using some method -->
+    <form action="/search">
+        <p>
+            <label for="username">Enter your username: </label>
+            <input type="text" placeholder="Enter userName" name="username" id="username">
+        </p>
+        <p>
+            <label for="password">Enter your password: </label>
+            <input type="password" placeholder="Enter password" name="password" id="password">
+        </p>
+        <p>
+            <label for="color">Enter a color: </label>
+            <input type="color" id="color" name="color">
+        </p>
+        <p>
+            <label for="search">Enter a Search Item: </label>
+            <input type="search" id="search" placeholder="Enter Search Value" name="search">
+        </p>
+        <p>
+            <label for="num">Enter a nummber: </label>
+            <input type="number" id="num" name="number" min="1" max="1000">
+        </p>
+        <p>
+            <button type="button">This button wont submit</button>
+        </p>
+        <p>
+            <button> Click me to Submit </button>
+        </p>
+    </form>
+    <hr>
+
+    <p>Form to Search Google </p>
+    <form action="https://www.google.com/search">
+        <input type="text" name="q" id="searchGoogle">
+        <button type="submit">Search Google</button>
+    </form>
+    <p>Form to submit to YouTube</p>
+    <form action="https://www.youtube.com/results">
+        <input type="text" name="search_query" id="searchYouTube">
+        <button type="submit">Search YouTube</button>
+    </form>
+
+    <h3>More Inputs in HTML</h3>
+    <p>Choose your Gender: </p>
+    <form action="">
+        <p>
+            <input type="checkbox" name="gender_male" vlaue="male" id="genderM" checked>
+            <label for="genderM">Male</label>
+        </p>
+        <p><input type="checkbox" name="gender_female" value="female" id="genderF">
+            <label for="genderF">Female</label>
+        </p>
+        <p>
+            Select one of this option:
+            <input type="radio" name="radioOption" id="yes" value="yes">
+            <label for="yes">yes</label>
+            <input type="radio" name="radioOption" id="no" value="no">
+            <label for="no">no</label>
+            <input type="radio" name="radioOption" id="not sure" value="not sure">
+            <label for="not sure">not sure</label>
+        </p>
+        <p> Select a mode of payment: </p>
+        <p>
+            <select name="paymentMode" id="payment">
+                <option value="">--Please Select an Option--</option>
+                <option value="Card">Card</option>
+                <option value="NetBanking">NetBanking</option>
+                <option value="Cash">Cash</option>
+                <option value="UPI">UPI</option>
+            </select>
+        </p>
+        <p>
+            <label for="buget">choose your buget: </label>
+            <input type="range" id="buget" name="limit" min="10" max="1000" step="100" value="400">
+        </p>
+        <p>
+            <label for="comment">Comment: </label> <br>
+            <textarea name="comment" placeholder="Enter your comment" id="comment" cols="30" rows="10"></textarea>
+        </p>
+
+        <button type="submit">Submit</button>
+    </form>
+
+
+    <h3>From Validation Demo (Client level)</h3>
+    <form action="">
+        <label for="name">Enter a name: </label>
+        <input type="text" id="name" name="name" placeholder="Enter some name here" required>
+        <p><label for="username">Enter a Username: </label>
+            <input type="text" id="username" name="username" placeholder="Enter username" minlength="10" maxlength="20"
+                required>
+        </p>
+        <p>
+            <lable for="email">Enter your Email: </lable>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </p>
+        <p>
+            <lable for="url">Enter url: </lable>
+            <input type="url" id="url" name="url" placeholder="Enter url" required>
+        </p>
+        <button type="submit">Submit</button>
+    </form>
+
+    <hr>
+    <hr>
+    <h3>Example of a form For race registration</h3>
+    <h4>Race Registration Form</h4>
+    <form action="">
+        <p><label for="firstname">First Name </label>
+            <input type="text" id="firstname" name="firstname" minlength="10" maxlength="20"
+                placeholder="Enter First name" required>
+            <label for="lastname">Last Name </label>
+            <input type="text" id="lastname" name="lastname" minlength="10" maxlength="20" placeholder="Enter last name"
+                required>
+        </p>
+        <p>Select a Race:
+        </p>
+        <p><input type="radio" name="raceType" id="5krace" value="5krace"><label for="5krace">Fun Run 5k</label></p>
+        <p><input type="radio" name="raceType" id="halfMarathon" value="halfMarathon"><label for="halfMarathon">Half
+                Marathon</label></p>
+        <p><input type="radio" name="raceType" id="fullMarathon" value="fullMarathon"><label for="fullMarathon">Full
+                Marathon</label></p>
+        <p><label for="email">Email</label>
+            <input type="email" id="email" name="emailId" required>
+            <label for="password">password</label>
+            <input type="password" id="password" name="password" minlength="10" maxlength="20"
+                placeholder="Enter password" required>
+        </p>
+        <p><label for="ageGroup">Select Age Group</label>
+            <select name="ageGroup" id="ageGroup">
+                <option value="under18">under 18</option>
+                <option value="18to50">18-50</option>
+                <option value="above50">above 50</option>
+            </select>
+        </p>
+        <p><button type="submit">Register</button></p>
+    </form>
+
+
+    <footer>
+        <p><a href="index.html">Go Back</a></p>
+    </footer>
+</body>
+
+</html>

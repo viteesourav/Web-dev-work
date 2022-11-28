@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badminton Score Counter</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <!-- <link rel="stylesheet" href="app.css"> -->
+</head>
+<body>
+
+    <!-- **************Using Bulma css framework*************** -->
+    <section class="section">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-half">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-2by1">
+                            <img src="https://images.shiksha.ws/mediadata/images/articles/whats-your-score-picture-id1149909794.jpg" alt="">
+                        </figure>
+                    </div>
+                    <header class="card-header">
+                      <p class="card-header-title">
+                        Score card keeper
+                      </p>
+                      <a href="/index.html" class="button is-warning is-light">Go Back</a>
+                    </header>
+                    <div class="card-content">
+                      <div class="content">
+                        <h1 class="title is-1"><span id="plyOneScore">0</span> to <span id="plyTwoScore">0</span></h1>
+                        <p class="subtitle">Use the buttons below to change the score.</p>
+                        
+                        <label for="winScore" class="label is-medium is-inline">Choose the winning score</label>
+                        <div class="select is-small">
+                            <select name="" id="winScore">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                            </select>
+                        </div>
+                      </div>
+                    </div>
+                    <footer class="card-footer">
+                        <button id="p1Btn" class="button is-primary card-footer-item">+1 to Player1</button>
+                        <button id="p2Btn" class="button is-info card-footer-item">+1 to Player2</button>
+                        <button id="reset" class="button is-danger card-footer-item">Reset</button>
+                    </footer>
+                  </div>
+            </div>
+          </div>
+    </div>
+    </section> 
+    <!-- Section will put some margine to the whole thing -->
+
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/header.ejs') %>
+    <title>Loops EJS</title>
+</head>
+<body>
+
+    <%- include('partials/navbar.ejs') %>
+
+    <h1>Hi ! This shows loops EJS File</h1>
+    <ul>
+        <% for(let ele of arrList) { %>
+            <li><%= ele %> </li>
+            <% } %>  
+    </ul>
+    
+
+</body>
+</html>

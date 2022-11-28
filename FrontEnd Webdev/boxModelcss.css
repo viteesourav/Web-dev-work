@@ -1,0 +1,132 @@
+div {
+    width: 200px;
+    height: 170px;
+    background-color: #fcd5ce;
+}
+
+h1 {
+    background-color: #fec89a;
+    width: 150px;
+    padding-left: 50px;
+    padding-top: 20px;
+    margin-bottom: 25px;
+}
+
+#one {
+    background-color: #ffe5d9;
+    border-width: 4px;
+    border-color: #76c893;
+    border-style: solid;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+#two {
+    background-color: #fcd5ce;
+    border-color: rgb(9, 116, 116);
+    border-width: 3px;
+    border-style: dashed;
+    border-left-color: #033514;
+    border-left-width: 5px;
+}
+
+#three {
+    background-color: #fec5bb;
+    border: 5px solid #9d0208;
+    border-left-style: dotted;
+    border-right-style: dashed;
+    border-radius: 15px;
+}
+
+/* The padding here is vertical | horizontal  */
+button {
+    padding: 5px 8px;
+}
+
+/* Display property */
+
+h3 {
+    background-color: yellowgreen;
+    border: 3px solid black;
+    display: inline;
+}
+
+span {
+    background-color: teal;
+    border: 3px solid black;
+    display: block;
+    margin: 5px 0px;
+}
+
+
+/* By deafult divs are block level element */
+/* Lets make them 3 blocks side by side using display property */
+.displayblock {
+    background-color: #fca311;
+    width: 250px;
+    height: 250px;
+    border: 2px solid #000;
+    display: inline-block;
+    margin: 5px 2px;
+}
+
+/* Unit testing for % */
+.boxbox {
+    background-color: #6b705c;
+    width: 500px;
+    height: 300px;
+    margin-top: 20px;
+}
+
+.boxsecond {
+    width: 60%;
+    height: 40%;
+    background-color: #fcd5ce;
+}
+
+/* Unit testing for em */
+.sectionclass {
+    font-size: 30px;
+}
+
+#h4class {
+    font-size: 1em;
+}
+
+#pclass {
+    font-size: 0.5em;
+}
+
+/* To see it change the font size of action and check the roundness and the margin is maintained still at higher font-size */
+/* if you use px then it will be fized no matter what */
+.clickmebutton {
+    font-size: 1em;
+    background-color: teal;
+    color: white;
+    font-weight: 600;
+    /* No matter how much the font size changes the radius always gonna be same as the button element font-size */
+    border-radius: 1em;
+    /* same with margin */
+    margin-left: 0.75em;
+}
+
+/* You will see it is uneven since em depends upon parent font size so it nesting doesn't look good in ems */
+.sectionclass ul {
+    font-size: 1.3em;
+}
+
+/* solution is use rems */
+.sectionclassrems {
+    font-size: 60px;
+}
+
+/* No disstortion noticed also... */
+.sectionclassrems ul {
+    font-size: 1rem;
+    /* here size will be 1*60px */
+}
+
+.sectionclassrems h4 {
+    font-size: 2rem;
+    /* here size will be 2*60px */
+}

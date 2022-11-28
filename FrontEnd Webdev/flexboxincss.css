@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+#container {
+    background-color: #003049;
+    width: 60%;
+    height: 300px;
+    margin: 0 auto;
+    border: 5px solid #003049;
+    /* This will enable the flex box ON */
+    display: flex;
+    /* this will decide the dir of the flex property in a flex box */
+    flex-direction: row;
+    /* this will adjust the content within the flex based on the direction. */
+    justify-content: center;
+    /* This will avoid the content from sqizzing down and take it to the next Row or column */
+    flex-wrap: nowrap;
+    /* This will arrange the things based on the cross-axis*/
+    align-items: center;
+    /* Controls the spacing in the cross axis */
+    /* align-content: center; */
+}
+
+div {
+    width: 100px;
+    height: 100px;
+    /* This will alwasys be on the main axis and it will ignore the width */
+    flex-basis: 100px;
+    /* This allow this propertion of the free space can be given to all the elements */
+    flex-grow: 1;
+}
+
+/* applying flex grow and shrink property */
+#container div:nth-of-type(1) {
+    flex-grow: 3;
+    flex-shrink: 6;
+}
+
+#container div:nth-of-type(4) {
+    flex-grow: 7;
+    flex-shrink: 0;
+}
+
+
+
+/* For one element position we can use this align-self */
+/* #container div:nth-of-type(2n) {
+    align-self: flex-end;
+}
+
+#container div:nth-of-type(2n+1) {
+    align-self: flex-start;
+} */
+
+
+/* Will use the flex short hand property */
+main {
+    width: 70%;
+    margin: 2px auto;
+    border: 5px solid black;
+    height: 400px;
+    display: flex;
+}
+
+main .sidebar {
+    background-color: #6930c3;
+    /* This will be treated as flex grow */
+    /* flex: 1; */
+    /* this will treat as flex grow , felx shrink and felx basis */
+    flex: 1 6 300px;
+}
+
+main .maincontent {
+    background-color: #80ffdb;
+    flex: 2 2 400px;
+}

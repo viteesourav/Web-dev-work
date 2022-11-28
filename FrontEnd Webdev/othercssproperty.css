@@ -1,0 +1,126 @@
+.opacityProperty {
+    width: 600px;
+    height: 200px;
+    background-color: #e76f51;
+}
+
+#rgba {
+    width: 60%;
+    height: 50%;
+    background-color: rgba(25, 12, 1, 0.7);
+}
+
+#opacity {
+    width: 60%;
+    height: 50%;
+    background-color: rgb(42, 157, 143);
+    opacity: 0.6;
+}
+
+/* This is how we will see to use position */
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: #f77f00;
+    margin: 2px 5px;
+    display: inline-block;
+}
+
+#middle {
+    background-color: #fcbf49;
+}
+
+#static .box {
+    position: static;
+    top: 100px;
+    /* no affect since its static */
+}
+
+/* It will change wrt its normal position since its relative position */
+#relative #middle {
+    position: relative;
+    top: 10px;
+}
+
+/* absolute position */
+#absolute {
+    position: relative;
+}
+
+#absolute #middle {
+    position: absolute;
+    top: 25px;
+    left: 10px;
+}
+
+/* Fixed position its wrt to the entire page always */
+#fixed #middle {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+}
+
+/* Useed the position to fix the Go Back anchor at bottom-right corner */
+footer {
+    position: fixed;
+    bottom: 0px;
+    right: 50px;
+    margin: 20px 20px;
+}
+
+/* Transition in css */
+#circle {
+    background-color: #606c38;
+    width: 200px;
+    height: 200px;
+    /* transition: background-color 1s; */
+    transition: background-color 1s ease-out 1s;
+}
+
+#circle:hover {
+    background-color: #dda15e;
+    border-radius: 50%;
+}
+
+/* Transform in css */
+
+.transform div {
+    width: 250px;
+    height: 50px;
+    border: 3px solid black;
+    background-color: #BABD42;
+    margin: 7px auto;
+}
+
+.transform div:nth-of-type(2n) {
+    background-color: #36AE7C;
+}
+
+.transform div:nth-of-type(2n+1) {
+    background-color: #e76f51;
+}
+
+.transform div:nth-of-type(1) {
+    transform: rotate(23deg);
+    transform-origin: bottom right;
+}
+
+.transform div:nth-of-type(2) {
+    transform: rotateZ(56deg);
+}
+
+.transform div:nth-of-type(3) {
+    transform: scale(1.3, 0.5);
+}
+
+.transform div:nth-of-type(3) {
+    transform: translateX(90px);
+}
+
+.transform div:nth-of-type(4) {
+    transform: skew(4deg, 7deg);
+}
+
+.transform {
+    transform: translateY(80px) scale(0.8);
+}
