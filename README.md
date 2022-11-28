@@ -19,6 +19,6 @@ backend includes:
 -- Use of Framework Express for creating Custom Servers and RESTFUls APIs.
 -- Learning basic of MongoDB.
 
-The Journey has just begain. There are lots of new things to Explore.
+The Journey has just began. There are lots of new things to Explore.
 
 Thanks :smile:
