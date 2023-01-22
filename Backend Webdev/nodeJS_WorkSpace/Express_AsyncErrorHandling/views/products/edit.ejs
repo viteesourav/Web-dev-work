@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit <%= productData.name %></title>
+</head>
+<body>
+    <h1>Edit the Product Details </h1>
+    
+    <form action="/product/id/<%= productData._id %>/?_method=PUT" method="POST">
+            <label for="name">Enter the Product Name: </label>
+            <input type="text" name="name" id="name" placeholder="text" value="<%= productData.name %>">
+
+            <label for="price">Enter the Product Price: </label>
+            <input type="number" name="price" id="price" placeholder="num" value="<%= productData.price %>">
+
+            <label for="category">Choose the Product Category from the dropDown</label>
+            <select name="category" id="category">
+                <!-- <option value="fruits" <%= productData.category === 'fruits' ? 'selected' : ''%>>Fruits</option>
+                <option value="vegies" <%= productData.category === 'vegies' ? 'selected' : ''%>>Vegies</option>
+                <option value="dairy" <%= productData.category === 'dairy' ? 'selected' : ''%>>Dairy</option> -->
+                <% for(let items of productData.categoryDropDown) { %>
+                    <option value="<%= items %>" <%= productData.category === items ? 'selected' : ''%>><%= items %></option>
+                <% } %>
+            </select>
+            <button>Edit</button>
+    </form>
+
+    <p>
+        <a href="/product/id/<%= productData._id %>">Cancel</a>
+    </p>
+</body>
+</html>

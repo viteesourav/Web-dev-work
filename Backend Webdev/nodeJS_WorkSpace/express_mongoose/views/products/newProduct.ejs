@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Product</title>
+</head>
+<body>
+    <h1>Add New Product to Our Farm Product Shop</h1>
+    
+    <form action="/product" method="POST">
+            <label for="name">Enter the Product Name: </label>
+            <input type="text" name="name" id="name" placeholder="text">
+
+            <label for="price">Enter the Product Price: </label>
+            <input type="number" name="price" id="price" placeholder="num">
+
+            <label for="category">Choose the Product Category from the dropDown</label>
+            <select name="category" id="category">
+                <!-- <option value="fruits">Fruits</option>
+                <option value="vegies">Vegies</option>
+                <option value="dairy">Dairy</option> -->
+                <% for(let items of category) { %>
+                    <option value="<%= items %>"><%= items %></option>
+                <% } %>
+            </select>
+            <button>Submit</button>
+    </form>
+
+    <p>
+        <a href="/products">Cancel</a>
+    </p>
+</body>
+</html>

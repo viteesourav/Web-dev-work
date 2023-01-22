@@ -1053,8 +1053,272 @@
             <li>If the key is nested and you want to search it. use: .find({parentkeyName.childKeyName : value})</li>
             <li>Other Operators:</li>
             <li>-- Refer here to see different kind of mongo operators: <a href="https://www.mongodb.com/docs/v6.0/reference/operator/query/">Click here</a></li>
-            <li>-- $gte,lte,gt,le --> ?=,<=,>,<               </li>
+            <li>-- $gte,lte,gt,le --> >=,<=,>,<               </li>
             <li>-- $in --> checkes for multiple values. eg: find({breed : {$in : ['Mutt', 'Corgi']}})</li>
+            
+            **Mongoose**Reference: mongooseBasic/index.js
+            <li>Reference Link: <a href="https://mongoosejs.com/">Click here</a></li>
+            <li>-- It's basically makes the process of connecting to mongoDB easy and simple.</li>
+            <li>Mongoose is known as ODM -> Object Data Mapper/Object Document Mapper</li>
+            <li>Note:
+                -- It basically connects the nodeJs to Mongo.
+                -- It maps the data that comes back from Mongo to useable JS Object.
+                -- It also Provides ways for model out app data and define schema. also includes validation of Data.
+            </li>
+            <li>NOTE: ORM -> Object Relational Mapper.
+                -- This tool helps If we use a Relational Database like MySql or PostgresSql or Oracale, It will map that relational data to usable JS Object.
+            </li>
+            <li>package needed is: mongoose. require the same in the index.js</li>
+            <li>NOTE: mongoose connection returns a promise so we can validate the connection.</li>
+            <li>Models: models are Js classes that we make with the instance of mongoose that represent info in the mongo db.</li>
+            <li>Steps in mongoose:
+                -- Acheive a successfull Connection to the mongo DB.
+                -- we need to define a scheme that maps the DataType from the DB.
+                -- after this we have to create a new Model Class from this schema.
+                -- now you can create objects for this class and then use save() to add the changes to the class to the db.
+                -- OR You can use the class itself to perform various Mongo DB operations basically CRUD Operations.
+            </li>
+            <li>NOTE: For Model Creation the name of the model Should me First Letter caps eg:Item which interally mongoose makes a collection like eg: items </li>
+            **Very important Notes For Mongoose CRUD Operations**
+            <li>Most of the Model and mongoose methods returns a thenable Promise like Object. As Db operations takes time.
+                -- models and mongoose methods returns a thenable promise like object. that works good with .then() and .catch() chains.
+                -- If you want to use await then we need to add .exec() at the end of the Model methods thats returns a proper promise Obj.
+            </li>
+            <li>Normal updateMany and updateOne methods will also work but it will just return the number of records updated. So we use the below method.</li>
+            <li>Moongose FindOneAndUpdate method
+                -- This will by default return the old record as new keyword is defaulted to false.
+                -- To fetch the latest updated record we need to add {new: true}
+            </li>
+            <li>Mongoose Delete
+                -- DeleteOne and DeleteMany can be used but it wont return the data that is deleted.
+                -- instead use findOneAndDelete, it will return the data that is deleted.
+            </li>
+            <li>NOTE: (**Good Feature of Mongoose**)
+                -- Mongoose uses something called Operation Buffering, that allows to use our model immediatly without waiting for the mongoose connection to Establish.
+            </li>
+            <li>**mongoose Schema Validation**</li>
+            NOTE: *See the Documentation for mongoose under schema Types*
+            <li>-- The way we structure the Model Schema we can do more things.</li>
+            <li>-- we can add validation like required: true/false</li>
+            <li>-- type checks if the passes argument can be converted to the one that is spefied in the schema.</li>
+            <li>-- Any additonal params that you pass other then defined in the schema will be simply ignored.</li>
+            <li>-- Default - It is used to set a defualt to an entity. </li>
+            <li>-- We have constraints for a particular dataType also. 
+                eg: For String --> lowercase, uppercase, trim, match etc
+                    For number --> min, max etc.
+                    ... and so on for other DataTypes.(Refer the Mongoose Documentation for it)
+            </li>
+            <li>***NOTE***</li>
+            <li>-- Mongoose Schema Validation only works when you insert a new Data in the DB.</li>
+            <li>-- If you Try to Update an Existing Data it will not work.</li>
+            <li>Solution:
+                -- Need to exculsively Tell mongoose to run the Validation while updating the Data.
+                -- add runValidators to the Option -> {new: true, runValidators: true}
+                -- new: true --> returns the updated entry as resp and runValidators:true --> implements the schema validations while updating.
+            </li>
+            <li>**Custom Validation Error Messages**</li>
+            <li>example:  min: [8, 'This is too small'] 
+                -- here 8 is the min value allowed
+                -- and then the text is the error msg if the validation is not meet. 
+            </li>
+            <li>Note:
+                -- enum validator: Defines an Array of options for the above item to take.
+                -- eg: size: {type: String, enum: ['S', 'M']} --> means size can be only 'S' or 'M'
+                -- Any other input for Size will be invalid.
+            </li>
+            NOTE: we can add our own custom methods to Model class.
+            ***************************************************************************************************************
+            NOTE: 
+            -- Most of the time, .load filename in the Node REPEL, will load the file, and we can use it to check the code.
+            ****************************************************************************************************************
+            **Model Instance Methods** Reference: mongooseBasic/Product.js
+            <li>Instance method --> methods which are present in every instance of the Object. eg: const prod = new Product(), here prod is the instance of the class Product.</li>
+            <li>Class/static methods --> methods which are present on the class Object. eg: Product.someMethod(), here Product is the class.</li>
+            1) We will see how to define custom methods on the instance of a class / Instance Methods ***
+            <li>NOTE: use the syntax: schemaName.methods.myFunction = function() {...} </li>
+            <li>CAution: Dont use arrow functions, Always use the normal function declaration using the function keyword.</li>
+            <li>Use this whenever we have to handle something related to manipulation of the data or update.</li>
+            2) Model Static Methods**
+            <li>This methods are on the Model directly(on Product Class) rather than on their instances(on prod instances)</li>
+            <li>-- 'this' keyword for static methods refers to the Model itself</li>
+            <li>-- eg: productSchema.static.myFunc = function() {...}</li>
+            NOTE:
+            <li>**Difference between instance method and static method**
+                -- Instance method are very specific on one Instance of the model Class.
+                -- Every Instance of that model class has access to the isntance method.
+                -- Static methods are on the Model Itself. It effects are reflected on all the items rather than specific.
+                -- They are just a facny way of implementaing Existing Model method for CRUD Operations.
+            </li>
+            ***Mongoose Virtuals*** Reference: mongooseBasic/Person.js
+            <li>-- it allows us to add property(virtual property) to the schema that dont actually exist in the db itself.
+                -- basically, If you want a field that has the value of two fields from the actual db. but you dont store this new field in the db. 
+                -- We use Virtual. </li>
+            <li>syntax: dbSchema.virtual('fieldName'), then set a getter and setter for this. i.e .get() and .set()</li>
+            <li>Virtual Property -> This property doesn't really exist in the schema but uses existing schema to maintain a virtual property in the code.</li>
+            <li>Needs to define getter and setter for a Virtual Property.</li>
+            
+            **Mongoose middleware** 
+            <li>-- It provides a way to run code before or after any operation we do like update or delete or saved.</li>
+            <li>It inlcudes per and post hooks.</li>
+            <li>-- .pre() --> runs before the specified operation is executed.
+                -- .post() --> runs after the specified operation is executed.
+            </li>
+            <li>NOTE: this middleware pre and post hooks is very important and powerful concept in the mongoose.</li>
+            <li>NOTE: Custom instance method, static method, virtual Property, mongoose middleware all this are on the schema and should be define before the Model creation.</li>
+            
+            **EXpress+Mongoose** Reference: express_mongose/index.js
+            <li>Full Crud Operations with Express and mongoose and mongoDB.</li>
+            <li>-- Models generally are put under a  different model files because in real Life project we have many models.</li>
+            <li>-- seed.js --> This file is run seperate from the main index file, Basically used for development purposes, just to put some data in the mongo database.</li>
+            <li>NOTEs: 
+                -- Product.InsertMany([{},{}...]) checks for validation of all the payload before inserting it in the db. If anyone fails no data will be inserted.
+                -- The calls inside the routes, includes mongoose operations are often handled using await. Since they are db operations and returns a thenable promise like result.
+                -- declare the callbacks async so that you can await the response of the mongoose calls.
+                -- Normally we dont use name for searching anything, we rather use ID.
+                -- If we want to use names, we need to convert that to web slug, basically make it url safe. eg: my_name_is (no blank spaces).
+                -- findById(idfromDB) --> used to get the matching record for that Id.(use this for Normal search)
+                -- findOne({key: value}) --> return the first matched record for the value of the specified key.(use this if you want to search by name or any other key).
+                -- Never Forget, In EXpress Route, the order of the function invokes from top to bottom.
+                -- Role of a seed Folder, It is used mostly for testing the code by inserting some data in the DB.
+                **Important --> Seed files are run once and seperately then the main project index file.
+            </li>
+            
+            **Concept of middleware** (Very important concept)
+            *middleware*
+            <li>-- functions have access to req, res obj and other middleware functions and that run during res/req life cycle. 
+                -- eg: we have parse the req.body form data using the middleware. OR we use middleware method to serve static files in express.
+                -- middleware can end http req by sending res.send(), also can be chained together by using next().
+            </li>
+            <li>Note:
+                -- app.use() -> will run on every single call. It tells the express what to execute when it listens anything.
+            </li>
+            <li>Morgan Middleware</li>
+            <li> -- example of an external middleware tool, mostly used for logging.
+                 -- eg: morgan('tiny') --> logs what the server is listening to...
+            </li>
+            <li>Defining Middleware --> we need to add next as param and also need to add next() in the body.</li>
+            <li>How to call the next middleware method ?</li>
+            <li> -- we pass a parameter called next and add next() in the fucntion body.
+                 -- If you dont put next(), it just stops there and wont move ahead ahead.
+                 -- eg: it runs the middleware function use() and then next() will find the next function in the file to execute.
+                 -- if you put res.send() then it stops everything.
+            </li>
+            <li>Note: Anything after next() will still run but it will run at the end.
+                -- usually we always return next(); to avoid executing anything after next()
+            </li>
+            <li>Note: **very important**
+                -- with the middleware calls and the route call in the same express app.js
+                -- the order in which we write the calls matter in express.
+                -- Express will start matching the income request from the top till bottom. First match will be first to execute.
+            </li>
+            <li>app.use('/testUse', (req,res, next)=>{...}) ==> this will run only where it will match the incoming route having a path: /testUse
+                -- It will run for all the verbs be it get,post,patch,put or delete for the req with url: /testUse
+            </li>
+            <li>app.use() also used to define a 404 not found route handle.
+                -- It is always written at the end of the index.js file.
+                -- it will run if none of the routes matches.
+            </li>
+            **Very important**
+            <li>route handlers like app.get() can have muliple callbacks. eg: app.get('/show', callback1, callback2)
+                -- callback1 need to have next(); then once it completed it will move to callback2 and so on.
+                -- if callback1 fails and it hits res.send() in callback1 function then all other subsiquent callbacks will never execute.
+            </li>
+
+            **Express-Error handling**
+            <li>-- use of next param in callback and next(); is very crucial to understand for Express-middleware working.
+                -- if you use next(), then the route will run and then it will move below to check the other routes as well.
+                -- only if you use res.send(), it will cancel the execution of middleware one after another.
+            </li>
+            <li>Errors that are generally encountered are like, moongose validation, causing syntax error inside the route callbacks, submitting incomplete forms etc.</li>
+            <li>**Default built-in express-handling**
+                -- if express encounters any error, it can handle it using the default express error handler.
+                -- it returns a 500 internal server error httpstatuscode with an html response of the stack trace of the error encountered.
+                -- Note: we can also throw error object with the error message. eg: throw new Error('..msg..');
+            </li>
+            <li>**Custom Error-handling middleware fucntion**
+                -- for error handling midddleware function, pass 4 params in the callback: err, req, res and next.
+                -- also put it always at the last after all the app.use() and routes calls.
+                -- this custom error handler will run whenever express gets any kind of error.
+                -- **very-imp** if you call next(), the server will search for non-error handling middleware, but next(err) --> it will search for the next error handling middleware.
+                -- next(err) in custom error handling function will call the default express-error handling middleware.
+                -- One major advantance, By handling the errors, it will not crash the server, instead it will show a proper error message.
+            </li>
+            <li>**Custom Error class**
+                -- Errors are of many types like 401 or 400 or 500 etc. So classifying them is necessary.
+                -- we can define one class extending the default error class that takes the custom statusCode and message, the errorHandler Middleware will use this to show to httpStatusCode and Error message.
+                -- Basically instead of using the error Object directly we will create our own class AppError to handle the statusCode and exception message.
+                -- Note: whenever we throw a new Error('..msg..'), it will have the error msg and the stack trace, It doesnot have the status code by default.
+                -- But, Internally Express default error handlers will look for the status or the status code to handle the error, so specifying the status of the request is important.
+            </li>
+            <li>**handling Async Errors**
+                -- mostly whenever we are interacting with db calls, we are using async functions. handling errors in these cases is important.
+                -- important: we must pass the error returns by async middleware and route calls to the next(), so that the default middleware can act on it.
+                -- always write: return next(new AppError('msg', 500)), this will stop the execution there only and wont trigger any other line after it, else it will try to render the page with undefined data.
+                -- we can handle the error in one more way, use the try..catch block, In catch, catch the err and call next(err), this will trigger the error handler middleware.
+                -- note: using catch, it will catch any error from mongoose and also any error that we are throwing inside the try block.
+                
+                **Very Important***
+                Instead of using try..catch block at every route and so many times, we can deine a wrapAsync function to take care of catching the error
+                -- Basically the entire async call (from thSe route call) is passed as param to this wrapAsync func which returns a functions, that executes the passed function from the later and have a chained catch to catch any errors.
+            </li>
+            <li>**Mongoose Error handling**
+                -- Mongoose throws different types of errors and also have an error name. eg: validation error, cast error if the search id is invalid, it cannot convert it into the object_id
+                -- Use the custom Error handler class to manually throw the error and the async Utility function will catch this error and throw it to the custom error handling middleware to handle it.
+            </li>
+            <li>NOTE: *summary of Error handling in express* 
+                -- If any error occured anywhere in the code, the custom error-handler middleware at the end of the code will catch it and process it with the default value of status and message.
+                -- All the async routes callbacks, errors are handle by a asyncErrorhandler function thats has a chained catch to catch any error and pass it to next(err) that triggers the custom error-handling middleware at the end.
+                -- We can also handle mongoose and other req data invalid error by throwing custom Error message by passing the suitable message and status code, that will be catch by either of the above 2 handlers and processed.
+            </li>
+            <li>**JOI Schema validation and Middleware***
+                -- It is a new npm package, js validator tool that does the schema level validation and throw approriate errors.
+                -- joi provides an Joi object which validates the income data against the schema you have defined in the Joi object.
+                -- it scalable and also it sits on top of client side validation, Thus it catches the error if you do it from postman too.
+                -- Baiscally, add the schema validation in form of a joi object and then valiate it. If any error, destructure the err object and throw the custom Error Handler msg out.
+            </li>
+            
+            *Mongo Data Relationship* (How to store Related Data in mongo) 
+            <li>-- structuring the database with multiple entites having some relationship between them in a noSQL database.
+                -- there are different kind of relationship possible among the tables: eg: one to many, many to many.
+                **One to Many Relationship in Mongo**
+                -- example: mostly if user-data is involved, then its one to many. Because, One user can make only one type change in any other database entity.
+                -- it includes:
+                **one to Few** (mapped if the size of data is small)
+                -- example relationship between user and their address, in this kind of cases we store the address directly inside the parent table.
+                -- inside, addresses will be list with its own unique id, you can turn it off by adding this in the schema for address: _id: {id: false}
+                -- It is used only when you have the the embedded data very less. Like a user has most likely to have less addresses.
+                
+                **One to Many** (mapped if the size of data is medium)
+                -- store the mapped data in a different schema, but then the parent should contain the a reference i.e objectId of the mapped data.
+                -- here, in the Parent Schema, you need to particular mention the type as mongoose.Schema.Types.ObjectId. Note: Its not the native JS Object, it comes from mongoose.
+                -- alse we need to add: ref: 'mapped Model name', it tells mongoose where to pick the data from during populate.
+                -- In this, The data stored in the parent will be just ids of the mapped Model, We can use populate to extract the data from these.
+                -- .populate('fieldName') --> it will take the ids and populate that with the corresponding data for that particular field.
+                NOTE: without populate you will get just linked Ids for mapped schmeas, with populate you will get their respective data too. Both ways are very useful.
+
+                **One to bajillion** (mapped if the size of data is huge)
+                -- eg: all tweets belonging to a single users, so a user will have thousands of tweets.
+                -- Solution: parent id is stored in the child schema.
+                NOTE: populate('fieldName', optional) --> this optional can be any particular field from the child schema, which will be populated just alon if we add that field name as the second paramter to populate.
+            </li>
+            **Important**** --Rules for one to Many Realtionships and how to handle them.
+            <li>***Mongo Schema Design***
+                **6 Rules of Thumb for mongo Design:
+                1) denormalization: Its okay to sometime duplicate the same field-data in different schema.
+                -- instead of putting a relationship, between 2 schemas, we can simply add the data as a field. Thus, saved from using populate and all that.
+                2) understand how the data is related to each other, and then decide which relationship is better or if at all its needed in the first place.
+                3) If the linked data is more than 100 --> better to use one to many concept(store the child id in parent). If the data is more than 1000 --< better to use one to bajillion concept(store the parent id in child).
+                -- basically, you should not design the schema like the array is growing without any stop point, If true then store the parent id in child else store the child id in parent.
+                4) application-level joins --> along with storing the id, you also put field that you will use frequently to reduce the use of populate.
+                5) always denormalize a field that is just read most of the time and less update.
+                6) model of the data is totally depends upon the application mainly on how you query the data and updates it.**most important Rule**
+            </li>
+            <li>NOTE:
+                **Two Way Referencing concept***
+                -- Basically we can combine the one to many and one to bajiliion concept into one concept.
+                -- MEans, parent id is stored in every child, and child id is stored in the parent.
+                -- this ensures 2-way communication between the schema.
+            </li>
             <li></li>
             <li></li>
             <li></li>
@@ -1095,6 +1359,72 @@
             <li></li>
             <li></li>
             <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+
+            <p>***Building a fully functional Website including Servers and interactive UI using all important concepts of WEB-DEV-Fundamentals***</p>
+            <li>Important NOteS:
+            **Setting up the basic Routes and Templates for the project**
+                -- Make the project modular, Try with basic route and keep the model and seed files seperate.
+                -- To include partials in your dynamic HTML template, we can use a package called ejs-mate.
+                **ejs-mate**
+                -- ejs-mate is better and efficent than using partials for templating duplicate things in project.
+                -- add the npm package, add the app.engine for ejs to ejs-mate. define boilerplate.ejs with the dynamic body tag.
+                -- we define a boilerplate template and then whenever you call layout('boilerPlate location') in one form, it is passed to the <%- body %> area of the boiler plate template.
+                -- textArea --> Dont have a value attribute.
+                -- in bootstrap, class="col-md-4 offset-4 mb-5", means you will occupy 4 md columns out of 12 and adding offset will start it after the starting 4 columns.
+                -- in form, class= "d-inline", will push the form to get inline with the rest of the content.
+            *******************************************************************************************************************************************************************************************************    
+            NOTE(Just something that needed to be very clear):
+                -- JS by nature runs sync, means runs the code line by line, top to bottom.
+                -- if a function is async it means, anything after that function will run immediately.
+                -- async funs always return a promise object, which is either resolved or failure based on the nature of the response.
+                -- inside the async fun, if we have multiple calls to db, or file or api, we can use await function, it will await for the response to come and then move to the next server call.
+                -- That is why we use await only inside async funcs, to wait for the response of the server call.
+                -- eg: setTimeout is a built-in async call, it runs the callback back function after the specified time, but won't block other function written after it. those will run anyway.
+                    After the specified time, automatically, the response will be printed out. Thus Async Functions are powerful Functions :> RESPECT THEM !
+            *******************************************************************************************************************************************************************************************************    
+            
+            **Including Server-side and client Side validations**
+                -- Client-side validation options available, we can use the html 5 inline 'required' keyword to do the validations (handled by the browser) or can use the bootstarp validation class (makes more sense and looks nice too).
+                -- use the bootstrap validations to do the client side validations.
+                -- Note: using novalidate in form as attribute will ignore any required added for any input.
+                
+                -- Server-side validation, we need to handle mongoose error and middleware errors.
+                -- add the custom error-handler class, add a util folder, with custom ExpressError fun and the wraperAsync catch function(this will catch error inside async functions).
+            Note: if you use app.all('*', (req,res,next)=>{...}) --> this will trigger if none of the top route matched. (It has to be at the end, because route order is important).
+                -- declare custom error handler and throw error whereever required to handler possible mongoose error or req body or param error etc.
+                
+                -- For schema validation, we will use Joi schema valiation, put it as a middleware function and call it before the route callbacks of post and edit.
+                -- if this middleware throws an error, the default custom middleware at the end will catch it and process it.
+            
+
+            </li>
         </ul>
     </main>
     <hr>
