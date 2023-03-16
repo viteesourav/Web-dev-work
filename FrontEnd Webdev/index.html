@@ -1319,32 +1319,212 @@
                 -- MEans, parent id is stored in every child, and child id is stored in the parent.
                 -- this ensures 2-way communication between the schema.
             </li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            
+            **Express + Mongo Relations***(APP: ExpresAndMongooseRelationship)
+            <li>Note: Alwasys understand the usecase of the collections we need in the project and decide what relation we want.</li>
+            <li>-- Made an entire Farm-product functionality with 2 related schema having bi-directional relationship.</li>
+            <li>NOte: **Verry Important** 
+                --> Mongoose middleware is very very different from Express middleware. Both look similar but not at all same.
+            </li>
+            <li>Handling deletion of related schema using  mongoose middleware:(Take help from the mongoose middleware documentation)
+                -- mongoose has 4 types of middleware -> document middleware, aggregate middleware, model middleware, query middleware.
+                -- here see the documentation of the query and see which middleware its triggereing.
+                -- we will use query middleware, because it will be triggered by any mongoose query we make from the express index file like findById or FindByIdAndDelete etc.
+                -- we will write the middleware as pre and post hooks in the schema file, with the middleware function name(check from the documentation the middleware function name that query triggers) that the particular query will trigger.
+                -- NOTE: In pre middleare we will not have access to the data, but in the post middleware we will have access to the mongoose query data.
+                -- NOTE: to delete all data from a list of ids use like this: deleteMany({_id: {$in: {arrayName}}}).
+            </li>
+            
+            ***Express Router***   Refernce: ExpressRouters
+            <li>Breaking Down the Router page like app.js or index.js that contains all the route handlers into small chunks. Basically used in large projects.</li>
+            <li>use express.Router
+                -- we can group different routers together.
+                -- create a new folder routes and put all the Group routers in it.
+                -- export the same and then use app.use('/test', testRoute);
+                -- this will bring all the Routes we have defined from testRoute js file and prefix the route with /test 
+            </li>
+            <li>Basically this lets you decide and group Routes together and make it more convinent to handle routes having similar names agian and agin.</li>
+            <li>Aslo we can define one middleware for a particular group of routes if we want so.</li>
+            ****Very important***
+            <li>NOTE:
+                -- when you define Router, it likes to keep the param coming from the app.js seperate.
+                -- solution: we need to pass one property, const router = express.Router({mergeParmas: true});
+                -- thus any Params coming as a part of fixed router prefix will be treated as a param. else it wont treat it as a param.
+            </li>
+            
+            ****Cookies****
+            <li>what ? 
+                -- Little bit of the information that we can store in the user's browser. Mostly a name-value pair.
+                -- Everytime a user comes to a page. we sent a cookie with a unique identifier to this user. Next time when he comes back we send the cookie along with the request. Helps us to understand about the user's track on that page.
+            </li>
+            <li>Why ?
+                -- we can use cookies to remember little info on the user and store it in the user's browser itself.
+                -- Cookies allow use to make HTTP stateful. HTTP is stateless by default. 
+                -- Means Http doesnot remember any past things or events. Cookies stores info that helps to store few but crucial info thus stateful.
+            </li>
+            <li>use ? 
+                -- session management
+                -- personalization, we can use cookies some info about user's preferences.
+                -- tracking. (Major use of cookies), It stores what the users have done on that page.
+                NOTE: We dont use cookie's to store user information. we just store small, basic info.
+            </li>
+            <li>Sending a Cookie
+                -- we use res.cookie(name, value), to store any cookie in the browser. Once saved the browser will hold on to it.
+                -- It has many properties other than just name and value like path, size, HttpOnly, Secure etc.
+                Note: Even if you close the tab and open it again, cookies will be stored in the browser.
+            </li>
+            <li>Retrive a cookie:
+                -- we use a npm package to parse the cookie: cookie-parser 
+                -- trigger the middleware, app.use(cookieParser()), the req.cookies will return all the stored cookies in the browser.
+            </li>
+            <li>Signing Cookies
+                -- its kind of a seal the cookie with a secret code. It makes sure none tampers with the cookie that is stored in the browser.
+                -- need to pass a secret key in the cookie-parser middleware which it will use to seal the info off.
+                NOTE: It is not about hidding or encrept the data. it's just there to ensure the validaity or intigrity or tamparing of the stored data in the cookies.
+                -- If it was tampered then that cookie cannot be retrived or it will just return false.
+                NOTE: The secretkey is onetime, Once set it cannot be chnaged. If done then all signed Cookies cannot be checked for tampering.
+            </li>
+            <li>Working of cookie-parser
+                -- it uses something called HMAC: Hash-based message auth code. 
+                -- It basically sign the value with a secret using SHA256 (Hashing algo). This returns a signature code.
+                -- For verification, It takes the value and do the hashing again and then it generates the signature again and compare it with the existing sign.
+                -- if it matched, its fine, if not then the cookie is tampered.
+            </li>
+            
+            Why Session ? Why Not cookies ? 
+            <li> -- There is a limit on the number and size of cookies that are allowed per browser.
+                 -- cookies stores data in the client-side in the user's browser but session stores data in server-side. 
+                 -- cookies are not practical or secure to store lot of data client-side. that's why we used sessions.
+
+            </li>
+            ***Session in Webpages****
+            <li>Sessions are server-side data store that makes HTTP stateful.</li>
+            <li>
+                -- sessions are not to be confused with data source or data storage. 
+                -- session can run without databases, they have session data stores in the server side that can persist the data.
+                -- example of redis, it a database that is used for short term storage, ideal for session data source
+            </li>
+            <li>HOw it works ? 
+                -- Data is stored in the session data storage and a cookie with the id is stored in the browser.
+                -- to unlock the session this cookie will give you the id, which the server will contact data store and fetch the respective details for that id. 
+            </li>
+            <li>Express-session 
+                -- npm Package available for handling session.
+                -- define the middleware, app.use(session({...})); inside session you can pass many options for security and production env.
+                -- We will pass, secret: 'someSecretKey' -- the session will sign the cookies with this secret key.
+                -- Now everytime a req hits the server, we will find a session cookiee related to this express-session, (connect.sid)
+                -- All the cookies will be store here under req.session.cookieName
+            </li>
+            <li>NOTE:
+                -- The default server side storage for express-session is memoryStore(Local memory, it is persistence as long as the session lasts)
+                -- This is not designed for production env, it will cause memory Leak and doesnot scale past single process.
+                -- It is build only for debugging and developing.
+                -- For Production env, we can define any one of the open source compatible session-store available. eg: connect-redis or mongo store etc(refer documentations for express-session)
+            </li>
+            <li>Main Conclusion:
+                -- Cookies are very important for sessions, They store the session Id in the user's browser that contains all the session Info for that User.
+                -- If Cookies are deleted then all the stored session Info also Gone :( ;
+            </li>
+            
+            ***Flash***
+            <li>
+                -- npm package: connect-flash 
+                -- Main Purpose: In the session, It can falsh message to the user eg: success or failure message.
+                -- It just comes and go, happens after successful submission, or redirect or some kind of action.
+            </li>
+            <li>use ? 
+                -- flash messages are stored in session, so session middleware should be there.
+                -- After including it and putting the middleware, app.use(flash()).
+                -- req.flash('info', 'flash message'); -- first param will have something like key eg:info or danger or success or error, followed by the flash message.
+                -- now the above one will store it in session.
+                -- to retrive from the session, res.render('pageName', {message: req.flash(flashKey)});, use the message in the rendered page.
+            </li>
+            <li>Problem: 
+                -- We need to write it at many places for every Routes we define.
+                solution:
+                -- Define a middleware and use res.locals
+                -- res.locals contains variables that are availble only to the views rendered during the req/res cycle.
+            </li>
+
+            ***Authentication and Authorization*** (Very very Important)
+            <li> Authentication ? 
+                -- It verifies who is the person is ? eg: username/password or faceId or security questions.
+            </li>
+            <li>Authorization ? 
+                -- It strictly happens after Authentication.
+                -- It checks what access that person who logged in has ? eg: Is he an Admin, maintaince guy or a customer.
+            </li>
+            *** How password is stored ?***
+            <li>
+                -- pass are never stored in text. (**Never ever do that**)
+                -- we hash the password i.e We run the password through an hashing algorithm and then store it in database.
+                -- hashing function:
+                   Generalized function, which takes a arbitary sized input and spits out a completely deifferent fixed sized response.
+            </li>
+            **Cryptographic Hashing Functions**
+            <li>
+                features of Cryptographic password hash functions: 
+                  -- Its not invertable. Only one way function. eg of one way funtion, Math.abs(x), output is always post. but input we dont know if it was post or negative.
+                  -- small change in input, output will change drastically.
+                  -- same input is always has the same ouput. i.e should be a Deterministic Algo.
+                  -- Output of 2 input should never be same and clash each other.
+                  -- slow processing. so negate the change the brute force to crack the function.
+            </li>
+            NOTE: Cookies are signed using a fast Cryptographic hash function, SHA-256, Since its fast, not suitable for password hashing.
+            <li>**Password salting**
+                -- something extra we do apart from hashing that makes the hashed password more secure.
+            </li>
+            <li>** Why Salting needed ? 
+                -- if we have access to the hashed password, and we know the password hashing algorithm.
+                -- we can basically brute force and create a reverse hash lookup table(Pre-computed based on the hashing algo) for the password and try frequently used passowrd untill it is cracked.
+                -- one more problem is people use the same password sometime, so salt make sure their's hashed output are different from each other.
+            </li>
+            <li>** How to salt the password ? 
+                -- WE just add a random value before hashing the function.
+                -- This ensures we get a very unique and this also remove any chance of reverse hashTable thing since we are using a random value in our password.
+            </li>
+            NOTE:
+            -- Salts are not secret keys, they just add more randomness to the hashing function, provide unique hashed and secure result.
+
+            **Bcrypt (Our password hashing Function)**
+            <li> npm packages:
+                bcrypt -> It is purely for server side. It will run in node JS. and it is faster. written in c++.
+                bcrpt.js -> It is built for client side as well as server-side i.e can work in browser as well as in node. written entirely in JS.
+            </li>
+            *** WE will be using bcrypt *** (we will run ours in server-side alone)
+            ***Setting up Bcrypt Password Hashing package 
+            <li>
+            -- We will be using Bcrypt as our Password hashing function.   
+            -- npm packaging: Bcrypt
+            -- we need to provide saltRounds, It kind of means the difficulty level of hashing you want aka the amount of time to hash. ideally it should be 12.
+            -- lower the number of saltRound faster the algo will run, more is the time, slow it will run, robust the hashed password will be.
+            -- Bcrypt uses 2 function, one to generate a salt and the hash takes pwd and salt and generates a hashed password.
+            NOTE: 
+            -- No need to store salt while using bcrypt, bcrypt inbuilt has compare function which can recognise the salt from a hashed function.
+            -- more saltRound, more time it takes in hashing, ideal set it to 12.
+            -- Also, each time you run, salt value will change that puts randomness in the hashed pass generated.
+            </li>
+            <li> How do the compare my password ?
+                -- bcrypt has compare function that takes hashed and plain text and see if it matches or not.
+            </li>
+            NOTE: 2 functions we need for hashing password using bcrypt:
+            -- hash --> this generates the hashed function, params: passText and saltRound.
+            -- compare --> this comapre passtext and hashedpass to see if they mathes. params: passText and hashedPass(generally stored in DB).
+
+            **Authentication From Scratch using express-session and bcrypt***
+            <li>NOTE:
+                -- While implementing login post request, dont use get, else the pass and username will be visible in the url. (NOT Recommended)
+                -- Always use POST route to take the login frm submit redirect.
+                -- Generally in auth, UserName should be unique so that we can search using that.
+                -- Any problem either with the username or password, we show a genralised error saying, Invalid username or password (**Very Important**)
+                -- WE will be using session to know if a person is loggedin or not and if he can access the routes. Thats the proof that a user is logged in or not.
+                -- Generally we stores the userId of the logged in User in the session, Its easy to fetch user details whereever needed.
+                -- Logout, Its all about removing the session stored user details.
+                -- Furthere we can define Schema.statics methods in our Model to Check and Validate Users. It reduces the code in the main app.js file.
+                -- Also the Hashing of the function can be handeled by model itself. We can run a mongoose middleware before save action i.e a pre hook.
+                **Very IMportant**
+                -- In the model, we have access to one method called isModified(fieldName), It checkes if the fieldName is modified or not.
+            </li>
             <li></li>
             <li></li>
             <li></li>
@@ -1422,7 +1602,36 @@
                 
                 -- For schema validation, we will use Joi schema valiation, put it as a middleware function and call it before the route callbacks of post and edit.
                 -- if this middleware throws an error, the default custom middleware at the end will catch it and process it.
-            
+
+            **Adding Review Model for Our Yelp-camp**
+                -- New Review Schema is add. 
+                -- Review and Campground schema will have one to many Relationship. single campground can have mulitple reviews.
+                -- make sure before writing the route call, What will be the best url for that route. eg: Since i need to store camp details also while svaing a review, Route should have the campground id.
+                -- client side validation is needed, using botstrap validation method and form level validations.
+                -- server side, add a Joi Schema validation and async middleware to catch any error in the from schema or during any mongoose operations.
+                ****VEry Important, Very useful****
+                -- For Deleting Review functionality, we are going to use a Mongoose operator $Pull, it can remove any matching value from an array that satisfys the conditions, Syntax: { $pull: { <field1>: <value|condition>, <field2>: <value|condition>, ... } }
+                ***********************************
+                -- Another Situation: If a campground is deleted, then whole List of comments associated with it also needs to delete.
+                -- campground delete middleware,
+                
+                ***Restructuring the Campgroud index.js and Adding cookies and Sessions***
+                -- we Have shited all the Campgrounds related routes to one seperate folder with all the required dependencies.
+                -- we Have shited all the Review related routes to one seperate folder with all the required dependencies.
+                    NOTE: **Very Important**
+                    -- In review related routes, as prefix we will be sending campID as path param 
+                    -- For Express Router to treat it as path param, we must pass one param while defining Router.
+                    -- eg: const Router = express.Router({mergeParmas: true});                
+                
+                    -- Next we have to manage our static elements including breaking down the boiler scripts and put a public folder and serve it using express.Static().
+                -- NOTE: If you are serving a folder using express.static like views and public, the entire content of the folder is served and you can directly used without mentioning the dir path.
+
+                -- Configuring session and Flash
+                    -- For now we will be using the local memory session store. Later we will move it to mongo.
+                    -- we will send some cookie paramter also like expire, maxAge(in millisecond) and httpOnly (Extra security that saves from accidental reveal of cookies to 3rd party) --> refer the express Documentation.
+                    -- setup connect-flash and flash middleware to make use of flash messages on actions.
+                    -- flash partials for success and error alerts Done.
+                
 
             </li>
         </ul>
