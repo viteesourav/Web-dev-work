@@ -13,8 +13,11 @@ Note: param for forEach,map,filter is the element of the array.
 10) reduce --> takes 2 params accumulate --> stores the value of the retrun. currentVal --> take the val of the ele of the array.
 NOTE: 3rd param is optional it defines the starting value of accumulate.
 11) this behavior depends upon how you declare function.
-NOTE: If function keyword is used then this points to the obj where it's created.
-      If arrow function is used this points to the obj which is executing that function.
+NOTE: If arrow function is used then this points to the obj where it's created.
+      If function keyword is used this points to the obj which is executing that function.
+13) NOTE:
+    -- using spread we can copy existing obj and array into new ones without creating any refernece. ***Imp**
+    -- ...nums --> It will collect all the values passed to it as array elements.
 12) spread(...) --> lot of uses.
     --use to find min or max in an arr.
     --use to copy or append or merge two objects into a new one i.e fetches all the keys and values from others and create a new one.
@@ -157,18 +160,49 @@ const newObj = {
         console.log(`This person ${this.name} got ${this.mark}`);  //here this points to the myObj.
     },
     readTheDetails: function() {
-        setTimeout(function() {  //setTimeOut is created in the myObj so this points to myObj.
-            console.log(this);  //here this points to the myObj
+        setTimeout(function() {  //setTimeOut is executed by windows so this points to windows Obj.
+            console.log(this);  //here this points to the windows obj.
             console.log(`This is reading the Details after 3 sec: ${this.name} got ${this.mark} marks`);
         }, 3000);
     },
     readTheDetailsAgain: function() {
-        setTimeout(()=>{    //setTimeOut is executed by windows so this points to windows Obj.
-            console.log(this); //here this points to the windows obj.
+        setTimeout(()=>{        //setTimeOut is created in the myObj so this points to myObj.
+            console.log(this); //here this points to the myObj
             console.log(`This is reading the Details after 3 sec: ${this.name} got ${this.mark} marks`);
         }, 3000);
     }
 }
+
+let obj34 = {
+    name: "Sourav",
+    age: 45,
+    sayHi: function() {
+        console.log(this);
+        console.log("Hiiii !");
+    },
+    sayHiFromArrow: ()=>{
+      console.log(this);
+      console.log('Hi from the arrow function');
+    },
+    shoutName: function() {
+        setTimeout(()=>{
+            console.log(this);
+            console.log('Hi from the timeOut function');
+        }, 3000);
+    },
+    shoutNameAgin: function() {
+        setTimeout(function(){
+            console.log(this);
+            console.log('Hi from the timeOut function');
+        }, 3000);
+    }
+}
+
+//analysis...
+obj34.sayHi(); //this points normally to the current obj.
+obj34.sayHiFromArrow(); // this trys to find a function keyword up, but nothing is there so points to windows obj.
+obj34.shoutName(); //this trys to find a function inside which it is created, and found shoutname, thus points to the current obj.
+obj34.shoutNameAgin(); //this sees who is executing the current funcs ? setTimeout is a windows obj, thus points to windows obj.
 
 //===========================================================DOM And Async JS=========================================================//
 /*
@@ -177,7 +211,7 @@ Observations for DOM Events:
 1) using document.querySelector to specifically select any element by id or by tagName or by className.
 2) EventListner can be used efficently than using seperate onclick functions.
 3) if you have looping on eventListner, use this in the callback function to access individual elements.
-4) in frm action attribute if you use # it will stay in the same page. if you use / then it will try to redirect.
+4) in frm action attribute if you use #id it will stay in the same page. if you use / then it will try to redirect.
 5) redirect is a default behaviour that can be prevented using evt.preventDefault() in callback.
 6) change keeps tracks of input change, input keeps track when the input changes
 7) benfit of input --> it ignores arrow and special keys. only tracks when it detects an input change.
@@ -298,7 +332,7 @@ NOTE: document.querySelector('') this is a domObj.
  -- .append(text)/.preappend(text) --> add some to the existing element.
  -- .insertAdjacentElement(position, element) --> see MDN for what to type in postion eg: afterend i.e after the specified element add 
     and element is the new element you want to add.
- -- .removeChild(elementtag) or .remove(elementtag).
+ -- .removeChild(elementDOMObject) or .remove(elementtag).
 */
 
 /*
@@ -449,4 +483,111 @@ try {
 catch(err) {
     console.log('Error Encountered !');
 }
-} 
+}
+
+
+/*
+
+***Protoype, OOPs and Classes in JS
+
+-- Objects have access to Object templates under the keyword [[prototype]].
+-- Basically All the Objects have access to a template class, thus have access to all its methods under prototpe Obj.
+-- Eg: when we declare let arr = [], then arr is refering to an array Object. Thus, it pulls all the methods from the Array.prototype
+-- using Factory function, Functions just create and return a obj. 
+Drawback: But these Objects are craeted everytime we declare.
+-- Using constructor, no need to create any obj, new will create an obj and this keyword inside constructor will point to new Obj.
+-- Better way: 
+   Create a class(starts with caps), use constructor to handle the declaration of its Obj. All methods are placed in prototype automatically.
+Why Constructor ?
+-- Basically it handles how to create a new Obj when it is created.
+   Inheritance amoung class:
+-- extends: a new cls can extends old cls methods.
+-- super: the new cls has its own constructor, inside it can call parent class constructor using keyword super.
+NOTe: we noticed, only one constructor is allowed per class. **Imp**
+*/
+
+//factory function...
+const whoami1 = function (name) {
+    
+    const myOwnObj = {};
+    myOwnObj.userId = name;
+    
+    myOwnObj.sayHi = function () {
+        console.log(this);
+        console.log(`HI, this is ${this.userId}`);
+    }
+    return myOwnObj;
+}
+
+// const obj1 = whoami('mampy');
+// obj1.sayHi();
+// const obj2 = whoami('sourav');
+// obj2.sayHi();
+
+
+//we can use constructor and protopyte...
+const Whoami = function (name) {
+    this.userId = name;
+}
+
+Whoami.prototype.sayHi = function() {
+    console.log(this);
+    console.log(`HI, this is ${this.userId}`);
+}
+
+// const obj1 = new Whoami('mampy');
+// console.log(obj1);
+// obj1.sayHi();
+
+//Creating class
+
+
+
+class WhoisThis {
+    constructor(name) {
+        this.userId = name;
+    }
+    //all methods inside class are prototype.
+    sayHI() {
+        console.log('Hi ya !');   
+    }
+    sayHiAgain() {
+        console.log(`Hi, ${this.userId}`);
+    }
+}
+
+// const obj1 = new WhoisThis('sourav');
+// console.log(obj1);
+
+//Inheritance in JS
+
+class Pet {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    sayHi() {
+        console.log(`Hi, This is ${this.name} and i am ${this.age} years old.`);
+    }
+}
+
+const newPet1 = new Pet('toffee', 12);
+console.log(newPet1);
+newPet1.sayHi();
+
+class Cat extends Pet {
+    constructor(name, age, color) {
+        super(name, age);
+        this.color = color;
+    }
+    
+    sayWhatColor() {
+        console.log(`Hey, my color is ${this.color}`);
+    }
+}
+
+const cat1 = new Cat('kity', 9, 'black');
+console.log(cat1);
+cat1.sayWhatColor();
+cat1.sayHi();

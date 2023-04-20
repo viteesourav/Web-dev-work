@@ -5,10 +5,26 @@
     <title>My HTML WorkBook</title>
     <p>NOTE: only the meta-Data included in Header</p>
     <h1>WorkBook</h1>
-    <nav>
+    <nav> Table of Contents:
         <ul>
-            <li> The Reference for HTML Elemnts ---> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">MDN
-                    HTML </a></li>
+            <li>Fronted TechStack:
+                <ul>
+                    <li>HTML WorkBook</li>
+                    <li>CSS WorkBook</li>
+                    <li>JS World</li>
+                </ul>
+            </li>
+            <li>Observation And Important Points From FrontEnd</li>
+            <li>Prototype, Class and OOPs in JS</li>
+            <li>BackEnd TechStack:
+                <ul>
+                    <li>Bash Basic, GIT and NODE JS </li>
+                    <li>EXpress Package </li>
+                    <li>Template Engine, EJS and partials </li>
+                    <li>DataBase, Mongo </li>
+                    <li>Authentication, Bcrypt </li>
+                </ul>
+            </li>
         </ul>
     </nav>
 </head>
@@ -17,6 +33,7 @@
 
 <body>
     <main>
+        <p>The Reference for HTML Elemnts ---> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">MDN HTML </a></p>
         <p> This is where the body starts</p>
         <p>This is a first paragraph details</p>
         <div>
@@ -185,7 +202,7 @@
             <li>In String, We can't modify any letter in any String.</li>
             <li>push and pop --> add and remove from the end, Shift(remove from the first) and unshift(add in the first)
                 --> from the begining of the array</li>
-            <li>Note: push returns post of the added ele, shift() returns the length, pop()/shift return the deleted
+            <li>Note: push returns post of the added ele, unshift() returns the length, pop()/shift() return the deleted
                 element.</li>
             <li>Slice -> get a portion of the array(startIndex, endIndex(optional)), splice --> it replace the orignal
                 array.(stratIndex,deleteCount,element1,element2,.....)</li>
@@ -194,7 +211,11 @@
             <li>arr.includes(xyz) check if xyz present in the array or not.</li>
             <li>Warning: For JS just sort() won't work for sorting numbers. We have to write a function for numeric sort
             </li>
+            NOTE:
+            -- sort() works well on Strings, For Number also it converts the ele to String and then sort.
+            -- sort() for numbers eg: arr.sort(function(a,b){return a-b}); Sort in ascending Order.
             <li>[] === [] is false. == or === never compares the content of the array.</li><br>
+            <li>Math.random() -> generates Random Between 0 to 1 but excluding 1.</li>
 
             **Arrays**
             <li>In Js, Arrays is accessed using refrences. so when you say let num =[1,2,3] that means num points to
@@ -285,6 +306,9 @@
             <li>example --> get the sum of all elements in the array.</li>
             <li>usecase --> find the min or max value in the array.</li>
             <li>**Reduce also allows to take the second params that specify the initial Value of accumulator.**</li><br>
+            <li>Note:
+                -- The accumulator starts with the first val of the arr, currentval iterates over all the element. **IMP**
+            </li>
 
             **NOTE this keyword-- Very Important**
             <li>ideally this refers to the windows object.</li>
@@ -292,8 +316,15 @@
             <li>but when you use a normal function then, this points to the objet which is executing that function, in
                 this case nothing to do with the scope</li>
             <li>Inside an Arrow function, this refers to the same Object where the function is created.</li>
+            ***IMP***
             <li>Never use arrow functions and this to define methods, by default it will point to the windows object
                 instead of the current Object</li><br>
+            NOTE:
+            <li>See, 
+                -- this keyword in Arrow function will try to find up, where is the function keyword above it.
+                -- if it finds a funtion keyword it will point to that obj.
+                -- this keyword in Function keyword defined, points who is executing that function. points to that obj.
+            </li>
 
             **New Features in JS**
             <li>*default parms -> check if the param has some value if not assign it a dafult one</li>
@@ -307,7 +338,7 @@
             <li>*Spread in Objects --> we can use this to copy Object</li>
             <li>special case -> {...[2,3,4]}, here the obj will have indices as keys and element as value</li>
             <li>useCase --> to combine various objects, to copy object, to add new add elements to the existing obj</li>
-            <li>*REST param --> it collects all the arguments you pass in the function in an array</li>
+            <li>*REST parameter --> it collects all the arguments you pass in the function in an array</li>
             <li>syntax --> function sum(...nums) { //code }, all the elements you pass to sum will be collected by num.
             </li>
             <li>example --> collect all the params passed, const collectAllnums = (...nums) => { console.log(nums);};
@@ -385,7 +416,7 @@
             eg: window.getComputedStyle(document.querySelector('h1')).fontSize;
 
             <li>.ClassList --> This returns the list of all the class applied to a particular object. available functs :
-                .add(), .remove(), .contains(), .toggel() [this like turning this class on or off]</li>
+                .add(), .remove(), .contains(), .toggle() [this like turning this class on or off]</li>
             <li>.parentElement --> This will take you up a level from your current position in the html file. (each
                 element an have only one parent)</li>
             <li>.children --> multiple children of your current place, it will return a list of all children.</li>
@@ -398,6 +429,7 @@
                 (firstH1 is a DOM Object)</li>
             <li>.removeChild() and .remove() --> use to remove a child element. for .removeChild()- Go to parentElement
                 and then delete it, .remove() works directly.</li>
+            NOTE: removeChild --> will param as Dom Objects.
             <p>
                 Small Project for displaying all Pokemon using DOM :
             <div><b>Pokemon List:</b> <a href="pokemonDemo/index.html">Go here</a></div>
@@ -436,7 +468,7 @@
             <li>Evt.preventDefault() --> Do the above work.</li>
 
             <p>**Other imp Events**</p>
-            <li>change Event --> triggers when you type something and clicked out. basically it trak if any chnage
+            <li>change Event --> triggers when you type something and clicked out. basically it track if any chnage
                 happened to the input.</li>
             <li>input Event --> Basically track any activity if user click on the input bar.</li>
             NOTE:
@@ -507,7 +539,7 @@
             <li>async and await we will be using for making promise cleaner in syntax.</li>
             <li>****async***</li>
             <li>To make a function async add async infront of the function.</li>
-            <li>A Async function returns a promise object always.</li>
+            <li>A Async function returns a promise object always. **IMP**</li>
             <li>If the function returns something then the promise is resolved and if it throw anything then it is
                 rejected.</li>
             <li>****await***</li>
@@ -640,7 +672,7 @@
                 -- .insertAdjacentElement(position, element) --> see MDN for what to type in postion eg: afterend i.e
                 after the specified element add
                 and element is the new element you want to add.
-                -- .removeChild(elementtag) or .remove(elementtag).
+                -- .removeChild(domElement) or .remove().
             </p>
 
             <p>Observations for DOM Sync Functions and promises: </p>
@@ -691,7 +723,7 @@
             <li>factory function ---> Baiscally the function builds() and returns an object.(not used)</li>
             DrawBack --> Everytime the methods are recreated for every new obj we make.
             ***Constructor function***
-            <li>we difine a function starting with Cap Letter, use this inside it.</li>
+            <li>we difine a function starting with Cap Letter, use 'this' keyword inside it.</li>
             <li>then we call this function with 'new' keyword. eg: new fun()</li>
             <li>new --> it will create a new obj for me and the 'this' of the above fun will point to new obj and
                 returns it</li>
@@ -709,6 +741,7 @@
             <li>NOTE: Classes basically are the blueprints of anything so the above thing totally make sense.</li>
             <li>NOTE: if two obj share the same prototype class then comparing the fun references i.e obj1.fun ===
                 obj2.fun is true. If these are same functions on individual obj then it is false. </li>
+            NOTE: Here, let obj2=obj1; thus both are pointing to the same reference.
             <li>Color system --> rgb/rgba, hex, hsl(hue, saturation, lightness) eg: rgba(0-255,0-255,0-255, 0-1),
                 #5f6f7f , hsl(0-360, 0-100%, 0-100%)</li>
             <li>Inheritance --> use of extends or super keyword.</li>
@@ -746,12 +779,15 @@
             <li>pwd --> print working dir. Specify your current location.</li>
             <li>cd ~ --> this takes you to home dir. ~ --> this symbols shows that you are at the home directory.</li>
             <li>cd --> change directory. use to move around the directory. go forward and backward.</li>
+            eg: cd /c --> goes to c drive, cd /e --> goes to e-drive
             <li>clear/cntrl + L --> to clear the console.</li>
+            NOTE: clear will clear the conosle but cntrl + L is like page up, we move down to a clean space.
             <li>cd .. --> go backward in the fileSystem directory.</li>
             <li>Relative path --> works if the folder is in the same dir eg: cd FolderName</li>
             <li>Absolute path --> works from anywhere, basically you mention the full path. eg: cd
                 /user/backendFolder/FolderName</li>
             <li>cd / --> this will go to the root directory.</li>
+            <li>NOTE: cd ~ --> is taking to c:/users/sourav i.e home dir. but cd / --> this taking to place where git is installed. i.e root dir</li>
             <li>NOTE: if you have space in file names. follow this, eg: cd /d/Desktop\ Files/Backend\ Webdev </li>
             <li>NOTE: something like this also works --> cd ../../folderName i.e Go back two times and then go inside
                 folderName.</li>
@@ -774,6 +810,16 @@
             <li>code . --> open the current dir in a new Vs window.</li>
             <li>cat index.js --> shows the content of the index.js file.</li>
             <li>mv file.js newFile.js --> use to rename/move a file using bash command.</li>
+            eg: rename a file: mv test.txt test1.txt --> file name updated.
+                move the file: mv test1.txt /d/newFolder/test3.txt --> file is moved and renamed to test3.txt.
+
+            **HOW to Use Linux Vim Editior***
+            <li>First you need to go to the location of the target file.</li>
+            <li>View content of file: cat myFile.txt </li>
+            <li>Open in Vim: vim myFile.txt </li>
+            <li>Press i, to go in insert mode. Insert Mode --> here you can add new things/edit existing to the field, use arrow keys to move around the file.</li>
+            <li>To save the changes: press Esc(this will save all the actions) then :wq to Exit the VM</li>
+            <li>The changes will be reflected on cat myFile.txt </li>
 
             <p>******NODE JS *************</p>
             <li>Refer: /d/Desktop Files/Backend Webdev/nodeJS_WorkSpace</li>
@@ -782,10 +828,11 @@
                 gaming, </li>
             <li>NOTE: electron --> single platform where with a single code base it can built native app as well as
                 support web applications i.e cross platform</li>
-            <li> -- basically if you have a website, you can make a native application for the same. use electron
+            <li>-- Majorly used to build native web application using Js, HTML and CSS for cross-platfrom use.</li>
+            <li>-- basically if you have a website, you can make a native application for the same. use electron
                 framework.</li>
 
-            **NODE REPL BASIC COMMANDS**
+            **NODE REPL BASIC COMMANDS** Ref: firstNodeScript.js
             <li>REPL --> Read Evaluate Print Loop. It will continue to listen and evaluate when we write any command and
                 print the result.(Type node in bash and it will open REPL)</li>
             <li>Browser JS vs native Js(node) --> browser JS supports document(supports DOM) and windows(global obj in
@@ -795,26 +842,32 @@
             <li>To run the js code in node --> node fileName.js (make sure you are in the correct dir.)</li>
             <li>process --> this is availble in the global scope. It contains all the information on the current node.js
                 file i.e its version,release, its dir, memory etc</li>
+            NOTE:
+            process.argv in the node repel --> it just returns the node root path.
+            process.argv inside a Js folder --> returns the path of node with the path of the file that is currently getting executed.
             <li>use of process.argv --> it returns a list.
                 -- first_index--> node path or execution path,
                 -- second_index-->js file path,
                 -- after that it will return all the argv passed in the command line.
-                eg: node filename.js arg1 arg2 </li>
+                eg: node filename.js arg1 arg2 </li>  
+            NOTE: here process.argv is inside filename script, and this will return a list, node root, script path and argv1 and argv2.
 
-            **File System using node REPL**
+            **File System using node REPL** Ref: createWebFolder.js
             <li>Two ways of file methods --> sync(it will stop the execution untill the work by the method is done) and
                 async</li>
-            <li>.rquire('fs') --> this will include the file system in the process.</li>
+            <li>const fs = require('fs') --> this will include the file system in the process.</li>
             <li>fs.mkdirSync('folderName') --> creates a new folder in the current dir</li>
             <li>fs.writeFileSync('fileName.html', '') --> creats an empty file at the current location.</li>
             <li>NOTE: always use try and catch for sync methods as they dont have any callbacks.</li>
 
-            **require and module.exports***
+            **require and module.exports*** AppRef: require_and_exports
             <li>module.exports --> used to define what are the things from current file can be accessable to other files when you require it.</li>
             <li>NOTE: require a file in the same dir, syntax --> require(./filename)</li>
             <li>-- exports also can be used. NOTE: make sure we dont assign 'exports' keyword as a variable, then it wont refer to module.exports anymore.</li>
             <li>-- by deafult module.exports is a empty object i.e {}</li>
+            NOTE: eg: module.exports.keyObj = Obj i.e module.exports is an object containing a key called keyObj which has value Obj.
             <li>For require a directory --> it will look for the 'index.js' file in the dir. It will exports whatever this index.js has added to module.exports</li>
+            eg: const req = require('./cars'); here cars is a folder, inside that we have index.js
             
             **NPM command Line tool**
             <li>NPM --> node package Manager. For Refernece: <a href="https://www.npmjs.com/">npm_guide</a></li>
@@ -836,22 +889,22 @@
                 -- All the packages that you install for that project dir will be automatically added to project.json file.
             </li>
 
-            ***working with Project that has dependencies***
+            ***working with Project that has dependencies*** AppRef: jokeMaker, figlet_Demo, language_guesser(Package is ESM only)
             <li>-- node_module folder wont be shared. so visit the project.json file, check the dependencies and isntall them manually one by one.</li>
             <li>-- npm install or npm i --> this command will look for the project.json file and download all the dependencies automatically.</li>
-            <li>Importance: property.json file in the project workspace keeps track and manages the required packages for the project. *Always maintain this one file*</li>
+            <li>Importance: package.json file in the project workspace keeps track and manages the required packages for the project. *Always maintain this one file*</li>
             <li>Note: for uninstalling a pcakge: npm uninstall packageName</li>
             <li>Note: eg: npm uninstall pack1 pack2; npm i pack1 pack2 --> pack1 and pack2 are being uninstalled and installed again fresh with latest version.</li>
             <li>some npm package are purely ESM(ECMAScript Module) --> we have to use import instead of require(). also some changes to project.json file.</li>
             <li>-- eg: import {franc} from 'franc';
                 -- NOTE: require only exists in cjs file(common js) not in ESM module. In ESM we use import
                 -- add in project.json --> "type": module, this will enable ES import/Export.
-                -- Note to use require in ESM add the following *IMP* 
+            Note: to use require in ESM add the following *IMP* 
                 import { createRequire } from "module";
                 const require = createRequire(import.meta.url);
             </li>
 
-            **Express Package**
+            **Express Package** AppRef: expressfirstApp
             <li>It is a framework used to create servers for web development using node.</li>
             <li>Reference to documentation: <a href="https://expressjs.com/">Click here to see Node documentation</a></li>
             <li>uses: to build web applications i.e web servers and APIs. and Every processing involved in the processing the client data.(same as middleware layer)</li>
@@ -927,7 +980,7 @@
                 -- by default express takes current_dir/views. The above method change it to the project_dir/views.
             </li>
             
-            **EJS Syntax**
+            **EJS Syntax** AppRef: firstAppEJS
             <li><%= ... %>  --> between this you can write any Javascipt code. '=' here means it will take that js value and render it in the html.</li>
             <li>template should only handle display of the dynamic data. The logic can be written in the js file and passed to the template.</li>
             <li>Note: pass the data from the js to ejs template file as key-value pair in form of json Object. In ejs file, access the value with the key.</li>
@@ -939,17 +992,17 @@
             <li>NOTE: Remeber if you want to show some data value dont forget to use <%= ... %> and if you want to run some Js code in html then use <% ... %></li>
             
             **Include static files like cssFile, images, fonts etc***
-            <li>we put all the static files in a dir. eg: public and server it in our project using express.static('dirName')</li>
+            <li>we put all the static files in a dir. eg: public and serve it in our project using express.static('dirName')</li>
             <li>Static is a express built-in middleware function to serve static file in the your project.</li>
             <li>NOTE: include the absolute path of the public dir so that it can accessable from any place.</li>
             <li>Once you server the contents of the public dir. they are literally avaiable for you to use in your template and also this works --> localhost:8080/app.css</li>
             NOTE: Never try to include the public folder name in the template link path. What the folder contains is served not the folder.
             
-            **Partials in EJS**
+            **Partials in EJS** AppRef: EJSwithBootstrap
             <li>It's a way of including templates in other templates.</li>
             <li><%- include('templateName') %> -- this way you can include other templates in each other. </li>
             
-            **GET and POST handling from FORM Data**
+            **GET and POST handling from FORM Data** AppRef: handlingFrmData
             <li>GET --> Anything you request from the server.Refelects in the url as query String or param.</li>
             <li>POST --> you send the content to the server in the body. The payload is a part of the body</li>
             <li>Express has .get and .post to handle them seperate.</li>
@@ -958,8 +1011,9 @@
             **use this middleware to handle the req.body data: const bodyParser = require('body-parser'); 
             <li>app.use(bodyParser.json()) --> parse the data passed as json format.</li>
             <li>app.use(bodyParser.urlencoded({ extended: true })) --> parsing frm encoded data.</li>
+            NOTE: we can use like: app.use(express.urlencoded({extended:true}));  //this also works
             
-            **REST**
+            **REST** AppRef: restFul_comment_API
             <li>REST --> representational State Transfer. System which follows REST guidlines are called RESTful.</li>
             <li>To Crate a CRUD layer for APIs we generally follow the REST protocols.</li>
             <li>Redirect of webpage</li>

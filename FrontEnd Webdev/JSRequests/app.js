@@ -112,3 +112,12 @@ const addNewJokes = async () => {
 
 //calling..
 jokeBtn.addEventListener('click', addNewJokes);  //calling the above function by refernece.
+
+displayJoke.addEventListener('click', (evt)=>{
+    console.log(evt);
+    if(evt.target.nodeName == 'LI') {
+        console.log('Clicked on a list to remove it !');
+        evt.target.remove();
+        console.log('Successfully removed !!');
+    }
+})

@@ -56,7 +56,7 @@ app.get('/redit/:subreddit', (req,res)=>{
     if(data) {
         res.render('templateDataPage.ejs', {...data});  //spreading the data Object.
     }else {
-        res.render('notFound.ejs', {page : query});
+        res.render('notFound.ejs', {page : subreddit});
     }
 })
 
