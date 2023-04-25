@@ -1579,6 +1579,11 @@
                 **Very IMportant**
                 -- In the model, we have access to one method called isModified(fieldName), It checkes if the fieldName is modified or not.
             </li>
+            NOTE: 
+            In Express.js, 
+            -- res.locals is an object that provides a way to pass data through the application during the request-response cycle. 
+            -- It allows you to store variables that can be accessed by your templates and other middleware functions.
+           
             <li></li>
             <li></li>
             <li></li>
@@ -1616,78 +1621,6 @@
             <li></li>
             <li></li>
             <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-
-            <p>***Building a fully functional Website including Servers and interactive UI using all important concepts of WEB-DEV-Fundamentals***</p>
-            <li>Important NOteS:
-            **Setting up the basic Routes and Templates for the project**
-                -- Make the project modular, Try with basic route and keep the model and seed files seperate.
-                -- To include partials in your dynamic HTML template, we can use a package called ejs-mate.
-                **ejs-mate**
-                -- ejs-mate is better and efficent than using partials for templating duplicate things in project.
-                -- add the npm package, add the app.engine for ejs to ejs-mate. define boilerplate.ejs with the dynamic body tag.
-                -- we define a boilerplate template and then whenever you call layout('boilerPlate location') in one form, it is passed to the <%- body %> area of the boiler plate template.
-                -- textArea --> Dont have a value attribute.
-                -- in bootstrap, class="col-md-4 offset-4 mb-5", means you will occupy 4 md columns out of 12 and adding offset will start it after the starting 4 columns.
-                -- in form, class= "d-inline", will push the form to get inline with the rest of the content.
-            *******************************************************************************************************************************************************************************************************    
-            NOTE(Just something that needed to be very clear):
-                -- JS by nature runs sync, means runs the code line by line, top to bottom.
-                -- if a function is async it means, anything after that function will run immediately.
-                -- async funs always return a promise object, which is either resolved or failure based on the nature of the response.
-                -- inside the async fun, if we have multiple calls to db, or file or api, we can use await function, it will await for the response to come and then move to the next server call.
-                -- That is why we use await only inside async funcs, to wait for the response of the server call.
-                -- eg: setTimeout is a built-in async call, it runs the callback back function after the specified time, but won't block other function written after it. those will run anyway.
-                    After the specified time, automatically, the response will be printed out. Thus Async Functions are powerful Functions :> RESPECT THEM !
-            *******************************************************************************************************************************************************************************************************    
-            
-            **Including Server-side and client Side validations**
-                -- Client-side validation options available, we can use the html 5 inline 'required' keyword to do the validations (handled by the browser) or can use the bootstarp validation class (makes more sense and looks nice too).
-                -- use the bootstrap validations to do the client side validations.
-                -- Note: using novalidate in form as attribute will ignore any required added for any input.
-                
-                -- Server-side validation, we need to handle mongoose error and middleware errors.
-                -- add the custom error-handler class, add a util folder, with custom ExpressError fun and the wraperAsync catch function(this will catch error inside async functions).
-            Note: if you use app.all('*', (req,res,next)=>{...}) --> this will trigger if none of the top route matched. (It has to be at the end, because route order is important).
-                -- declare custom error handler and throw error whereever required to handler possible mongoose error or req body or param error etc.
-                
-                -- For schema validation, we will use Joi schema valiation, put it as a middleware function and call it before the route callbacks of post and edit.
-                -- if this middleware throws an error, the default custom middleware at the end will catch it and process it.
-
-            **Adding Review Model for Our Yelp-camp**
-                -- New Review Schema is add. 
-                -- Review and Campground schema will have one to many Relationship. single campground can have mulitple reviews.
-                -- make sure before writing the route call, What will be the best url for that route. eg: Since i need to store camp details also while svaing a review, Route should have the campground id.
-                -- client side validation is needed, using botstrap validation method and form level validations.
-                -- server side, add a Joi Schema validation and async middleware to catch any error in the from schema or during any mongoose operations.
-                ****VEry Important, Very useful****
-                -- For Deleting Review functionality, we are going to use a Mongoose operator $Pull, it can remove any matching value from an array that satisfys the conditions, Syntax: { $pull: { <field1>: <value|condition>, <field2>: <value|condition>, ... } }
-                ***********************************
-                -- Another Situation: If a campground is deleted, then whole List of comments associated with it also needs to delete.
-                -- campground delete middleware,
-                
-                ***Restructuring the Campgroud index.js and Adding cookies and Sessions***
-                -- we Have shited all the Campgrounds related routes to one seperate folder with all the required dependencies.
-                -- we Have shited all the Review related routes to one seperate folder with all the required dependencies.
-                    NOTE: **Very Important**
-                    -- In review related routes, as prefix we will be sending campID as path param 
-                    -- For Express Router to treat it as path param, we must pass one param while defining Router.
-                    -- eg: const Router = express.Router({mergeParmas: true});                
-                
-                    -- Next we have to manage our static elements including breaking down the boiler scripts and put a public folder and serve it using express.Static().
-                -- NOTE: If you are serving a folder using express.static like views and public, the entire content of the folder is served and you can directly used without mentioning the dir path.
-
-                -- Configuring session and Flash
-                    -- For now we will be using the local memory session store. Later we will move it to mongo.
-                    -- we will send some cookie paramter also like expire, maxAge(in millisecond) and httpOnly (Extra security that saves from accidental reveal of cookies to 3rd party) --> refer the express Documentation.
-                    -- setup connect-flash and flash middleware to make use of flash messages on actions.
-                    -- flash partials for success and error alerts Done.
-                
-
-            </li>
         </ul>
     </main>
     <hr>
