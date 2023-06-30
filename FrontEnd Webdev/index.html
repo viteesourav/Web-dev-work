@@ -258,6 +258,7 @@
                 element of the array, where it will pass the element automatically..</li>
             <li>Any parameter you give inside the callback Func in the forEach, is taken as an element of that array.
             </li>
+            NOTE: .forEach((ele, index)=>{...}) -> The First param will be the value and the second one will be the index. 
             <li>Map --> same as forEach but the difference is it will create a new array i.e this will have a array as a
                 return type for using map.</li>
             <li>ArrowFunction--> It's allows to write a function without writing the keyWord fucntion. eg: const add =
@@ -1210,7 +1211,13 @@
             <li>syntax: dbSchema.virtual('fieldName'), then set a getter and setter for this. i.e .get() and .set()</li>
             <li>Virtual Property -> This property doesn't really exist in the schema but uses existing schema to maintain a virtual property in the code.</li>
             <li>Needs to define getter and setter for a Virtual Property.</li>
-            
+            <li>NOTE: [V.IMP] 
+                -- Virtual properties added to the Schema, by-default are not visible in console and JSON.
+                -- We need to add a Option Property to Existing Model Schema,
+                eg: const options = { toJSON: {virtuals: true}, toObject: {virtuals: true}};  new Schram({...}, options); [inline declaration]
+                -- toJSON -> Handles the Visiblity of virtuals in JSON format.
+                -- toObject -> Handles the Visiblity of virtuals in console.log()
+            </li>
             **Mongoose middleware** 
             <li>-- It provides a way to run code before or after any operation we do like update or delete or saved.</li>
             <li>It inlcudes per and post hooks.</li>
@@ -1583,9 +1590,25 @@
             In Express.js, 
             -- res.locals is an object that provides a way to pass data through the application during the request-response cycle. 
             -- It allows you to store variables that can be accessed by your templates and other middleware functions.
-           
-            <li></li>
-            <li></li>
+            
+            **Few of the UI Alignment Bootstrap Classes helful while development of User Interfaces**
+            <li>
+            NOTE: Important Text aligment classes With bootstrap (***VEry Very Important**) 
+                1) text-alignmnet:  text-start, text-center, text-end 
+                2) text-wrap and text-nowrap
+                3) text-lowercase, text-uppercase, text-captalize
+                3) font-size: fs-1 as max size possible to fs-6 minimium the text-size.
+                4) font-weight: fw-bold, fw-light, fw-normal, fst-italic
+                5) line-hight: lh-1(no gap between the lines), lh-sm, lh-base, lh-lg(max line height) 
+                6) text-muted: grey color text, text-reset -> inherits the text property of the parent.
+                7) text-decoration: text-decoration-underline, text-decoration-line-through, text-decoration-none.
+            </li>
+            <li>
+            NOTE: important Margine and PAdding classes with Bootstrap (***VEry Very Important**)
+            </li>
+            <li>
+            NOTE: important row and columns classes with Bootstrap (***VEry Very Important**)
+            </li>
             <li></li>
             <li></li>
             <li></li>

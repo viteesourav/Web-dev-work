@@ -1,0 +1,190 @@
+***** Notes On React *****
+
+Home Page for React: https://react.dev/
+
+** React Basic **
+-- Its a front-end library. [very very popular] --based on JS [Manadatory]
+-- It helps build user-interfaces from components. [Components are basically Reusable JS functions]
+-- A large chuck of UI can be broken down into smaller components and then can be reassemble agian. [This is what basically Reacts Do]
+-- components:
+   - Its a bubble that holds html, css and some JS functionality.
+   - This bubble or Function can be reused whereever required in the project.
+   - Most Important Thing: Reuseability
+
+Notes:
+  -- Componets are bunch of functions that knows how to render themselves.
+
+** How to code in React **
+Run React on a Server: 
+-- Tool: codesandbox [Powerful tool then code-pen for building large applications]
+-- To Run React: It needs some important dependencies like: react, react-dom, react-scripts.
+
+** How we can return HTML Looking script in JS ?
+  -- Its not HTML, its JSX.
+  -- One of the dependency called react-script, includes one subdendency called babel/core.
+  -- Babel:
+    - A very important dependency that takes the JSX returned by components and Convert them to JS.
+    - This After conversion into JS, it can render in browser.
+
+** What is JSX or how React Code works ? **
+-- JSX -> Javascript syntax extension.[Looks like HTML tags but not real HTML]
+-- Component functions basically returns JSX. which can be rendered by browser after babel converts it to JS.
+
+** React File Structure
+-- Basically 3 files are involved when working with React
+   1) index.html -> This is place where we have a default root div elements that will hold all components of the APP.
+   2) index.JS -> This will use the components defined in app.js and render the root div in index.html 
+   3) app.js -> Most important part of the Project. Here we define all our components functions and nest them.
+NOTEs:
+  -- In app.js, we always have a default component called APP. All other custom component will be child to this component.
+  -- Index.html and index.js  mostly handles the rendering of the components from app.js
+
+** How to make a Component ?
+-- Give the component name as the function name[First letter should be uppercase], 
+-- return JSX i.e basically return the HTML like template.
+-- In order to Render the function, Inside App Function, add <funName />
+NOTE:
+  -- Multiline JSX returned from a compoenent must be enclosed inside div. [VImp]
+
+** How to split the components into seperate Files ? [Normally 1 file should contain only one component]
+-- ES6 moduler syntax allows import or Export functionality between the files.
+-- export syntax: 
+  export default functionName() { return (...JSX....)}
+  OR 
+  function fun() {..JSX..};  export default fun; 
+-- import syntax: 
+  import funName from './fileLocation'; [This will import the functionality that is exported]
+
+NOTE: Named Exports ? [VIMP]
+-- If we are trying to export multiple functions, then export/Import syntax we need to update as:
+export: 
+  Fun1() {...}; Fun2() {...}; export {Fun1, Fun2};
+import:
+  import {Fun1, Fun2} from './Filelocation';
+
+** JSX Rules For Components
+1) while rendering self closing elements like br or imag or input, we need to specifically close them as <br/> or <img />. [babbel will always looks for the closing tag!]
+  eg: <input type='text' />
+2) A component can only return a single element. [That's why we put all our multiLined JSX inside a div and then return that div]
+
+NOTE:
+ -- Just to wrap multi-line JSX in div can clutter the UI with a lot of div's.
+ -- To avoid this, we use 
+    <> .. JSX lines .... </>  [This is called fragments]
+ -- Comments in JSX:
+    {/* ..... */}
+
+** How to Populate dynamic content inside JSX...
+-- To escape the JSX, we define the content within {...}, The content inside will be consided as pure Javascript.
+
+** Component Decomposition: 
+  -- Big and complicated components can be broken down into smaller components. This makes it more modular in design.
+  -- Smaller components then can be combined together.
+  -- This creates a hirarchy of the components used to build a particular UI.
+
+** styles in React
+  -- Style elements can be written in its own css file, [mostly file name we will try to match with component Name]
+  -- Then to Link the style file to our component file, we need to import the style file.
+
+NOTE: [VIMP]
+  -- INside JSX, we cannot use the keyword 'class' for adding class to JSX tags [class is a reserved word for JS]
+     Instead we use className as an alterantive to include class attribute to our JSX.
+  -- You can assign class attribute to the top level tag of the JSX.
+
+** What is web-packs ?
+  -- web-pack is the the one that bundles all our code Files together. It handles all the imports/exports in our project.
+
+Links to codesandbox Project:
+Basic React App: https://codesandbox.io/s/first-react-project-h39r7g
+Random Pokemon Generator: https://codesandbox.io/s/random-pokemon-project-tn9t5c
+
+** Setting up React Env locally
+-- Tool we are going to use : Vite [It helps setup all the files and folder structure and dependencies required for the project]
+   -- It can be used to setup project for React, Typescript very fast.
+   -- It gives us the Folder and file structure and also provides us with a live dev server.
+Steps:
+  -- npm create vite, then press Y 
+  -- select the type of project you want to build. [select React for our case]
+  -- then run: npm i  [This install all the needed dependencies]   And Done. [react local setup Done]
+
+-- To Run the Project: npm run dev [its a live server that is deployed at the given url]
+
+** codesandbox Vs Vite:
+-- codesandbox uses webpack inorder to manage the files and hold everything together.
+-- Vite handles the files structure and manage if we run React locally.
+
+NOTE: Alternative tool for setup React -> create-react-app [slightly older and slower]
+-- Do the same work as Vite
+-- npm command: npm create-react-app my-app
+
+** App-walk-through:
+-- All components should go under src
+-- default extension for component files will be jsx [js also okay, but jsx makes it look nice and shows react icon]
+-- So we have
+    index.html -> main skeleton of the webpage thats includes a root div.
+    main.jsx -> This takes the App.jsx and renders it to the root div.
+    App.jsx -> Our master Component that contains the whole design of the page.
+
+** Props
+-- we write props that makes Component configurable. eg: <Greeting name="Hello" />
+-- basically, name will be passed as key to the param Object to the Greeter function. eg: param.name will be Hello, where pram is passed as parameter to Greeter.
+NOTE:
+  -- Common practise while using props, we will destructure it at the component level.
+-- For passing props like Numbers, Arrays or objects, We need to pass it inside { ... }; [This will escape the JSX and treat the content as pure JS]
+
+** handling Conditions in React [2 ways]
+-- If based on condition we have 2 scenarios, use tirnary Operator inside JSX within {....}.
+-- If just we check Condiiton, use this, { condition && validScenario } [If condition satisfy, valid scenario will be rendered, If not -> It wont be render atall]
+NOTE:
+  -- Inside the {...} if we put html tags, it will render. [In tirnary Operator, we are putting html tags to render success and failure msg insied {...}]
+
+** How to debug react tools
+-- Install Chrome extension : React Dev tools.
+-- It can detect websites using React and have specific Inspect methods to view all the components used.
+
+** Ways to implement styles in Components [2 ways]
+
+Static way [use className attribute]
+  -- use className attribute to add the class you want to add to the parent div element.
+  -- commonly used to apply skins from a standalone css file, for the entire component.
+
+Dynamic way [use the inline style attribute]
+  -- use the inline style attribute to style the tags. [can be defined based on some condition also]
+  -- This style attribute takes all the css property [cameled case, without hypen] as key-value pair inside of a JS object
+eg: <h1 style={{color: "red", fontWeight: 500}}></h1> [here, first {...} tell JSX that content is JS and second JS is actually out css properties object]
+
+Note:
+  -- While working with props of Array type. To render each element we mostly use Array's map Function.
+
+Why Key Prop needed ?  
+  -- When we work with Arrays or iterative elements, we also need to Add a unique identifier to each items we are rendering.
+Solution:
+  -- Add a key attribute[like how we add a prop] and assign it an unique id. [Needed because React tracks each elements with this id]
+
+EsLint ?
+-- Helps to write better code, it highlights error based on the rules configured in eslintrc.cjs file.
+-- In the config files, you can config what warnings you would like to get while writing code based on the Rules.
+
+NOTE: OPtional Concept of PropTypes [Mostly not used in Projects, Previously was in Use]
+-- PopType is a package that we need to import or it comes automatically by vite.
+-- It basically defines the dataType of the Prop we are passing to a component.
+eg: ComponentName.propType = {
+  prop1: PropTypes.String,
+  prop2: PropTypes.number
+}
+-- If the prop dataType doesnot match then it will throw error in console.
+-- The use of propType is not used much often.
+
+** React Events and Events Handler [VIMP]
+-- In Vanilla JS, we use DOM queryselector and eventListner to handle Events.
+NOTE: 
+-- All Event Names are Cameled Cased here.[Same Name as MDN docs but in React it is Cameled Case]
+-- OnClick Event:
+  In React, we define OnClick prop inline in the JSX and pass a function Reference name. [NOte: we pass fun[It's referes to the function] not fun()[This execute the function]]
+-- Few of the Events Handler works with evt obj. [eg: OnSubmit of form, we get that evt obj default coming to the function that conatins all info regrding the event]
+-- The Above works same in React. All functions that handle events have access to evt obj that contains all info about event.
+NOTE:
+  -- If your event expects some params other than evt object, 2 ways to handle it.
+  1. Use arrow function directly at the event prop place.
+  2. Define a function that in inside the component and handle it. [It will have access to the props passed to the component]
+
