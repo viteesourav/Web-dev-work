@@ -175,7 +175,8 @@ eg: ComponentName.propType = {
 -- If the prop dataType doesnot match then it will throw error in console.
 -- The use of propType is not used much often.
 
-** React Events and Events Handler [VIMP]
+[VIMP]
+** React Events and Events Handler 
 -- In Vanilla JS, we use DOM queryselector and eventListner to handle Events.
 NOTE: 
 -- All Event Names are Cameled Cased here.[Same Name as MDN docs but in React it is Cameled Case]
@@ -185,6 +186,50 @@ NOTE:
 -- The Above works same in React. All functions that handle events have access to evt obj that contains all info about event.
 NOTE:
   -- If your event expects some params other than evt object, 2 ways to handle it.
-  1. Use arrow function directly at the event prop place.
+  1. Use arrow function directly at the event prop place.[Mostly preffered]
   2. Define a function that in inside the component and handle it. [It will have access to the props passed to the component]
 
+Important Concepts in React so far:
+1) Components: Building block of the UI, includes Functions, Logic and return JSX.
+2) Props: Attributes passed to the components. [Cannot be updated, Component should not change prop values]
+3) State: Related to Componenet Re-render/Update based on data inside the component. [It can be updated !]  eg: A couter functionality.
+
+[VImp]
+** State in React 
+-- React needs to re-render Components in order to show updates. States Helps React to identify when its need to Update or re-render the Component again.
+
+Why we need State ?
+1) Used when we fetch data from APIs 
+2) Handle Form Information 
+3) variable that decide show or hide something.
+NOTE: Basically, If anything Inside the Component has a possiblity that it can update or change or we need to re-render, we use State.
+
+** How to Use state in React ? [This uses React Hooks: useState]
+-- What are React Hooks ?
+   -- This are the functions given by React to us, that we can use in our logic. eg: useState, useEffect etc..
+   -- All Starts with `use..`, check the docs for more refrence.
+
+[Imp]
+* useState: [Ref: https://react.dev/reference/react/useState]
+  -- It is a react hook that allows us to Use state fecture of React in Our Component.
+  -- takes a Parameter that defines the starting state.
+  -- It returns 2 Array elements:
+     1) The state variable: The variable that is getting updated.
+     2) A function: That handles the update of the variable.
+
+NOTE: 
+  -- InOrder to useState, we need to import this specifically from React.
+  -- WE should always destructure the useState returned array. It always contains 2 things. stateName and StateFunction.
+  -- Its Okay if we define nested function, State variable and props are not avaiable out the component scope,
+     So helper functions and methods [Arrow Functions preffered] can be defined inside the component functions.
+  -- Inside {...}, It itentify the content as JS, now if you want to include any HTML content, you can use tags or just <>...</>, It will be treated as HTML.
+  -- Multiple useState can be used inside the same component. [NO Limit]
+
+** Component Rendering and Life-cycle of a Component
+  -- So bascially, what ever param we give to useState, It will be the default value of the state only for 1st Render.
+  -- AS soon as we call the state Function,
+     -- The component will re-render it selef, with the updated Value of the state.
+     -- The Component will re-render with update Value, after the current Rendering is Done [VIMP]
+     that is, after state-function, state variable wont update immediatly, Rather it will update on the next Render of the component.
+
+ 

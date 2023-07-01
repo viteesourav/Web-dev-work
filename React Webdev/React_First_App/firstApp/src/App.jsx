@@ -7,6 +7,9 @@ import ShoppingList from './ShoppingList'
 import PropertyList from './PropertyList'
 import Clicker from './Clicker'
 import MakeButtonEvt from './MakeButtonEvt'
+import IncrementCount from './IncrementCount'
+import TogglerBtn from './TogglerBtn'
+import MagicColorBox from './MagicColorBox'
 
 const shoppingData = [
   {id: 1, item: "potato", qty: 6, isPicked: true},
@@ -27,18 +30,21 @@ const properties = [
 function App() {
   return (
     <>
-      <MakeButtonEvt msg="This Button" btnText="click Me" />
-      {/* <Clicker /> */}
-      {/* <PropertyList lists={properties} /> */}
-      {/* <ShoppingList itemList={shoppingData} /> */}
-      {/* <TestComponent /> */}
-      {/* <Greeter name="Sourav" age={22} />
-      <Greeter name="Teddy" age={34} /> */}
-      {/* <h2>Double Dice Rolled ! If they Match You win &#128526; </h2>
-      <DoubleDice />
-      <DoubleDice />
-      <DoubleDice /> */}
-      {/* <ColorList list={["red", "pink", "black", "grey"]} /> */}
+    <MagicColorBox rows={5}/> 
+    {/* <TogglerBtn /> */}
+    {/* <IncrementCount /> */}
+    {/* <MakeButtonEvt msg="This Button" btnText="click Me" /> */}
+    {/* <Clicker /> */}
+    {/* <PropertyList lists={properties} /> */}
+    {/* <ShoppingList itemList={shoppingData} /> */}
+    {/* <TestComponent /> */}
+    {/* <Greeter name="Sourav" age={22} />
+    <Greeter name="Teddy" age={34} /> */}
+    {/* <h2>Double Dice Rolled ! If they Match You win &#128526; </h2>
+    <DoubleDice />
+    <DoubleDice />
+    <DoubleDice /> */}
+    {/* <ColorList list={["red", "pink", "black", "grey"]} /> */}
     </>
   )
 }
