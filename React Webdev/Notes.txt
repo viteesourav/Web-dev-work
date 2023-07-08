@@ -232,4 +232,121 @@ NOTE:
      -- The Component will re-render with update Value, after the current Rendering is Done [VIMP]
      that is, after state-function, state variable wont update immediatly, Rather it will update on the next Render of the component.
 
- 
+[Imp]
+* What is the right way to update State when the update state depends on the current State value ? [This is only when state update depends upon the prev state value]
+  Problem: If we directly pass the updated state value in the state function ? eg: setCount(count + 1);
+     -- For the new Count to reflect, the useState has to run again.
+     -- For this, The component function needs to run again, then only the updated value will refelect.
+     -- IF we call the same state function multiple times, It will fail.
+  Solution:
+     -- Mostly preffered while writing state function in React, when prev state value we are updating...
+     -- In the state function, we pass a upadate function. [Normally, it is an arrow function]
+     eg: setCount((count)=>count+1);
+     -- Here, React, sends the current state and get the updated state Value for the next component Reload.
+NOTE:
+  -- This will update the count immediatly, It will get update only when the component will re-render with the latest count val.
+  -- bascially, After we call the state function, React will not update the state value immediatly, It will only after it re-runs the component function again !
+
+* Setting up Initial UseState
+  -- Ideally, useState will take the param as the Initial state value and then on subsiquent Render, it will ignore it.
+  -- Situation: 
+     Whatif we have heavy function, that we need to pass as Initial State Value. eg: useState(runFun());
+     -- Here, Not just on Initialise but Everytime the component Refreshes, the runFun will be executed and the return value will be ignored. [But the function executes that takes time]
+  Solution:
+    -- Instead of calling the function, we can pass it by reference. eg: useState(runFun)
+    -- On Initialise, useState will execute the function and work with the return Value.
+    -- On State Change refresh, useState going to ignore this fun and wont run it also. [Saves Time, Problem Solved :)]
+NOTE: If the initializer function takes param, pass it like an arrow function. eg: useState(()=>runFun(param1)); [Here, Everytime, it will not execute the function when component re-render]
+
+* When React Renders ? [How it identify state has changed or not ?]
+    -- React can identify and compare the prev and the current state value to see if there is a change.
+    -- If change is there, It will re-render, else it will ignore.
+    -- Calling state fucntion multiple times will also not re-render multiple times, It will patch all the state functions together and re-render once.
+
+[VIMP]
+* Working with useState with mutable Objects like Arrays or Objects [We have to make Copy before we call state Function]
+  -- AS such no difference, Everything is same as we do in case of number and strings.
+  -- We need to take care when we update the state value.
+  problem: If you update the keys of the existing Object and send it in state function. It won't work.
+    -- React will compare the identity/memory Refernece of the current state value and updated state Value, Since the Obj is same and just the content is updated. [It wont Render atall]
+  solution:
+    -- we use the spread Operator eg: {... obj} to spread the content of the obj in a new completely new Obj, update our key and then send it to state function.
+    -- Now since current state and update state are 2 different Obj, React will Render the page.
+NOTE:
+  -- In case of Array, Make a copy of the array into a new varaible and pass that to state Function, use [... arr] to create a newCopy of the existing arr.
+  -- If we are updating a array type state value, use filter or map [REason: they return a new Array after processing]
+  -- The state function, it accepts a param that represents the current state val [useful when defining update function]
+  -- In case when you handle Loop over tags and needed keyProp, You can use the uuid npm library to generate uuids for keys.
+
+* Importance of Passing key Prop while Rending loops:
+  -- We need to have a unique identifier to keep track of the elements.
+  -- useful for delete or update of a specific element from the List.
+
+* Handling Common Array Type State Val:
+  eg: const arr = [{key: 1, text: "a"}, {key: 2, text: "b"}, {key: 3, text: "c"}]
+  
+  1) To Add new Element [use the Spread Operator]
+      [...arr, {key:4, text:"e}]
+  
+  2) To delete an Element [use Filter]
+      arr.filter(e=>(e.key != 3))  -> Delete the element with key 3
+  
+  3) To update an Element [use Map]
+      arr.map(e => {
+        return (e.key === 2) ? {
+          ...e, text: "kiio"
+        }:e;
+      })
+
+
+NOTE: Play_Dice [This Component we will break down into samller componenets]
+
+LuckyN GameRules: 
+  -- You have N pair of Dice. 
+  -- You Roll Them, If the sum of the Dice meets Target, [You Win]
+
+** Why Breaking Down a Big project into Small component is Required ?
+Advantages:
+  -- It increases the modularity of the whole Application.
+  -- Code Reuseability and easy maintainance.
+  -- Multiple Resources can Work on the feature simultaneously without blocking each other.
+
+Common Rules in React: [Important]
+-- Place the State Variable as high as possible while building a Componenet.
+  why ?
+  -- In React we cannot send the state from a child componenet back to the parent Component.
+  -- The Flow of data is downwards.
+-- States From parent Component can be passed down to Child.
+-- While Decoupling a component, we make 2 types of component:
+   1) Presentational Component:
+      -- This are just component that renders the UI based on props. [No Logic Included]
+   2) Logical Component: 
+      -- This components basically handles all the math and states variables.
+
+** Destructuring the LuckyN Dice Game Structure: [Ref: LuckN.jsx component] 
+  App -> LuckyN -> ShowDice -> Dice.
+
+1) Dice Component: A simple Component, That take dice Number as prop and just display in a box.
+2) ShowDice: It accepts a array prop with all the Dice Values and then Render dice component for each one of them.
+3) LuckyN: This is a Logical Component. It Handles the states Values and Logic of the Game.
+4) App: The parent that bundles all the above Components and render on the Screen.
+
+** While building a component, These properties we should take care:
+  1) Props: What props we need in our Component !
+  2) State: What are the values that need a state and can update !
+  3) Events: What are the events we are supporting ? When this event happens what Action we are going to take ?
+
+** Handling Functions as Props [Important] [Ref: LuckyN.jsx Component][feature: Check How are handling the gameWin Logic for different Dice Game]
+ -- In JS, Functions are treated as first-class i.e They can be passes as params to Other Functions.
+ -- We can pass functions references as props to Component, Component then can execute that Prop to trigger the Function.
+USE ?
+ -- If we define a state in Parent Component, and we want Child Component to update that State ? [Very Important] [feature: Check how we are handling the Refresh Button Click Event]
+ -- We can define a function that calls state update function, Then pass this function reference as Prop to the child Component.
+ -- When ever child component will trigger the function, The state of Parent Component will change, which will refresh the Component.
+
+** Why Lifting the useState to parent Component ? When we should not do it ? [feature: Check how on Click of each box, the Value updates]
+  -- If the State is limited to just the child Component, then we can use the useSate just within the Child component.
+  -- If the requirement is we need to Handle the state of multiple Child component, Better to Lift the state to parent component.
+     then use, prop functions to send update State function reference down to the Child Components.
+     This way, All The child Component can share a common Sate Variable among them.
+
