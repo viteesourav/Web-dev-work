@@ -350,3 +350,37 @@ USE ?
      then use, prop functions to send update State function reference down to the Child Components.
      This way, All The child Component can share a common Sate Variable among them.
 
+*** React and Form Handling ***
+
+* What is controlled componenet ? [React Controlled Component using State] [Ref: FirstFrom.jsx]
+  -- It is way in which React keeps a state check on what is happening in the Component. [React state here is "single source of truth" ]
+  -- React controls what the component will show and what happens when user provide input to the component.
+eg: For an input in Form, We dont extract the value from the input tag like how we use in Vanialla JS using eventListners.
+  Rather in React, we use a state to keep Track of the change [onChange Event] in the text value and update it in the form. [React controlling the Component] 
+i.e In react, State Variable will be always in sync with what the form holds at any point of time.
+
+* How to Link Labels with input tag in JSX ? 
+  -- Normally, in JS, we use 'for' attribut in label that takes id of the input.
+  -- In React, 'for' is reserved so we use 'htmlFor' instead.
+
+* handle Multiple form inputs and Submission. [Imp][Ref: LoginFrmDemo]
+  Appraoch 1: For each Input, add a useSate Variable and a updater Function. [Not Recommended, As FormSize increase, It will look awful]
+  Appraoch 2: [prefered]
+  -- Have a Single useState as Object that contains all the input field 'name' as keys to this Object.
+  -- We have a single OnChange EventHandler.
+  -- Each input field will have its name.
+  -- Fetch the name of the field that updates from evt.target.name and its value as evt.target.value.  
+
+* What is computed Object ? [Just a clearer way of updating Object in StateUpdate Functions]
+  -- If you have varaible like first = 'test', and obj = {a:4, b: 6};
+  -- Now, if we say, obj[first] = 8, it means within the bracket, first is computed that is test, so obj: {a:4, b:6, test: 8};
+  -- Another way of doing the above, 
+     let newObj = {...obj, [first]: 8}, Here, its gonna add test: 8 to the newObj along with the keys from obj
+eg: 
+    setFrmData(frmData => {
+            return {
+                ...frmData,
+                [evt.target.name]: evt.target.value
+            }
+        })
+Here, Taking the existing frmData, retruning a new Object, and we are computed the key name based on target.name and the value based on target.value.
