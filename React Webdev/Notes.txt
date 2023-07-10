@@ -233,18 +233,18 @@ NOTE:
      that is, after state-function, state variable wont update immediatly, Rather it will update on the next Render of the component.
 
 [Imp]
-* What is the right way to update State when the update state depends on the current State value ? [This is only when state update depends upon the prev state value]
+* What is the right way to update State when the update the existing state variable ? [This is only when state update depends upon the prev state value]
   Problem: If we directly pass the updated state value in the state function ? eg: setCount(count + 1);
      -- For the new Count to reflect, the useState has to run again.
      -- For this, The component function needs to run again, then only the updated value will refelect.
      -- IF we call the same state function multiple times, It will fail.
   Solution:
-     -- Mostly preffered while writing state function in React, when prev state value we are updating...
+     -- Mostly preffered while writing state function in React, when existing state value we are updating...
      -- In the state function, we pass a upadate function. [Normally, it is an arrow function]
      eg: setCount((count)=>count+1);
      -- Here, React, sends the current state and get the updated state Value for the next component Reload.
 NOTE:
-  -- This will update the count immediatly, It will get update only when the component will re-render with the latest count val.
+  -- This will still not update the count immediatly, It will get update only when the component will re-render with the latest count val.
   -- bascially, After we call the state function, React will not update the state value immediatly, It will only after it re-runs the component function again !
 
 * Setting up Initial UseState
@@ -371,6 +371,10 @@ i.e In react, State Variable will be always in sync with what the form holds at 
   -- Each input field will have its name.
   -- Fetch the name of the field that updates from evt.target.name and its value as evt.target.value.  
 
+NOTE: [VImp]
+  -- In React Form, Basically all the input should have mandatory a part of form state variable.
+  -- All the input tags must have value and onChange attribute to Handle Form interaction. 
+
 * What is computed Object ? [Just a clearer way of updating Object in StateUpdate Functions]
   -- If you have varaible like first = 'test', and obj = {a:4, b: 6};
   -- Now, if we say, obj[first] = 8, it means within the bracket, first is computed that is test, so obj: {a:4, b:6, test: 8};
@@ -384,3 +388,44 @@ eg:
             }
         })
 Here, Taking the existing frmData, retruning a new Object, and we are computed the key name based on target.name and the value based on target.value.
+
+** Shopping List App ** [For Implementation of Fun as Prop and Form implementation and Form Validations]
+App Structure: 
+1) App.jsx [Manages all Components]
+2) ShoppingList [Manages all Shopping items]
+3) AddShoppingItem [Handles addition of new Items][Implements Form Logic]
+
+** Validation with Forms **
+1) Do Validation Manually using custom Defined validation Handler functions [Ref: Shopping List we validated Manually]
+  -- Define Validation checker functions, Either in onChange Event Handler or onSubmitEvent Handler function.
+  Drawback:
+    -- If we have lot of inputs, Validating them makes code more complex and too long.
+  NOTE: [IMP]
+  -- For Valiation, Dont use state variables, they dont update immediately, they update in the next render.
+  -- Rather, use event object from event Handler functions to perform all validations.
+
+2) Use React tool [React Hook Form] [https://www.react-hook-form.com/][Refer: FrmValiationsTool.jsx ]
+  -- npm i react-hook-form
+  -- Easy and faster to Handle all things regarding form.
+  -- It expose a hook, useForm() that handles the input tracking, submit Event, validations before submit and error messages.
+
+NOTEs: Important Steps while using React-hook-form [Imp]
+1) Using the hook [useForm]
+   -- use the hook, useForm(), [takes a param: mode -> bydefault its onSubmit, Decide when to check for valiadtions]
+   -- 3 things you must destructor from the hook: register, handleSubmit and formState : { errors }
+2) Validation logic for the inputs
+   -- here we defined the validation logic for each of the field we have in our input. [Its a JSON Object]
+   -- Most common validations: required, minLength, maxLength, min or max. 
+   -- NOTE: required takes just the error message, others we need to define value and message.
+   -- Check Documentation for how to write different validations.
+3) Handle Form Submission:
+   -- Normal the function should be defined, it receives one param bydefault which contains the formData Obj.
+   -- For the formEvent onSubmit, we should pass our submit Handler function within handleSubmit.
+   -- handleSubmit will apply validation and check and then pass it only if all validations are met.
+4) register the inputs fields
+   -- For each input, we should have name attribute and need to pass {...register('fieldName', validationObj)}
+   -- the fieldName will keep track of the input Fields of the form.
+5) Handle Form Errors.
+   -- we will use 'errors' [the one that we destructure form useForm()] to handle errors. [By default it will be empty]
+   -- Whenever some valiadtion fails, errors will have corresponding fieldName and it will contain the respective error message
+   NOTE: before display error message always take care to check if the errors obj contains that field name or not ? [use errors?.password, it checks if errors have a key called password or not] 
