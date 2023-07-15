@@ -429,3 +429,59 @@ NOTEs: Important Steps while using React-hook-form [Imp]
    -- we will use 'errors' [the one that we destructure form useForm()] to handle errors. [By default it will be empty]
    -- Whenever some valiadtion fails, errors will have corresponding fieldName and it will contain the respective error message
    NOTE: before display error message always take care to check if the errors obj contains that field name or not ? [use errors?.password, it checks if errors have a key called password or not] 
+
+** Using React Effects Hook ** [Refer: React_Effect App]
+
+* What are effects means ? 
+  -- Doing anything after a component re-render is called effect.
+  -- Effects are mostly used for side-effects [Things that are not related to render]
+
+NOTE: 
+  -- useState is what triggers the re-render of the component.
+  -- useEffect take care of things which are not related to re-render.
+
+* Why we need Effect ? [useCase for using useEffect hook ]
+  1) Handling DOM that React don't cover.
+  2) Async Operations, Making a service Call using any API [When component is mounted or Rendered for the first time]
+  3) Doing things when component is about to be un-Mounted.
+
+** useEffect Hook ** [VIMP]
+  -- it's basically takes a function in its param.
+  -- It executes everytime the component re-render it self due to any state changes. [This is the default behavior of useEffect]
+  -- There is a optional 2nd Argument [State dependencies]: Takes State variable in form of Array
+     -- This makes the useEffect Run the callback fun only when the given state changes.
+  NOTE: if we pass [], then the effect callback Function will run just once when the component load for first time.
+
+NOTE: [Very Important] 
+  -- In development mode, Intially when the component loads, useEffect callback fn might run 2 times.[Ignore it]
+  -- In Production env, It will run just once.
+REason: 
+  Ref: https://react.dev/reference/react/useEffect#my-effect-runs-twice-when-the-component-mounts
+  -- Well as per docs, In dev mode when strict mode is enabled, Reacts Runs a setup function before cleanup to check if everything is Okay with the code or not.
+  -- This is like a stress-test that React do before actually mounting the component.
+  -- Basically in prod -> setup [only one time its called]
+  -- In dev -> setup -> cleanup -> setup sequence. [If cleanup is not implemented then setup runs twice, we see 2 times].
+  -- cleanUp functions, we have to basically write functions that handles when the component unmount. [Ref: https://hackernoon.com/cleanup-functions-in-reacts-useeffect-hook-explained#h-what-is-the-use-effect-cleanup-function]
+
+[Imp] [Ref: ShowDadJokes(simple component using useEffect with API Request)]
+** One Big Limitation of useState initializer function.
+  -- So we are allowed to pass function Reference to UseState that executes only the first time when useState runs.
+  -- BUT, we cannot pass a async function [Function involves promises/ API data fetch] as initialiser function.
+  -- It simply wont wait till the API returns Response, The state will store a promise Object by default in this case.
+
+Solution:
+  -- Use useEffect hook, and calls the async Function in the callback.
+  Problem: Here also you cannot pass a async function directly, It won't wait !
+  solution: 
+    -- In the callback function, Either define the async function there and then immediatly execute it.
+    -- IF the async function is already defined, in the callback function, just call the async function.
+
+NOTE: What happens  when you call multiple set useState functions in sequence ?
+  -- In Case we dont have async Functions, React stich all the set useState functions in one and re-render the component with the updated state value.
+  -- In case we have 1 normal set state fun and then we have async func inside where we are calling set state fun again ? [REf: In ShowDadJokes, we are doing similar onClick handle function]
+     -- Here, first the normal setState triggers a compoent refresh, 
+     -- Then after sometime when the async func is done and set state fun are called inside the .then chain, It will trigger another refresh.
+
+REF: FetchGitProfile [uses 2 seperate components [one handles form, other handles data and renders the info] and useEffect and useState Hook]
+
+-------- This Solves our Problem on how to handle API requests in React Components ---------
