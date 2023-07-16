@@ -485,3 +485,32 @@ NOTE: What happens  when you call multiple set useState functions in sequence ?
 REF: FetchGitProfile [uses 2 seperate components [one handles form, other handles data and renders the info] and useEffect and useState Hook]
 
 -------- This Solves our Problem on how to handle API requests in React Components ---------
+
+*** Material UI and React *** [Set of pre-built components that we can use in our project.]
+
+  Ref: https://mui.com/material-ui/getting-started/installation/
+
+  -- Material UI is a library of React UI components that implements Google's Material Design.
+  -- Node Package needed : 
+      1) Depending upon the style Engine: npm install @mui/material @emotion/react @emotion/styled [for emotion styled engine]
+      2) Roboto Font: npm install @fontsource/roboto
+      3) Icons: npm install @mui/icons-material
+  -- Basically, For any Component References Go by the Docs and copy paste the code.
+  -- Whenever you use any component, Remember to import that Component.
+
+NOTE:
+  -- for Instance, the Button tag of MUI and Button tag from html are 2 different things, One is a component and the other is a HTML Tag.
+  -- Though both of them can accept the same attribute. [the MUI button is built with the html button tag only]
+
+NOTE:
+  -- Often attributes like error in TextField MUI component, diabled in button and textBox, or helperText in TextBox Component,
+     we want to toggel them, So Basically, these are boolean field, Based on the state, you can set is either true or false.
+  -- For attribute like helperText that takes a string, If based on condition, if the text is not given, React will ignore this attribute. [same as toggeling them].
+
+** How can we Add Custom Style to MUI Components **
+  -- Basically, we have one attribute called sx, sx takes an Object where we define our custom Style.
+NOTE: 
+  -- The sx Object doesnot Follow the Normal css syntax, Its a bit different. [follow the docs while defining them]
+  -- here p is padding and m is margin and width and height takes just a number [we dont pass px or rem or ems]
+
+  REF: MyTODO [App Built with Material UI and React Important Concepts of States and Effects]
