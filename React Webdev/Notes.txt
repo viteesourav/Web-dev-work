@@ -486,6 +486,11 @@ REF: FetchGitProfile [uses 2 seperate components [one handles form, other handle
 
 -------- This Solves our Problem on how to handle API requests in React Components ---------
 
+*** Ways to Style a REact Component ***
+ -- Most Commonly 2 style appraoch is used.
+  1) using the tailwind css. [Similar like bootstrap, have predefined classes and utility Components]
+  2) use mui by google. [They have lots of components supports, Icons and sx styling to style and built UI] 
+
 *** Material UI and React *** [Set of pre-built components that we can use in our project.]
 
   Ref: https://mui.com/material-ui/getting-started/installation/
@@ -508,9 +513,38 @@ NOTE:
   -- For attribute like helperText that takes a string, If based on condition, if the text is not given, React will ignore this attribute. [same as toggeling them].
 
 ** How can we Add Custom Style to MUI Components **
-  -- Basically, we have one attribute called sx, sx takes an Object where we define our custom Style.
+  -- Basically, we have one attribute called sx, sx takes an Object where we define our custom Style. [Ref: https://mui.com/system/getting-started/the-sx-prop/]
 NOTE: 
   -- The sx Object doesnot Follow the Normal css syntax, Its a bit different. [follow the docs while defining them]
+  -- Most of the CSS Property you can define directly, like flex box and all, few of them we have shortcuts like for padding and margine.
+  -- These Properties takes just int value that is multiplied by the default set values in themes.
   -- here p is padding and m is margin and width and height takes just a number [we dont pass px or rem or ems]
 
-  REF: MyTODO [App Built with Material UI and React Important Concepts of States and Effects]
+REF: MyTODO [App Built with Material UI and React Important Concepts of States and Effects]
+
+Project Notes:
+  -- CssBaseline : It strips aways the default browser styles.
+  -- In Checkbox, The checkBox comp and the ListItem Msg are connected via the id attribute.
+  -- Its, Better to decompose the Component that becoming big into smaller components and use props to control it.
+  eg: Entire List component can be broken into one Component holding the logic and List, child Component Holiding the individual List Items.
+
+NOTE: [VIMp, Easy mistake to make...]
+  -- When working with any arrow Function for example using map with List, If you use {...} make sure you return the stuff. eg: arr.map(data => { return (<div>....</div>)});
+  -- If you dont want to use the keyword return then use (...) eg: arr.map(data => (<div>....</div>)); [Implicit Return]
+
+*** Use of Local Storage ***
+  -- BAsically it is a keyword in JS, that can store key-value pair of data into the browser.
+Why ?
+  -- Even if the browser is Refreshed or closed, The data persist.
+Operations ?
+  -- localStorage.setItem("myCat", "Tom");
+  -- const cat = localStorage.getItem("myCat");
+  -- localStorage.removeItem("myCat");
+  -- localStorage.clear();
+
+NOTE: localStorage persist the data and stores it in browser even when you refresh the page.
+  -- It removes all the data once we close the browser. [imp]
+
+** How to get random ID without the uuid package **
+  -- Browser provides one crypto interface, that can generate the v4 uuid using a crypto random number generator.
+eg: const id = crypto.randomUUID(); //36b8f84d-df4e-4d49-b662-bcde71a8764f
