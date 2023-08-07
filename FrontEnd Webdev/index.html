@@ -1592,8 +1592,7 @@
             -- It allows you to store variables that can be accessed by your templates and other middleware functions.
             
             **Few of the UI Alignment Bootstrap Classes helful while development of User Interfaces**
-            <li>
-            NOTE: Important Text aligment classes With bootstrap (***VEry Very Important**) 
+            <li>Important Text aligment classes With bootstrap (***VEry Very Important**) 
                 1) text-alignmnet:  text-start, text-center, text-end 
                 2) text-wrap and text-nowrap
                 3) text-lowercase, text-uppercase, text-captalize
@@ -1603,13 +1602,46 @@
                 6) text-muted: grey color text, text-reset -> inherits the text property of the parent.
                 7) text-decoration: text-decoration-underline, text-decoration-line-through, text-decoration-none.
             </li>
-            <li>
-            NOTE: important Margine and PAdding classes with Bootstrap (***VEry Very Important**)
+            <li>Important Margine and PAdding classes with Bootstrap (***VEry Very Important**)
+                -- Padding and margin both can be used for aligning containers and elements in the page.
+                -- Padding: It is the space around the container, This space is included in the total width and height of the container.
+                   Margin: It is the space among the containers.
+                -- Bootstrap enables us to use mrgine and padding which works for responsive pages.
+                -- Sizes Availble in Responsive pages: xs, sm, md, lg, xl, xxl [Defines the breakpoint onwards which the property should be in effect] 
+                -- Sides are like: $spacer * side [$spacer is by default 1rem]
+                Syntax: 
+                    propertysides-breakpoint-size eg: mb-lg-2
+
+                ** property: m or p i.e margin or padding.
+                ** sides: t[top], b[bottom], x[x-axis], y[y-axis], s[left], e[right], blank[all 4 sides] 
+                ** breakpoint: xs, sm, md, lg, xl, xxl
+                ** size: 0 to 5 [each will be size* 0.25], auto [brings to center of the parent container]
+
+                NOTE: negative margins are by-default disabled in bootstrap.
             </li>
-            <li>
-            NOTE: important row and columns classes with Bootstrap (***VEry Very Important**)
+            <li>Important row and columns classes with Bootstrap (***VEry Very Important**)
+                -- Aligniment of big containers in a Page -> we use the display attribute.
+                -- 2 Options availble for display:
+                   1) grid [includes containers, rows and columns, Fully Responsive, as they are created using flexbox]
+                      -- Basically, In Container you can have rows.
+                      -- For each Rows you can have responsive columns. eg: .col-md-8 
+                      NOTE: In one Row, you can go max upto 12 col space.
+                      -- we can mix and match the columns and create a responsive container. 
+                   2) flex:
+                      -- For like states, how the display should look like. eg: d-md-flex [flex after the md breakpoint onward] or just d-flex
+                      -- For row dir: flex-row [left to right], flex-row-reverse [from right to left] 
+                      -- For column dir: flex-column [left to right], flex-column-reverse [from right to left] 
+                      -- justify-content[container-alignment in x-axis] : start[default], end, center, between, around, evenly.
+                      -- align-items[continer-alignement in y-axis]: start, end, center, baseline, or stretch.
+                      -- align-self[For individual container-postioning]: start, end, center, baseline, or stretch,
+                      -- flex-fill -> force them to occupy wholespace inside the container.
+                      -- flex-grow-1 -> means it will occupy most space, limiting others to just needed space. [similar opposite of this, we have flex-sink-1] 
+                      -- Individual items you want to push to right: ms-auto or towards left: me-auto. 
+                      -- flex-wrap: Define how the container should handle more contaienrs inside.
+                                    eg: flex-nowrap [default], flex-wrap, flex-wrap-reverse
+                      -- Order: Individual containers can be Ordered based on Order id. eg: order-1, order-2 and so on. 
             </li>
-            <li></li>
+            <li> ************* More Work with BootStrap, More details and Frequent Practise we will Learn ********************</li>
             <li></li>
             <li></li>
             <li></li>

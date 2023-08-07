@@ -14,6 +14,12 @@ Home Page for React: https://react.dev/
 Notes:
   -- Componets are bunch of functions that knows how to render themselves.
 
+** Why Reacts ?
+-- Basically, it solves 3 major issue with traditional way of FrontEnd
+   1) State Management
+   2) Route Management
+   3) Markup Reuseability
+
 ** How to code in React **
 Run React on a Server: 
 -- Tool: codesandbox [Powerful tool then code-pen for building large applications]
@@ -548,3 +554,34 @@ NOTE: localStorage persist the data and stores it in browser even when you refre
 ** How to get random ID without the uuid package **
   -- Browser provides one crypto interface, that can generate the v4 uuid using a crypto random number generator.
 eg: const id = crypto.randomUUID(); //36b8f84d-df4e-4d49-b662-bcde71a8764f
+
+** Important Concept of Virtual DOM ? How it makes React work faster ? [Ref: https://www.geeksforgeeks.org/reactjs-virtual-dom/]
+  
+  -- Main Point: React uses something called React DOM [a light-weight copy of the actual DOM], That makes it faster.
+  
+  -- DOM ?
+     -- Document Object Model, Structured representation of the HTML elements present in a webpage.
+     -- It is represented as a tree DS. [Each Node is a elment]
+     -- Why ? It enables JS to update content in the webpage. 
+  
+  -- What is problem with Real DOM ?
+     -- Whenever we update via DOM, many things happens. The traget element updates but along with that its children are removed and again added.
+     -- It involves tree traversal and updation and recalculation of css elements.
+     [*** This results in taking more time ***]
+  
+  -- What React Do ?
+    -- React uses Virtual DOM, a light-weight copy of the actual DOM.
+    -- Its contains the same Node but upating this won't directly change the layout of the document.
+    -- How this helps ?
+        -- Anytime state chnages -> a new virtual DOM is created -> compared with existing Virtaul DOM -> then a best possible way is figured to make the changes in the actual DOM.
+        -- Thus we are saving from unnecssary rendering of the actual DOM again and again.
+    NOTE: 
+        -- Process of comparing new virtual DOM with the existing one is called diffing.
+        -- Once React findout the diff between the virtual DOM, it uses batch updates to update the real DOM. Whole process is called Reconciliation.
+  
+  Thus, React is faster.
+
+
+
+
+  
