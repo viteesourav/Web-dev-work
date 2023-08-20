@@ -582,6 +582,405 @@ eg: const id = crypto.randomUUID(); //36b8f84d-df4e-4d49-b662-bcde71a8764f
   Thus, React is faster.
 
 
+****************************************************** Important Notes and points on React Basic ******************************************************
 
+Ref: React_practise
 
+** Components: 2 types
+    1) functional Component [Frequently used]
+      -- Here you just define a function [can be arrow function also], which return JSX.
+      -- State is implemented using hooks
+      -- no use of this keyword here.. 
+
+    2) Class Component
+      -- Need import:  {component} from react
+      -- Component is a class that extends Component, it contains a function render() { return ...JSX....}
+      -- props are accessble using `this` keyword. eg: this.props.name
+      -- includes life-cycle hooks/amethods.
+      -- eg: 
+      class newPage extends Component {
+        render() {
+          return <h1> This is class Component </h1>
+        }
+      }
+      export default newPage; //Needs to export the class inorder to use it in other places...
+
+  NOTE: Any Component in react, Will return just one element tag. So if we have multiple line, bind them inside a fragemnt i,e <> ... </> or <div> ... </div> 
+
+** JSX -> JavaScript XML
+  NOTE:
+  -- Components returning JSX is not mandatory, JSX is a fancy way to writing React.createElement('elementTag', 'optional param', 'content');
+     -- React.createElement takes mandatory 3 params:
+        1) elemenTag: Specify what type of Node you are going to create. eg: h1, div, p etc 
+        2) Optional param: Takes a json Object with value, Whatever you add here, will be added as attributes to the elementTag.
+        3) content: This hold element's content body.
+     -- Nesting of React.component is allowed, thus we can create parent tag and child tag at once.
+        eg: React.createElement('div', {id: 'newdiv'}, React.createElement('h1', {id: 'newbody'}, 'This is testing')));
+          -- This create a div, containing a h1 inside it.  
+  -- babel/core from react-script, takes the job fror converting JSX to JS.
+  -- JSX is faster and more easy to handle than React.createElement. [That's why we use JSX]
+
+** Important JSX syntax **
+  -- class [Reserved wordin JS] should be replaced by className [adding style sheet]
+  -- for [Reserved wordin JS] should be replaced by htmlFor [for labels-input relation]
+  -- All Eventshanlders should be CameledCase. eg: OnClick, OnChangeEvent etc.
+
+NOTE: WhereEver you want to write JS or evaluate a variable inside JSX, just put that code inside {...}
+      -- Inisde {...}, you can write JSX no problem at all.
+
+** props:
+  -- Every Component has access to props object, That holds any attribute passed to the component from where it is called.
+  [IMP]
+  -- If you pass something between the Component tag, prop will hold this content in a key called  `children` i.e props.children [allows passing dynamic props to the component]
+  eg: <test> <button>This is btn</button> </test>, test is a component.
+      Inside Test component, if we say, {props.children}, it will render a button as we mentioned between the component tag.
+NOTE:
+  -- Normally instead of using props Object directly, we de-structure it in the component Function param itself. [Common practise]
+      eg: export default function newComponent ({title, age}) {  //Here props Object hold title and age, but we are de-structuring here itself..
+        return (
+          ...JSX...
+        )
+      }
+  -- In Class component, props can be accessed using `this` keyword. eg: this.props.name
+  -- Props are immutable i.e there values cannot be changed.
+
+** State in React:
+  -- State is like a private variable to the compoenent and can Change i.e mutable.
+    -- In Functional Component, we use `useState` hook For handling state.
+    -- In Class Component, we use this.state to manage the state of the component.
   
+Class component and State Management
+  -- You need to define a constructor, which include 2 things:
+      1) super() -> calls the constructor for the Component which our class component extends.
+      2) this.state = { msg: 'Hi' } -> it is a reserved word in react. 
+      3) Can access this state inside the JSX as {this.state.msg}.
+      4) For handling the stateUpdate:
+        In the Event handler, we pass a arrow function which calls this.setState({msg: 'Updated msg'}); [This makes the component re-render]
+      In this way, the state is updated in class Component.
+[IMP]
+NOTE: 
+  -- setState is a async method, It takes an Object where you update the state Variable, It doesnot update the state value immediately. 
+      Solution: It accepts a second parameter which takes a callback function. 
+      -- This callback function [mostly an arrow function] runs only after the state is updated.
+  -- If multiple setState are called one after another, For better performace React will group them as 1 state update.
+      Solution: pass arrow function with previous state as param to setState Function.
+  -- the above thing can be used if we are updating previous satate, if we are resetting or reassigning state, then you can do it directly.
+  -- Inside the arrow function, Its better to return a new Object or a new array, after upating.
+     Reason: Ract wont be able to catch the diff between the prev state and update state if both Referes to the same Object.
+
+NOTE: 
+  -- If you are directly updating the state, this.setState({stateVariable: stateVariable + 1}); //This updates the state and triggers Component reload.
+  -- If you are updating state based on some previous state Value:
+      this.setState((prevState)=> ({stateVar: prevState.stateVar + 1})); //here, based on the previous State, the state Value is updated.
+
+
+** Event handling:
+  -- All Events in react has to be CameledCase. eg: onClick, onChange etc
+  -- event Handler are always should be a function passed by reference or an arrow function that holds the function call.
+    eg: <button onClick = {handleOnClick} > ClickME </button> [passing fun by reference]
+        <button onClick = {() => handleOnClick()} > ClickME </button> [passing fun call inside a arrow function]
+  
+Why bind keyword Needed ? [NOTE: Inside functional component we don't use this keyword, Only for Class component we use]
+  -- Reason: `this` keyword works in different manner in JS. 
+  -- in a EventHandler, by default the this keyword is undefined. [To Fix this we need to use bind keyword]
+     Reason: undefined because, this refers to the global Object here, In Windows it will be windows Object, In nodeJS it will global Object, Since React runs in strict Mode, It's undefined.
+  Ways of Binding the Event handlers in a class component:
+    1) Binding in the Render method directly:  <button onClick = {this.handleOnClick.bind(this)} > ClickME </button> [Performace might effect due to re-renders]
+    2) use Arrow function: <button onClick = {()=> this.handleOnClick()} > ClickME </button> [Performace might effect due to re-renders]
+    3) in Constructor use bind: [Mostly preffered because binding happens only once]
+      -- Inside constructor add line: this.handleOnClick = this.handleOnClick.bind(this); 
+      -- In Render method: <button onClick = {this.handleOnClick} > ClickME </button> [here, this points to event Object, since its bind in the constructor already]
+    4) Use arrow fucntion for eventHandler function defination. [this handles the scope of `this` automatically]
+  
+NOTE: In above except 4th point, For other solutions, Event handler function is written with function keyword. [** This is most preffrered way **]
+
+NOTE: [Just a NOTE]
+  -- The Playlist we are Referening is before React Hooks introduced for functional Components.
+  -- Thus, The Noraml Norms before hooks was,
+     1) Any Component that needs state, Should be strictly a class Component. [we use this.state and this.updateState()]
+     2) Any Component which just has some render content, no state, simple props, are defined using Function component.
+  -- Thus most of the Notes are very important with respect to class Components and how to handle them.
+  -- After hooks ans ES6, most of the things are faster and simpler to handle in functional Components too.
+
+** passing a method down to Child component from Parent Component.
+  -- pass a function reference as a prop to the child, the child can execute that and triggers the function in the parent component.
+  -- If you want to pass a function with params, inside the child, simple -> In child, pass an arrow fucntion with the param. [IMP -> this is how var can be passed from child to parent]
+
+** Conditional Rendering:
+  3 approachs:
+  1) If/else: Remember to put if/else outside JSX or put it insied {...}
+  2) Ternary Methods: Remeber to put this whole thing inside {...}
+  3) short-circut Approach: This is used when we either want to show something or not show anything. eg: condition1 && text [text will show only is condition1 true else nothing]
+
+** When we can use index as key prop for Rendering List ?
+   All 3 conditions if it satisfy then you can:
+    1) If there is no unique id in the List. [If there that should first preference]
+    2) IF the list is static. [It will not update or modified]
+    3) If the Lsit is not filtered or sorted. 
+
+** Fragments ** [IMP]
+  -- For returning multi-line JSX with including the div tag, use <> ..JSX .. </> or <React.fragemnt> ..JSX.. </React.fragment>
+  -- NOTE: 
+      -- <> cannot pass the key attribute while looping.
+      -- <React.fragment key={id}> allows passing the key attribute while looping.
+
+** React StyleSheet Options **
+  3 choices you have: 
+    1) css Stylesheet:
+      -- import './appstyle.css'
+      -- You define a styleSheet and then import the same in the component. use `className` to link the styles.
+      -- NOTE: All Child component will inherit this styles.
+    2) In-Line Styles:
+      -- Written in line using the style attribure. Takes Css properties[cameledCase] as JSON.
+      -- eg: <label style = {{fontSize: '1.5rem', fontColor: 'red'}}>This is test</label>
+    3) css Module:
+      -- This Implements style only in the component it is imported. [classes are locally scoped by default]
+      -- File name will be like: appStyle.module.css and In Component, import styles from './appStyle.module.css'.
+      -- className = {style.cssClassName}
+
+** Component Life-Cycle Methods ** [NOTE: only for classComponent]
+  -- Life Cycle defines all the Stages that are invoked inOrder when we deal with Components.
+  -- For each Stage, There are functions whose Order of invokation is very important.
+
+There are 4 stages:
+    1) Mounting [When a Component is inserted into the DOM Tree]
+        1) Constructor(props) : handles props and bind the event handlers.[need super constructor, it overwrites this.state]
+        2) static getDerivedStateFromProps(props, state) [rarely used...][Since static, you cannot have access to `this` keyword inside it]
+        3) render(): Read the state and props and render the JSX and trigger child component if present.
+        4) componentDidMount(): Only once triggered, can interact with DOM and perform HTTP Service calls.
+
+    2) Updating [When a Component is updated because of its state/prop changes]
+        1) static getDerivedStateFromProps(props, state) [rarely used...][Since static, you cannot have access to `this` keyword inside it]
+        2) ShouldComponentUpdate(nextProps, nextState): return boolean if the component should render again.
+        3) render()
+        4) getSnapshotBeforeUpdate(prevProps, prevState): Called just before inserting into the DOM Tree, returns null or snapshot values [rarely used]
+        5) componentDidUpdate(prevProps, prevState, snapShotresult): Only once triggered, can interact with DOM and perform HTTP Service calls.
+
+    3) UnMounting [When a component is removed from the DOM Tree]
+        1) componentWillUnmount(): Mostly do cleanup after the Component is removed from DOM Tree.
+            -- NOTE: Dont make state update calls here, as the component is removed.
+
+    4) ErrorHnadling [catches Error in render, life-cycle event methods or constructor of any children]
+        1) static getDerivedStateFromError(error)
+        2) componentDidCatch(error, info)
+
+NOTE:
+  -- When dealing with class component, IF component needs to make any service calls, Always put it in componentDidMount() method.
+     Reason: It executes after the component loads and only once it will will execute in entire component's life cycle.
+
+NOTE:
+  -- After the render is triggered, If the component has child component, Life cycle of child will be triggered.
+     Once, Child's life-cycle is done, then componentDidMount for the parent component is triggered.
+  -- Except the last method for each stages, Dont cause any side Effects i.e No Ajax ot http call is allowed. The last method of each stage will be called only once. Here calls are allowed.
+  -- For getSnapshotBeforeUpdate, If Compenent has child, render triggers child's Life-cycle [**IMP**]
+     -- First Child's getSnapshotBeforeUpdate will be thriggered then parent's getSnapshotBeforeUpdate.
+     -- After that child's componentDidUpdate and then parent's componenetDidUpdate.
+
+NOTE: Component and PureComponent just works for Class Component to manage props and state. [**VIMP**]
+** Component Vs Pure Component ** [use swallow comparison for props and states]
+  -- 2 ways you can bring state in a class Component.
+     1) extends Component Class:
+        -- This class provides access to `this.state` and  `this.setState`.
+      NOTE: [**VIMP**]  
+        -- For Component Class, ShouldComponentUpdate Life-cycle method for Update component always returns True by default.
+        -- Means, Wheneever you update the state, It will force the component to re-render.
+
+    2) extends PureComponent Class:
+       -- This class also provides access the this.state and this.setState.
+       NOTE: [**VIMP**]
+        -- For PureComponent Class, ShouldComponentUpdate, Perform swallow comparision for props and state.
+        -- Prevent Component from unnecssary renders. [If props and state wont change, it wont re-render]
+        -- Improve the over-all performance of the app.
+  
+** Swallow comparision:
+  -- If the prevState and the currState, both points to the same Object or contains the same value, then it wont trigger re-render.
+  -- In Case of String and integer, It checks if the value Changed or not.
+  -- IN Case of Object and Arrays, It checks if prevState and newState refers to same Object.
+     NOTE: In case of swallow Comparison, In setState, always return a new Obj or array for the updated newState.
+          -- Updating the prevState directly, won't trigger re-render.
+
+** React.memo [For fucntional Component alone]
+  -- Prevents unnecessary rendering of Functional Component if the porps is same.
+  -- eg: In the functional component,  export default React.memo(component_name); [It will prevent re-render if props is same]
+  -- It takes a component as a paramater [React.memo is an example of higher Order Component]
+
+** Refs [Only for class compoenent]
+  -- It provide direct Access to DOM Nodes for any HTML element, using the Raect.createRef() and `ref` attribute.
+  Why Need ?
+    -- It provide access to the DOM Node of any element Directly, Thus, lets us manipulate it.
+    -- eg: Provide Focus to an input field by default OR Fetch the input value from the DOM.
+  HOW ?
+    -- First In the class Constructor, add this.refvariable = React.createRef();
+    -- `ref` is a reserved attribute that can be added to the input field.
+    -- now you can access the DOM of the input. eg: refVariable.current.focus [Turn on default focus of input field]
+
+NOTE: 2 ways of defining a ref.
+    1)  use React.createRef() [mostly used]
+    2) Use callbackRef,  [old ways to access DOM Nodes]
+        -- In constructor, add this.cbRef = null; this.setCbRef = element => {this.cbRef = element}
+        -- In the input field, add the attribute ref= this.setCbRef.
+    NOTE: CallbackRef, when component unmount becomes NULL, So before using always check if this.cbRef is null.
+
+
+** Ref to childComponent From ParentComponent
+  -- You have a child Component
+      -- You implmented ref inside child Component to focus the input field,
+      -- also you have defined a method to enable the focus.
+  -- The child method can be called from the parent component, using ref on child component. 
+NOTE: 
+  -- In class Constructor of child, bind the method with this, OR use method defination as arrow function
+  -- Components are also DOM Nodes, thus any function we define inside a component can be accessed via ref.
+Why Using Ref for Child Component in parent ?
+  -- Parent Component can have access to the child Component DOM Nodes and can manipulate it.
+  -- It can have access to all exposed methods of Child component via DOM using ref.
+
+** Forwarding Ref's: [Rearly used, used in some libararies or higher order functions]
+  -- Basically, This allows Parent Component's Ref to directly access the DOM of the child component's input.
+  -- The Child component will forward the parentRef.
+  Why ?
+    -- This way we dont need to define a seprate ref for child component, a method to handle the ref and then call that method through ref in parent class.
+  How ?
+    -- First define Ref for the class component, and pass to to the child component in ref attribute.
+    -- The child has to be a functional Component defined as and arrow fucntion  
+        const childComponent = React.forwardRef((props, ref) => {
+          return (
+            ...JSX...
+          )
+        })
+  NOTE: here the way we define the functional component is different, and we pass the ref of parent as a parameter of the callback for React.forwardRef
+
+** React Portals
+  -- In a Ideal React File structure, All React Component is rendered inside a singe div tag in index.html file with id: root.
+  -- React protals provide a way to break out of this root DOM Tree, and render a DOM NODE outside of this Tree.
+  HOW ?
+    -- Have the destination Node id [other than the root div element]
+    -- In the component, import ReactDOM and in the functional Component return ReactDOM.createPortal(...JSX..., destination_Node);
+    -- The first param can be anything that browser can render, eg: number, string or JSX.
+    -- destination Node can be fetched using document.queryselector(id_name)
+  NOTE:
+    -- Even if the Componenent is called under app which is rendered to root NODE DOM tree, Portal Allows you to break from this root Node to a different Node.
+Usecase:
+  -- Sometimes, if we have a popup or any notification that comes from the child component but are restricted because of parent div css.
+    Best solution is, use a protal to render this popup or notification to a seperate DOM Node other than the root.
+  -- Thus, makes the UI looks Clean.
+
+Event Bubbling with React Portal: [**VIMP**]
+  -- Any event fired from the Portal Component will still propagates to ancestor in the React DOM Tree, even if the these are not real ancestor to the Portal component as portal component in rendered on a different node other than root.
+  -- Basically, React Portal Components will behave as a normal React child component in every other way, except the fact it's rendered outside the root DOM Tree.
+
+** Error Boundary [Handles ErrorScreen For React Error]
+Why we need ?
+  -- If any child component has any error, The whole UI render breaks..
+  -- Error Boundary, provides a way we can catch the error in the component Tree and gives a fallback or Error UI.
+
+-- Error Boundary is a class component the implements if one or both life-cycle methods getDerivedStateFromError and componentDidCatch becomes an Error Boundary.
+-- Methods for Error class component:
+  1) static getDerivedStateFromError(error) -> Renders a fallback UI if after the error is thrown. [This catches the error and renders the Error Screen]
+  2) componentDidCatch(error, info) -> logs error informations. [In dev mode, we already see the errorlog, If we use seperate logging service, we can do it]
+
+How to implement ?
+  -- Define a classCompenent for errorBoundary, with a bool state variable.
+  -- If the static getDerivedStateFromError is triggered for some error, It will update the errorState to true.
+  -- based on this we can render a the UI else we can render the child components.
+NOTE: ErrorBoundary, you need to wrap your child components, Thus, if it has any error it will Trigger the fallback screen. [**IMP**] 
+
+Where to implement ?
+  -- ErrorBoundary can be implemented for each component or For a bunch of component at once. [depends upon the requirement]
+  -- Only the component has Error will render the fallback Screen, Others will Render without breaking the UI.
+NOTE:
+  -- For Event handlers, to catch error we need to have a try-catch block.
+
+** Higher Order Component [HOC] [**VIMP**]
+  Why we need ?
+    -- There will be situations when different components are expected to do the same functionality.
+    eg: A Component that counts no of btn click, a component that count no of times you hover, a component that counts the key stoke in input field etc..
+    -- Instead of writing duplicate code for counter-functionality for each component, we can use higher-Order Function.
+  
+  NOTE: Lifting the state to parent component and passing to child, might work in some scenario but if similar functional component are scattered across the whole Tree, Lifting state won't help.
+  
+  -- A HOC is a function (named as how we write function names) takes the original Component(also called WrappedComponent), 
+      modify it or Add addtional Functionality and returns a new component(usually named same as the HOC function but in camelCase.), 
+      Reason: we do this to share common functionality amoung similar components.
+
+  How to implement ?
+    -- define a HOC function, [arrow function] takes WrappedComponent as param
+    -- Inside the fucntion define a new class component, define functionality/state/props you want to share between the component.
+    -- In the render function, call the WrappedComponent and pass the extra functionality as props.
+    -- return the new classCompoent from HOC.
+    -- In the WrappedComponent, while export add like,  export default hoc_fucn(WrappedComponent) [also avoid duplicate of the code in wrapped Compoennt, as HOC will take care of it]
+    -- IN WrappedComponent, use the state to render the UI.
+
+  NOTE: Basically you take a component, pass it through an HOC fucntion that take component as parma and returns a new enhanced component with props, that can be used among others to share the functionality.
+
+  NOTE: [**IMP**]
+    1) When we pass props from the parent to WrappedComponent, It will be passed to HOC, so wrappedComponent wont have access to it. 
+      sol: we need to use spread operator to pass down all incoming props to wrappedComponent in HOC.
+    2) We can pass paramter to HOC functions, It takes 2 params now, wrappedComponent and a param.
+       -- based on this param, we can work with the requirement of different component with similar functionality.
+
+** Render props [One more way of sharing code between Components] [**VIMP**]
+  -- It is a way of sharing code between Component using a prop whose value is a function.
+  -- A prop, render(state, functionality) takes care of binding the state and functionaility and returns the Wrappedcomponent where the state and functionaility can be passed as props.
+  
+  -- So Basically, In this this pattern,
+      -- we define a class component RenderComponent, that takes and return a prop like render (this.state, functionality) as a arrow function. [It just bind the render with the state and functionality inside JSX]
+      -- In the Parent Component, you call RenderComponent pass a prop called Render that takes state and functionaility and returns the component to render[this component take the params of render() as props].
+  -- the component can directly used the props passed to render fucntion the The feature.
+
+  Implementation:
+    -- Define a RenderComponent that handles the common functionaility/state for the compoenent.
+    -- return a render function prop with the state and functionailiy.
+    -- In the parentComponent, call the RenderComponent and pass a prop called render with state and functionailtiy as arrow function which returns the component to render with the given props and functionaility.
+    -- In the components to render, destructure the props and render the containt.
+
+  NOTE: A variation of how to pass render prop to the Render function. 
+    -- Instead of passing render(state, functionality) as props to the RenderComponent, pass the functionaility between the tags as {(state, functionality)=> {<WrappedComponent />}}, 
+    -- and it can be accessed using this.prop.children(state, functionaility) in the RenderComponent.
+
+** Context [Prevents Props Drilling]
+  -- If we have high level of nested components. passing a prop from parent to the leaf Child component has to go through all the intermediate components evenif they dont require it.
+  -- Context provides a way to pass props to nested Children Component without passing it to intermediate Children.
+
+  Implementation: [In class Components]
+    -- In a new file, get React.createContext(), we need to extract to things out of this.
+        1) React.createContext().provider -> contextProvider
+        2) React.createContext().consumer -> contextConsumer
+    -- Extract them store them in a variable, and export them.
+    -- At the parent level, Pass the First Child Component inside the tags of contextProvider and pass a prop called value that holds the context value you want to pass down to all children.
+    -- At the child level, [No matter how deep it's nested]
+       -- call the context Consumer, Inside the tags, It takes a function which has the params as the context Value passed.
+       -- It returns the JSX, to render using that context value.
+  
+  NOTE:
+    -- createContext(), takes a param, which will be default passed as context Value if contextprovider is not given to firstChild Component. [**VIMP**]
+    
+    -- There is a way of using contextValue without contextConsumer,
+       -- Inside child component define, static contextType = userContext and context value will be stored in this.context  
+       [NOTE: const userContext = React.createContext(), userContext needed to be exported from the context js file]
+    Limitation of this Appraoch:
+       -- It works only for a class component like this.
+       --  It can well handle only 1 context value, It cannot work with multiple contextValues.
+    
+    Advantages of Using contextConsumer, 
+    -- you can work with multiple contextConsumers, and fetch multiple contextValue. [Preffered way]
+
+** React And HTTP
+  -- HTTP library like axios or Fetch provides a way that connects React based web-application to a backend server.
+  -- In Class Component,
+      While fetching, put the service calls in componentDidMount() life-cycle method. [It executes just once]
+  -- In case of Component POST,
+      Call the post service on the form OnSubmit Event eventListner.
+
+
+**************************************** Everything Related to React Class Component till here *************************************
+
+** React Hooks ** [**VIMP**] [From React version 16.8]
+
+What ? -> Hooks implements React Features like states without using class Components. Hooks doesnot work inside classes.
+Why ? 3 Reasons:
+  1) Get rid of the implementation of `this` keyword and its implementation in a class, like eventHandler binding
+  2) For Code Reuseability/share stateful logic, we have HOC and Render props but it makes the code bulky. Hooks handle this in a better way.
+  3) building complex components is difficult as for a particular functionality we need to split code among the life-cycle methods.
+     -- Rather than breaking a compoenent based on life-cycle methods, It can be broken based on similar functionaility by using hooks.
+
+
