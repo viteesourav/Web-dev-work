@@ -983,4 +983,266 @@ Why ? 3 Reasons:
   3) building complex components is difficult as for a particular functionality we need to split code among the life-cycle methods.
      -- Rather than breaking a compoenent based on life-cycle methods, It can be broken based on similar functionaility by using hooks.
 
+** Hooks ** Ref: React_Hooks
 
+Rules Of Hooks:
+  1) Only call Hooks from the top level of component hirarchy.
+    NOTE: Never call Hooks inside loops, conditions or nested functions.
+  2) Hooks are only for Functional Component. [For Class Component we have life-cycle methods]
+
+NOTE: Hooks can only be implemented inside the functional Component function. not outside it.
+
+1) useState:
+  -- useSatet is realted to state.
+  -- Implements React State Feature for Functional Components.
+  --  Diff between the setState of class Component and Hooks ? [**IMP**]
+    -- While handle state variables which are object, setState of class Component will automatically merge the prev and curr State Objs,
+    -- In Hooks, we need to manually merge the Object using spread (`...`) Operator inside the new Object.
+  -- Remember to Spread the prevState in case of arrays or Objects, and then update the prevState with the current state. [NOTE]
+
+2) useEffect:
+  -- useEffect is related to side-Effect.
+  -- It allows performing side-effects like Making API Calls, updating DOMS etc.
+  -- Re-render of the component triggers the useEffect hook. 
+  -- It is a replacement for componentDidMount, componentDidUpdate and componentWillUnmount. [3 Life-cycle methods can be handled by just his 1 hook]
+      -- componentDidMount [If you pass dependecy array as empty, Runs only once]
+      -- componenetDidUpdate [If you dont pass any the 2nd param, Or you are passing a dependent state as dependecy array]
+      -- componentWillUnmount [the first param of useEffect can return a function, that runs whenever the comp unMounts]
+
+NOTE:
+    1) If the second param of useEffect, state dependencies array is not given, It will run for every stateChange Event. 
+    2) If State is added in the array as 2nd param, It will run useEffect only when re-render happens for the mentioned state Changes.
+    3) If-- N kept empty, It will renders only when the component Mounts. [Just once]
+
+NOTE: For Conditionally Running of useEffect based on State chnages
+  -- In Class Component, We use the componenetDidUpdate Life-cycle method to handle side-effects whenever the component Updates.
+  -- Anytime you puting life-cycle methods in class component dependent on state, Always check if the state actually updated or not.
+  -- In Hooks, It uses Swallow comparision, So it prevents unnecssary Renders. If you want to run useEffect based on a state, pass in state dependecies Array as 2nd param.
+  -- In class Component, If you want to run side-effect just once, Put it in componentDidMount life-cycle method.
+     In useEffect Hook, Just pass Empty Array as 2nd Param.
+
+NOTE: return a function from the useEffect Hook's first parma -> This function runs when the component Unmounts.
+  -- This function can be used to remove Timers, unsuscribe to any eventListners which will be lost once the component unMounted.
+  -- Also This Saves from memory Leak.
+
+NOTE: 
+  -- Dependecy Array for useEffect, We should consider those state/props which useEffect should watch for anyChanges.
+  -- IF useEffect is taking care of some State related work, It must be added to dependecy array. eg: Ref: AutoIncrementCount.jsx
+
+[***VVIMP***] Ref: TrackMyMouse.jsx
+** How to Do cleanup Of Event eventListners on Component Unmount [How to mimic componentWillUnmount life-cycle in functional Component using hooks ] 
+  -- Situation:
+    -- Say you have a child component that you are rendering and From parent comp and you are Toggeling the child component.
+    -- When you toggel the child comp OFF,child componenet unMount But the eventListners are still Listing to the events the child was doing.
+    -- This leads to memory leak.
+  -- Solution:
+    -- As the component unMount, we need to remove eventListners, timers, websoket connections if present from the memory.
+    -- useEffect's first param, can return a function, that is also known as cleanup function. In the that cleanup function, we can remove this side-effect.
+    -- Thus, using useEffect implemented the componentWillUnmount life-cycle of the Class components.
+
+NOTE:
+  -- While working with useEffect, Deciding what to put as deciding props/state as 2nd param is very important.
+  -- IF WE have any function inside useEffect, better to declare the function inside the the useEffect and then execute it.
+      Why ? -> Gives us clean idea if we need to put any state/prop in the dependecy array.
+  -- Its Okay to declare multiple useEffect, In a component, takes care of different Functionailties.
+
+NOTE:
+  -- In dev mode, Where the React runs in strict mode, All console.log are printing in the console. [It will be printing 2 times]
+  -- It's react's way to check if the code and everything is correct.
+
+** useEffect and HTTP Calls
+  -- Make Rest API call inside the useEffect, Make sure you give dependecy arr as empty, It only makes call as the comp mounts.
+
+3) useContext:
+  -- It makes the passing props/values from parent to child deep in the hirarchy. It helps avoid passing props/values through every intermediate child components i.e prop drilling.
+  -- usecontex is related to Cotnext API.
+
+  ** problems on using React.createContext() ? eg: let userContext = React.createContex(); [**declare it outside the component defination and export it**]
+    1) The way we implement the  userContext.consumer, that required us to put a function whose parameter is the passed value from the userContex.provider.
+       -- It returns the jsx inside make use of the param, it received in the function.
+    2) Handling multiple context makes the code more bulky and nested.
+       -- If we have 2 context then the whole things gets nested at the consumer child component side.
+       -- Provider will send values of the both the context from the parent Comp.
+       -- At child, we first need to have a consumer for the first context Value, then inside return again we need to have the consumer for the second context value.
+    
+    -- use of Context hook solve these issues...
+
+  NOTE:
+    -- The step of sending the context value from the parent comp is same, context hook make the consumption of the context value simple.
+    -- useContext takes the context from the parent [**Remember to export them] as param and returns the value the context holds.
+    -- It can be used in the JSX directly. [**Amazing**, No functions calls, no nesting like React.createContex().consumer] 
+
+4) useReducer:
+  -- useReducer is realted to reducer functions.
+  -- useReducer is a hook that is used for state Management. An Alternative for useState Hook.
+  -- useState is built using useReducer.
+  -- useReducer is a more premitive type of state management hook.
+
+  What is reducers ?
+    -- In array we have reduce function, That takes a reducer function for each elements of the array and returns a single value.
+    eg: arr.reduce((acc, curr)=> (acc+curr), 10); //First param is the reducer function, seconf is the initial value of returned value.
+
+  Similary, for useReducer hook,
+    -- It takes a 2 param, reducer function and initial state: useReducer(reducer, initialState);
+    -- For the reducer function, It returns a newState = reducer(currState, action)
+    -- the userReducer returns a pair, newState and dispatch.
+
+  Ref: ReducerExample
+
+  NOTE:
+    -- The action in the useReducer, is like an instruction to reducer function for making the state tranfer to new state.
+    -- convention case for action is like a switch statement, specify conditions which handles the state update.
+    -- `dispatch` returned by useReducer, is a function that takes the action for updating the state.
+    -- We can maintain both the state and action as object, This allows to pass additonal action to handle our state Update, and handle multipe state Variables.
+    NOTE: If state contains multiple keys, Do remember to destructure it while updating state inside reducer function.
+    -- Ref: 
+      1) SimpleReducerCounter [simple useRecuder with state and Object as string]
+      2) ComplexReducerCounter [Complex useReducer with state and Object as Object] [**VIMP**, Implementation is nice]
+
+  ** How to handle multiple useReducer Hook ? Ref: SimpleReducerCounter
+    -- If 2 states have the similar set of actions and state behaviour, then just duplicate the existing useReducer.
+    -- Both the states will use the same reducer and action for updating state. [since they have similar behaviour]
+    -- Even if they use same reducer function, Both the states are independent of each other.
+  
+** useReducer with useContext  Ref: GlobalStateDemo
+  -- main use: To manage global state for components sharing them.
+  -- useReducer mainly handles the local state [state local to a particular component]
+  -- But it can also be used to manage global state [state between different components], Here we use useContext along with useReducer.
+  -- useCase:
+     -- If we have multiple components and they all need to share the same state value. we can implement the state in there parent using useReducer.
+     -- These components can be deeply nested, thus we can use context to send the state value.
+
+  How to implement ?
+    -- In the parent component implement the global state using useReducer.
+    -- use Context.Provider to send the state and dispatch returned by the useReducer hook to children, and consume this in the child component using useContext hook.
+    -- This gives access to child components over the global state, by having access to the globalstate value and dispatch method via context hook.
+    
+** API call using useReducer [useReducer + useEffect hook]  Ref: ReducerAPICallDemo
+  -- useReducer will take care of the state updates  and useEffect will handle the API call.
+  -- For using the useReducer in useEffect, It should call the dispatch method with proper action.type string, that makes necessary state changes.
+
+** Diff between useReducer and useState [**VIMP**]
+  
+  -- Both useReducer and useState are use for same purpose: Managing the state of a component.
+  -- Below are useCase differnce for both the hooks
+  1) base on Type of state:
+     -- If state type is number, string or boolean, useSate is handy.
+     -- If state has arrays or object, useReducer can manage it better. 
+  2) Number of State:
+     -- If the number of state are 1 or 2, It's better to use useState.
+     -- If too many states are used, It's  better to use useReducer hook.
+  3) How related state are ? [**mainReason_1**]
+     -- If state updates are dependent on certian actions and state have related state variables.
+     -- Its better to use useReducer, as it's provide more flexibility over how we want to update the state based on some particular action.
+  4) Business Logic:
+     -- If the logic is simple, useState is good.
+     -- If we have a complex businessLogic, useReducer is good.
+  5) Maintaining globalState: [**mainReason_2**]
+     -- For maintining state inside a component, useState is good.
+     -- For maintaing state across all components, useReducer is more good. [NOTE: for state sharing use: createContext, useContext]
+    ** Problem with using useState,
+      -- If you have multiple statevariable, we need to pass all the setState function to component.
+      -- In case of useReducer, Just one dispatch methoc can handle multiple stateVariables.
+
+** Two Hooks Used for Performance Optimization: 
+   -- useCallback [preserve the function insatance] 
+   -- useMemo [preserve the data retruned by a slow function]
+
+5) useCallback: [used for performance Optimization]
+  Why Need ?
+  Situation:
+    -- You have a parent Component, It renders a bunch of child Components.
+    -- Child Component has access to update state of the parent Component, That triggers a re-render for all the Child components.
+        -- This re-render includes all Child Compoennts [No matter if there is any change or not in them] to re-render again.
+  Solution:
+    -- In Child component, use React.Memo and export the component. This looks for any state/prop changes for that Component.
+    -- If there is any change in the state/prop, It triggers a re-render else it ignores.
+  
+  Problem with this Appraoch:
+    -- Everytime the Component re-render, the original state and stateUpdate function gets garbage collected and instead a new state and stateUpdate method is generated. [**VVIMP**]
+    -- Beacuse of this, If any child Component is expecting the stateUpdate function as props, 
+       Even if we use React.memo, The component will still re-render as the reference of the stateUpdate function chnaged.
+
+  Solution:
+    -- To avoid this re-render, use callback hook to wrap the stateUpdate function.
+    -- callback Hook takes a function [This is the stateupdate function] and a dependecy array [That looks for any chnage in the specified state].
+    -- Basically, If the state updates, Then only a new reference for the stateUpdate func will be generate -> triggers re-render.
+       -- If the state is same, Then the original Ref is preserved, Thus avoids Re-render.
+
+Summary:
+  ** What is callback Hook ?
+    -- It returns a memorized verison of the callback function, that only chnages if the dependencies chnages. else it remain same.
+  ** Why we need ?
+    -- It optimizes passing callbacks to child Components that depends upon refernece equality to prevent re-renders.
+
+NOTE: [**VIMP**] 
+  -- Using callbacks everytime, It is not suggested why ?
+     1) It takes up additional memory and also prevents the original State to garbage collect whenever the state updates.
+     2) It takes dependecy list which internal undergoes many comparisons.
+  -- Use only in case when the re-render of the child causes a serious performance issue as it uses a callback as reference equality.
+
+6) useMemo [Also used for performance Optimization]
+  Situation:
+    -- Sometime, we have functions which have great complexity and needs more time to execute.
+    -- This Time taken by this function, can be observed when the component re-render itself.
+  
+  Problem:
+    -- If this slow function is related to just one state, and Component holds other States also 
+    -- On Other State updates also -> component re-render -> the slow function is called -> makes the whole re-render slow.
+
+  Solution:
+    -- useMemo hook runs the slow function and preserve the value untill the state related to it changes.
+    -- This avoids running the slow function on every re-render and thus improves the performance.
+
+  Implementation:
+    -- useMemo takes:
+      --  1st param a function, This is the function that usually takes time to compute,
+      --  2nd param in a dependecy array for the state this function depends upon.
+    -- It runs the function for first time, preserve the data untill again the state changes.
+
+** difference between useCallback and useMemo ?
+    -- useCallback -> preserv the reference of a function that is related to a particualar state.
+       -- If dependent state changes, useCallback returns a new reference to the passes funtion. 
+    -- useMemo -> preserv the data returned by a slow function realted to a particualr state.
+       -- If dependent state changes, useMemo returns a value running the slow function.
+
+7) useRef:
+  -- This will let us access the DOM Nodes directly from the functional Component.
+  
+  HOw to use it ?
+    -- define a variable for the useRef hook inside the functional component.
+    -- attach that varaibale to the ref attribute of the element whose DOM we want to access.
+    -- Now the all the DOM properities can be found in `ref.current`
+
+  eg of useCase: 
+    -- You want a particular input field to be in focus when the component loads. Ref: FocusInput [DOM Access]
+    -- useRef can also be used to store a value for a component. [**VVIMP**] Ref: HookTimer [Storing Value]
+       -- The value will persist through all the re-render cycles.
+       -- Updating the value also wont trigger any re-render.
+
+8) Custom Hooks:
+   -- custom Hooks are JS functions whose name start with 'use'. [Manadatory it has to start with `use`]
+   -- They can use other Hooks in there implementation.
+   -- They are normal JS file, Since we wont be rendering anything in them i.e no JSX, So no need to import React.
+   -- we just return the state and helper fucntions that will be exposed to other functions.
+   
+   why we need ?
+  -- It makes the sharing of code or similar functionaility each across components.
+  -- It is Alternative approach for code sharing like higher Order fucntions or render prop methods.
+
+eg of Creating custom Hooks: Ref: Hooks folder.
+
+1) useDocumentTitile: Ref: TitleUpdateOne [without Custome Hook], TitleUpdateTwo [with Custome Hook]
+  -- This custom hook takes a prop and if the value changes it will update the title.
+  NOTE: here this hook don't return anything, It just update the document.title if the prop changes.
+  -- useCase: On every Count Click, the title needs to be update. If the same we want from 10 different component.
+    -- to avoid code duplicates, we can use the custom Hook to share this functionality.
+
+2) useCounter: Ref: CounterHookOne [without Custome Hook], CounterHookTwo [with Custome Hook]
+  -- This enables the logic for counter to share across the components.
+  -- Form this function, use the state and setUpdate function and return them in array format to be used by the components.
+
+3) useInputter: Ref: InputterBindOne [without Custome Hook], InputterBindTwo [with Custome Hook]
+  -- Custom hooks that make the input fields and state in sync whenever.
+  -- This hook contains a state and a method that handles the onchange bind with state easy.
+  -- saves from writing duplicate code.
