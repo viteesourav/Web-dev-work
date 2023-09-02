@@ -1,0 +1,136 @@
+************ React Redux Notes **************
+
+Ref: React Redux
+
+What is Redux ?
+-- Redux is State Management library, It is a predictable State container for JS Applications.
+-- Redux is not tied to React, It is a open Library that can be used with React whenever Needed.
+NOTE:
+-- predictable: It updates State from a previousState to newState. [Thus state predictable], It always return a new Object as newState.
+-- state container: It holds the State of the whole Application.
+-- JS application: It is a JS state management Library.
+
+Why We need Redux ?
+-- Managing the global State in Application where a state is shared by various Components is Difficult.
+** Problems:
+    -- Need to uplift State to parent Components, So that childs can access the state. [Makes things more copuled]
+    -- IF child is nested deep inside the DOM Tree, Sharing State can leads to prop Drilling.
+** Solution:
+    -- Redux State contianer are maintained outside the React DOM, Any Component can subscribe to the Redux State store and can use and update the state accordingly.
+    -- Makes State management easy for complex applications with deeply nested children component sharing common State.
+** Alternative:
+    -- With the introduction of Hooks, Similar solutions can be acheived using useReducer + useContext.
+    -- useReducer: a state mangement hook, with flexibility of actions and state update options. [Very helpful if state depends upon multiple things]
+    -- useContext: a hook that helps provide inner nested child access to the context Value using React.createContext().provider and useContex().
+
+** Redux Vs useReducer+useContext ?
+    -- When Application is small and global/application level state is simpler, Go with useReducer+useContext.
+    -- In complex applications with many many nested children sharing global/application state, use Redux.
+
+** How REact and Redux comes together ?
+    -- React is a UI Library, Redux is a state management library, both are completly different and are no way linked to each other.
+    -- To use Redux in React, react-redux provides some helper functions to combine this two library.
+
+** Redux Principle and Core Concepts **
+
+3 Core Concept:
+    1) store: Holds the state of the Application.
+    2) action: Descibe the event. what happened related to the state.
+    3) reducer: It handles state based on the action and gives a new State.
+
+3 Core Principle:
+    1) The state of the whole app will always be a single Object. It is managed by redux store.
+    2) The only way to update a state is via actions. No one can update the state directly.
+        -- action is a obj with a key called `type`, that describe the event.
+    3) State Update should be pure reducer.
+        -- based on the `type` from action object, oldState is accordingly updated and a new state Obj is returned.
+
+
+** How to implement simple Redux in Node. Ref: ReduxDemo
+    -- redux provides createStore [depricated], takes reducer fun as param and provides a bunch of methods to handle state.
+
+** Action creater, reducer and Redux Store ?
+    1) Action Creater:
+       -- A Function that returns an obj, with `type` as mandatory property and may contains other properties that describe the event.
+    2) reducer:
+       -- A function that takes currentState and action, based on action it returns a new State.
+    3) Initial State of application:
+        -- Redux always have a single state Object, that holds all the state of the application.
+    4) Redux Store:
+        -- It binds Action creater and reducer together.
+        -- It stores the entire State of the application and expose few methods to handle the state.
+            1) getState: access to the latest state.
+            2) subscribe(listner) -> register the listner function to redux store.
+                -- Takes a listner fun as param that executes after state update.
+                -- Returns a function, when we execute it unsubscribe from the store.
+            3) dispatch(action)
+            4) unsubscribe: the function returned by subscribe can be used to unsubscribe to Redux Store. 
+
+NOTE:
+  Ref: https://redux.js.org/tutorials/essentials/part-1-overview-concepts
+  -- In This learning process we will be using core redux package, where code is more and handling is complex.
+
+** Updated Redux: [**IMP**] 
+  -- In morder Application, we use @rreduxjs/toolkit [**Need to See**] Ref: https://redux.js.org/tutorials/fundamentals/part-8-modern-redux#using-configurestore
+  -- To Combine redux with react, we use react-redux that provides useSelector and useDispatch to use store's State and dispatch actions.
+
+** Handling multiple Reducers
+ Why ?
+    -- It improves the scalebility of the Application. One reducer managing all the state of a store can be heavy.
+    -- It is good practise to have a reducer for handling a particular state.
+ Implementaion:
+    -- Instead having a single Obj holding all the state and a single reducer function managing the state,
+       WE can break the state and reducer function based on their functionailty.
+Now to Combine multiple reducer fucntions and state in Redux ?
+    -- redux provide a combineReducer Method that takes an Object, It returns a common reducer called rootReducer.
+    -- key can be stateName and value will be the name of the reducer associate to that state.
+    -- This combineReducer is called before passing the reducer in the createStore.
+NOTE:
+    -- In MultiReducer case, The store.dispatch(action) sends same action to all the reducers in the combineReducer param's object. [**VIMP**] 
+NOTE:
+    -- This helps in spliting the global State obj and their respective reducers based on there functionaility.
+    -- The dispatch method pass action to all reducers mentioned in combineReducer param's Object, Only the matching action will update the respective state.
+    -- The Global State Obj now have a different structure [**VIMP**]
+       -- It will have the key as you mentioned in the rootReducer.
+       -- The value will be the corresponding State for that Reducer.
+
+** Redux MiddleWare  Ref: middlewareLoggerDemo
+    -- Middleware are a way to extends the Redux's Functionality.
+    -- It enables us to includes additional processing between the action Triggered and reaches the reducer.
+
+Why needed ?
+    -- Middlewares are used for logging, making async API Calls, crash reports.
+
+How to implement ?
+    -- redux has one method -> applymiddleware, this takes all middleware as param,
+    -- redux store takes, 1st param as reducer function, and 2nd param as applymiddleware.
+eg: The redux-logger provides a craeteLogger method that logs currState, action and newState for each dispatch Event.
+
+
+** Synchronous Vs ASynchronous actions
+    -- Synchronous Actions:
+        -- This type of actions immediately updates the state and returns the new State with no delay.
+        -- they dont include any kind of API call for fetch data events.
+    -- ASynchronous Actions:
+        -- This depends upon the response for the API calls.
+        -- First it needs to fetch the data, then update the state according based on the Action.
+
+Ref: AsyncMiddlewareDemo:
+    -- The goal is to maintain a state that involves in making API call. [State -> loading, data and error]
+    -- Have actions for fetchData, Fetch_sucess, Fetch_error.
+    -- reducer fun to update the state accordingly.
+    -- create a Redux Store to hold this reducer.
+
+** What is Redux Thunks ? [**VIMP**]
+    -- package: redux-thunk.
+    -- It is package provided by the redux eco-system and is standard way to handle async action creaters.
+    -- This is included using the redux Middleware concept.
+
+What redux Thunk do ?
+    -- Basically passing redux-thunk in the applyMiddleware of the redux store, enables us to:
+        1) Define a action creater capable of returning a function.
+        2) The return function takes dispatch as an argument and can make dispatch calls too.
+        3) This function is not necessary has to be a pure Function, It can includes side-Effects like making service calls. 
+NOTE:
+    -- Dont unscribe the store after making the call to the async action creater. 
+    Reason: It may take some time to fetch the data, If you unsubscribe while its fetching data, The access to store is lost.
