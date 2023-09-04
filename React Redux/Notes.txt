@@ -71,8 +71,26 @@ NOTE:
   -- In This learning process we will be using core redux package, where code is more and handling is complex.
 
 ** Updated Redux: [**IMP**] 
-  -- In morder Application, we use @rreduxjs/toolkit [**Need to See**] Ref: https://redux.js.org/tutorials/fundamentals/part-8-modern-redux#using-configurestore
+  -- In morder Application, we use @reduxjs/toolkit [**Need to See**] Ref: https://redux.js.org/tutorials/fundamentals/part-8-modern-redux#using-configurestore
   -- To Combine redux with react, we use react-redux that provides useSelector and useDispatch to use store's State and dispatch actions.
+  -- Latest @reduxjs/toolkit also provides simplify the implementation of redux Store,
+     1) createStore -> configureStore
+     2) writing Action creater functions -> createAction
+     3) Writing Reducers Function -> createReducer
+  -- Also configureStore, Internally implements combineReducer() thus allows us to directly pass our reducers at one place
+  -- It also implements redux-thunk, Thus allows action Creaters that returns async functions for API calls.
+
+-- example of using crateReducer and createAction..
+    import { createAction, createReducer } from '@reduxjs/toolkit'
+
+    const increment = createAction('counter/increment') // {type: 'counter/increment'}
+    const decrement = createAction('counter/decrement') //{type: 'counter/decrement'}
+
+    //createReducer takes: initialState and callback fun with builder as param that build the casees.
+    const counterReducer = createReducer(0, (builder) => {
+        builder.addCase(increment, (state, action) => state + action.payload) //Each case takes actionCreater, a callback function with state and action, performing state update.
+        builder.addCase(decrement, (state, action) => state - action.payload)
+    })
 
 ** Handling multiple Reducers
  Why ?
@@ -134,3 +152,106 @@ What redux Thunk do ?
 NOTE:
     -- Dont unscribe the store after making the call to the async action creater. 
     Reason: It may take some time to fetch the data, If you unsubscribe while its fetching data, The access to store is lost.
+
+** React Redux ** [Including Redux Store with the React Components]
+
+    Ref: reactReduxDemo/CakeApp.jsx [Uses State Managemnt using Redux]
+
+Notes: [use ES6 export-Import to access]
+    -- Create a folder inside the App, that handles everything Related to Cake.
+    -- In each File define the actions Types, actions creater and reducer+state for the cake Application.
+    -- Define the redux createStore in one file and export the store.
+
+IN the Main APP:
+    -- In the top level, react-redux provides a Provider, Wrap the children of with Provide and pass an attribute called store and pass the Redux store.
+    NOTE:
+        -- Why top level ? The Store can be accessed to all children.
+        -- have a seperate index.js in redux folder, that exports all the action files.
+    -- In the Component, need 2 methods, 
+        1) mapStateToProps:
+            -- A fucntion that takes `state` [from the Reduxstore] as param and return a new object with the data from the store.
+            NOTE: There is something called selectors, where the same thing can be done, In case of large State Data in Redux Store.
+        
+        2) mapDispatchToProps:
+            -- A fucntion that takes `dispatch` as param and returns a newObject.
+            -- This new Object contains a key and value as an arrow function, exectuting the dispatch method with excuting a action creater function.
+
+        3) Connect
+            -- react-redux package provide a method called 'connect'.
+            -- This Basically connects the mapStateToProps and mapDispatchToProps with the component.
+            -- eg: export default (mapStateToProps, mapDispatchToProps)(myCakeComponent)
+
+How the above thing helps:
+    -- Basically, with connect from react-redux, It allows 
+        mapDispatchToProps [returns obj with keys that have the dispatch with actionCreaters] and 
+        mapStateToProps [the state from the redux Store]  as additional props to the Component.
+    -- This props can destructured and used inside the component easily.
+    -- Thus, Inside the component, You can subscribe to the Redux Store and update the state using the connect.
+
+
+** React-Redux Hooks ** [Ref: reactReduxDemo/CakeHookApp.jsx]
+-- React-Redux package includes hooks that can be used instead of using connect() [a higher-order component] to wrap the state and dispatch action to Component.
+
+1) useSelector:
+    -- A Hook provided by react-redux package that works close like mapStateToProps funciton.
+    -- To get hold of any state inside the redux store, we can use the useSelector hook.
+Implementaion:
+    -- useSelector takes a function as param, It takes the store state as param and returns a particualar state Value.
+    -- This can be used directly in the component.
+
+2) useDispatch:
+    -- It returns a reference for the dispatch function from the redux store.
+    -- It now can be used to dispatch any action from the component to the redux Store.
+
+[**Need to understand this things**]
+NOTE: [**VIMP**] [Ref: https://react-redux.js.org/api/hooks#usage-warnings] 
+    -- There are some warning regarding the usage of Hooks with Redux. [Depends upon Application Nesting and implementation of selector function]
+    -- We have problems like:
+       1) Stale props 
+       2) Zombie Children 
+       3) Performance
+
+** Managing multiple State with a single Redux Store  [Ref: reactReduxDemo/CakeAndIceApp]
+   -- Define a new Folder under Redux, And maintain the action const, action creater and reducers+state in their seperate Files.
+   -- In the store file, use `combineReducers` from redux to combine reducers of all the States.
+   NOTE: Here, the way to access the state changes.
+        -- While combining the Reducers using combineReducers, the key contains the resp state and reducers.
+   -- In the Component,
+      -- use the mapStateToProps and mapDispatchToProps and connect to pass the state and dispatch to the component as props.
+
+NOTE:
+    -- For using latest reduxjs/toolkit package, we can use some pre-build APIs to make the above process faster..
+eg: 
+    1) configureStore [combineReducers by defualt, take initialState and also have applymiddleware bydefault]
+       -- best alternative to createStore [Also this is depricated now]
+    2) crateAction: crates actions crater, where it by defult returns an action object with type property.
+       -- Also can have additional payload if required.
+    3) crateReducer: Makes the process of creating the Reducers Function easy.
+    4) useSelector: In the component, provide access the state form redux Store.
+    5) useDispatch: In the component, provide access to the dispatch method of the redux Store.
+       -- Appropiate action can be dispatched to update the respective State.
+
+** implementing Logger in Redux project
+    -- Add the npm package: redux-logger, import the defualt logger.
+    -- Add the logger to the applyMiddleware provided by the redux, It will logs the previous, action and current State For every re-render.
+
+** Debugger Tool with Redux:
+   -- Browser Extension: Redux DevTool Extension.
+   -- npm Package: @redux-devtools/extension, Import composeWithDevTools debugger tool.
+   -- Need to pass this as the 2nd param to the Redux Store and inside it pass the applyMiddleware.
+
+** Notes:
+    -- Actions creater don't just pass type property, can pass other values too in payload property based on what the state can be updated accordingly.
+    -- mapStateToProps and mapDispatchToProps along with state and dispatch param also takes a second param
+       -- 2nd param: ownProps
+       -- Basically it takes all the Props passed to the component from the parant component.
+       -- Thus, flexibility is there, the way we pass redux State and dispatch method to Component based on the Existing props of the Component.
+    -- Sometimes if the requirement arise like you need just mapDispatchToProps or just mapStateToProps,
+       In that case, Just pass in connect the one missing with Null.
+       eg: export defualt connect(NULL, mapDispatchToProps)(ComponentName)
+
+** handling Redux-Thunk
+    -- redux-thunk is a package in npm, Enables us to write async action creaters.
+    -- async action creaters are normal action creater only but they return a async function, where we are allowed to do any side-effect like API calling.
+    -- The async function takes dispatch as param, thus can call other action craeters inside based on the response.
+
