@@ -482,6 +482,17 @@ Solution:
     -- In the callback function, Either define the async function there and then immediatly execute it.
     -- IF the async function is already defined, in the callback function, just call the async function.
 
+** UseEffect and it's cleanup function *** [VVIMP]
+    -- useEffect's callback function can also return a function. --> this is known as cleanup function.
+    -- When it will be invoked ?
+      1. If the component is toggeling i.e It's been mounting and unmounting, cleanUp function is called !
+      2. If the states in the dependency array is changing, Then it will be invoked first before executing the callback.
+  NOTE:
+    -- If the dependency chnages, First useEffect will run cleanUp function to clean any sideEffect like Event subscription, timer instance, wabAPI etc.
+    -- And then it will exectute the content whatever you have in callback function of useEffect.
+    -- Very important Order, Implementation: ** Debouncing search box feature using useEffect ** [check codesandbox, React_machine_coding_Round]
+
+
 NOTE: What happens  when you call multiple set useState functions in sequence ?
   -- In Case we dont have async Functions, React stich all the set useState functions in one and re-render the component with the updated state value.
   -- In case we have 1 normal set state fun and then we have async func inside where we are calling set state fun again ? [REf: In ShowDadJokes, we are doing similar onClick handle function]
@@ -541,7 +552,7 @@ NOTE: [VIMp, Easy mistake to make...]
 *** Use of Local Storage ***
   -- BAsically it is a keyword in JS, that can store key-value pair of data into the browser.
 Why ?
-  -- Even if the browser is Refreshed or closed, The data persist.
+  -- Even if the browser is Refreshed, The data persist.
 Operations ?
   -- localStorage.setItem("myCat", "Tom");
   -- const cat = localStorage.getItem("myCat");
@@ -596,7 +607,7 @@ Ref: React_practise
       -- Need import:  {component} from react
       -- Component is a class that extends Component, it contains a function render() { return ...JSX....}
       -- props are accessble using `this` keyword. eg: this.props.name
-      -- includes life-cycle hooks/amethods.
+      -- includes life-cycle hooks/methods.
       -- eg: 
       class newPage extends Component {
         render() {
@@ -993,7 +1004,7 @@ Rules Of Hooks:
 NOTE: Hooks can only be implemented inside the functional Component function. not outside it.
 
 1) useState:
-  -- useSatet is realted to state.
+  -- useState is realted to state.
   -- Implements React State Feature for Functional Components.
   --  Diff between the setState of class Component and Hooks ? [**IMP**]
     -- While handle state variables which are object, setState of class Component will automatically merge the prev and curr State Objs,
@@ -1012,7 +1023,7 @@ NOTE: Hooks can only be implemented inside the functional Component function. no
 NOTE:
     1) If the second param of useEffect, state dependencies array is not given, It will run for every stateChange Event. 
     2) If State is added in the array as 2nd param, It will run useEffect only when re-render happens for the mentioned state Changes.
-    3) If-- N kept empty, It will renders only when the component Mounts. [Just once]
+    3) If the second param i.e dependency list kept empty, It will renders only when the component Mounts. [Just once]
 
 NOTE: For Conditionally Running of useEffect based on State chnages
   -- In Class Component, We use the componenetDidUpdate Life-cycle method to handle side-effects whenever the component Updates.
@@ -1139,7 +1150,7 @@ NOTE:
      -- If we have a complex businessLogic, useReducer is good.
   5) Maintaining globalState: [**mainReason_2**]
      -- For maintining state inside a component, useState is good.
-     -- For maintaing state across all components, useReducer is more good. [NOTE: for state sharing use: createContext, useContext]
+     -- For maintaing state across all components, useReducer is more good. [NOTE: for state sharing use: React.createContext(), useContext()]
     ** Problem with using useState,
       -- If you have multiple statevariable, we need to pass all the setState function to component.
       -- In case of useReducer, Just one dispatch methoc can handle multiple stateVariables.
