@@ -1,0 +1,929 @@
+#### Spring boot Basic #####
+
+Date: 30th March 2025
+
+-- Web-Serives: 3 key features
+	1. designed for machine to machine interaction.
+	2. interoperable - [different types of applications i.e application written in other tech stack should be able to communicate]
+		-> Basically not platform dependent.
+	3. communication is allowed over a network.	
+-- How data is exchanged between application and web-service ?
+	- Request [application will request web-service] and Response cycle [web-service will provide application with resp].
+	- web-services must be platform independent i.e Req & Res must be also platform independent.
+	- 2 data-exchange options: 
+		1) XML
+		2) JSON
+	- Every webservice has "Service defination": Endpoint, Req/Res format, req structure, res structure.
+-- service provider/server: Which hosts the web-service
+   service consumer/client: Which consumes the web-service.
+   Transport: This defines how the service is called. 2 popular options: 1) HTTP [over the internet]  2) MQ	[over the queue]
+
+-- types of web-services:
+	1) SOAP
+	2) REST
+## NOTE: 
+	SOAP and REST are 2 very different types of services. 
+	REST is more defines architecture approach and SOAP is restrication on the format of the XML for the data-exchange between application and service. 
+-- SOAP:
+	- simple object access protocal.
+	- We use XML at the data exchange format.
+	- SOAP defiens a specific data-exchange structure. includes:
+		1. Envelope -> holds header and boady.
+		2. header
+			- containes meta-information like auth, content etc.
+		3. body
+			- real content of the request or response.
+	- WSDL: Web Service defination Language, Incudes:
+		1. Endpoint.
+		2. All Operations.
+		3. Request Structure.
+		4. Response Structure.
+-- REST: Representational State transfer.
+	- Format for of the Request and response, here is HTTP: Hyper text transfer protocal.
+	- HTTP Method Codes: GET, POST, PUT etc.
+	- HTTP Status Codes: 200, 201, 404 etc.
+	- we work we resources in REST Based APIs. 
+		- Resources can be anything that we expose to the world. like /users/1 or /users  -> Here users is the resource.
+		- Resource format can be XML, JSON or HTML.
+	- Combine REST Methods with Resources --> You get a REST API eg: POST/users, GET/users.
+	-> REST Needs 2 things:
+		1. Resource driven.
+		2. Use HTTP Methods and Codes which are already defined.
+	-> REST Is strict HTTP.
+	-> NO Standard Sercice Defination defined. Few popular options: Swagger [uses to define REST Services] 
+
+-- REST Vs SOAP 
+	1. Restrictions are there w.r.t HTTP - Follows SOAP Architecture approach.[SOAP XML]
+	2. NO Such specific data exchange format [JSON is most popular] - Follows strictly SOAP XML Format for data exchange.
+	3. API Documentation for REST [popular swagger]  - SOAP uses WSDL.
+	4. REST Strictly uses HTTP as transport protocal -- SOAP says web or MQ as transport protocal.
+	5. REST is easier to implement. -- SOAP is more structured and needs proper following the structure WSDL.
+		
+####### Modern Spring FrameWork ##########
+
+ -- Goal: We will built a spring Project --> Game Runner to run Old Classic Games.
+ 
+1. First MileStone --> Manually setup the Project and the working env.
+	-- start the project by going to start.spring.io.
+	-- Whenever we start a spring project, We need to focus on Group and Artificat.
+	-- Once Done --> Click on Generate --> Downloads a Zip Folder --> Extract it --> Open it in IDE. [For now using VSCode]
+
+### Game Runnner - Thats Runs Games ###
+1. Iteration 1: Tightly Coupled Game Runner class.
+	-- GameRunner Calss --> Mario, Super Contra, PacMan etc. [Game Classes]
+	-- Tightly coupled classes are implemented.
+	   --> Bsically, lets say GameRunner class is running the game class Mario. But i want to run Super Contra now. 
+	   --> In this implementation, We need to update the code at so many places so that now GameRunner runs the SuperContra.
+	--> Game Runner Class is tightly coupled with the Game classes. Any switch between the games needed code changes. 
+
+2. Loose Coupling - using Interface.	
+	-- interface we define the common methods that are overloaded by each Game Class. --> say up(), down() etc.
+	-- Now in Game Runner, You can initialized the object with the interface.
+	   --> This allows us to call the up() method either from Mario Class or SuperContra class as per our choice.  ===> Highly flexible. -> Loosly coupled.
+NOTE:
+	-- two problems:  We need to create the instance of the game and create an instance of the gameRunner class.
+	-- This two steps can be managed by the spring framework.
+	-- use 2 annotations:
+		1. @Component --> 
+			Defined for the Game classes and the GameRunner Class.
+			This classes are managed by Spring framework and managed by SpringApplication.
+		2. @Autowired --> 
+			inside GameRunner Class --> autowired the game class component instance.
+NOTE:
+	-- sprint framework manages instances of all the components maybe 1000s in enterprise level application, in "Application Context".
+	-- SpringApplication --> Manages all the instances of component.
+	-- .getBean() --> from the srping application context, using this we can get the instance of any component. 
+	-- Since we have defined @Component for MarioGame Class and used @Autowired to use that instance, running the .run() from gameRunner will execute the MarioGame Class Functions.
+	-- Component Scan happens on the default package.
+		--> It identifies all the @Component classes denined in the hierarchy of that package where you are defining the ApplicationContext.
+		--> You can defined multiple packages also. define an array for the @ComponentScan({"com.package1, com.package2"})
+	-- Dependency Injection/IOC [Inversion of Control]:
+		--> Identifying the beans, their dependencies and wiring them together by creating their objects.
+		--> Iversion of control because now spring handles the classes and object creation.
+	-- In Springboot, It helps to manage the Object dependencies and life-cycle.
+		
+## How to handle in case of multiple component inside same package.
+	-- Spring throws error as it is not sure which component to autowired.
+	-- Add @Primary to any one of the component. --> This gives that component priority over other.
+	
+## How the Spring JAr is downlaoded [Maven]
+	-- Spring jar is downloaded via Maven.
+	-- Spring needs other Jars. That needed to be downloaded.  Mavane is a tool that manages spring jars for the application.
+	-- All the configurations are in Pom.xml
+	-- Maven artifacts are identified by groupId and Artificat id.
+	-- Maven Manages all the application dependencies.
+	-- spring dependecies Vs Maven dependencies.
+		-> Spring dependencies are at class level. like the for businessService class --> service Class is a dependecy.
+		-> Maven dependencies are at much higher level. It manages all dependcies for the whole application. Like springboot is a dependency for this application.
+		
+## dependency Injection Types:
+	1. Constructor based.
+		--> In game Runner class, we used a constructor.
+	2. setter based.
+		--> We use setter to initialize the Object in the class. --> and AutoWired is put on top of this setter. 
+	3. Field based.
+		--> In BusinessSErvice calss, we are not using any constructor or setter. Here dependency injection is done via reflection.
+	
+NOTE: Using the constructor based injection is always Recommended.
+	--> while using constructor based dependecy injection, you can put @Autowiered on the field.
+	
+## Spring Modules
+	-- Spring Framework is divided into various Modules:
+		1. Core: Ioc Container etx
+		2. Testing: Mock objects, Spring MVC Tests etc
+		3. Data Access: Transactions, JDBC, JPA etx
+		4. WEb Servlet: Sping MVC etc  [For WEb application]
+		5. WEb Reactive: Spring WebFlux etc
+		6. Integration: JMS [Talk to another application]
+	-- 	we have the flexibility to choose right module as required by our application.
+	
+## Spring Projects:
+	-- Spring keeps evolving. (REstAPI >> Microservice >> Cloud.)
+	1. Spring boot: Most popular for microservice.
+	2. Spring Cloud.
+	3. Spring data.
+	4. Spring Intergration.
+	5. Spring Security. --> Secure your web application and Microservices.
+	
+#### Spring Boot ####
+	-- spring boot introduced in 2016.
+	-- For starting with spring project.
+		1. Go to start.spring.io --> Configure the group and ArtifactId.
+		2. Add Spring web as dependencies. It is a starter for creating web application.
+	-- annotations used:
+		1. @RestController 
+			--> Make sure that class is used for web-services.
+		2. @RequestMapping
+			--> We define the url in this.
+NOTE: After Making any code updates, Do restart the server for the changes to reflect.
+	-- In VSCode, You can restart the server by the play controls. when you run the code.
+	-- TOp right, You can use the "play" button to run the springboot application, and then you have a hover chip where you can either restart or stop the server.
+
+-- Below are some the factors that makes Spring-boot faster for development and productivity.
+	
+## Spring boot starter Project
+	-- Need a lot of framework for various requirement for the project.
+	eg: for restAPI i need ->  spring, spring mvc, tomcat etc.
+	     for unit tests --> spring test, Junit, mockito etx.
+	-- starter provides convenient "dependency descriptors: for different features.
+	-- Look for the pom.xml file in the project for dependecies information.
+	-- In Our project: learn-srpingboot-application,
+		1. we are using spring-boot-starter-web --> help in making REST APIs.
+		2. sprint-boot-starter-test --> write test cases.
+
+NOTE:
+	- These starter-dependency pre-defines all the basic dependecies you need for building a particular type of application. like spring-boot-starter-web pre-defines all the basic dependencies needed for RESTAPI usecase.	
+	- Different types of starter-projects depending upon usecases:
+		1. spring-boot-starter [web application and RESTAPI]
+		2. spring-boot-starter-test [unit test]
+		3. spring-boot-starter-JDBC [For talking to Database] ... etc
+	
+## Spring-boot Auto Configurations.
+	-- Automated Configurations for springbased application.
+	-- Depends upon 
+		1. what frameworks are in Class path.
+		2. any existiing configurations 
+	-- Location: Under Maven dependecies,  Find something with spring-boot-autoconfigurations.
+	-- Default Error Fallback is also configured by a class that is auto configurated.
+	-- other example of such auto configured are :
+		- Automatically JSOn conversions.
+		- Embedded servlet containers.
+		- dispatcher SErvlet.
+		
+## Spring-boot Devtools.
+	-- TO include this, YOu need to add the same in pom.xml.
+	-- Add "spring-boot-devtools" as dependecy below the starter-web in pom file.
+	-- Any changes in the code will auto-matically restarts the server.
+NOTE:
+	- Springboot-devtools cannot track changes in pom file.
+	- Any changes in the pom file, We need to manually re-start the server.
+	
+## Production Ready with Spring boot.
+
+1. Profiles:
+	-- we have different envs: DEV, QA, Stage, PROd etc.
+	-- We might have different databases or webservices.
+	-- Profiles:
+		-> It Helps us to configure the application based on environment.
+		--> For each env we will have different profiles.
+	-- Where ?
+		-> Go to application.properties -->This is applicaiton level.
+		-> create application-dev.properties --> This is for the dev profile.
+		-> create application-prod.properties --> This is for the pod profile.
+	-- By Default, the application will refer the application.properties configurations.
+	-- In application.properties, add: spring.profiles.active = "prod" | "dev".
+	-- Based on this configrations it will merge the appropiate application properties keys file with the application properties file.
+Note:
+	- Logging levels: [Top levels prints the below level logs i.e debug log level prints infor, warn and errors.]
+		1. Trace
+		2. Debug
+		3. Info
+		4. warn
+		5. error
+		6. Off
+		
+Date: 14th June
+	
+2. Configurations Properties. [ref: CurrencyServiceConfiguration.java]
+	-- We want to create custom properties for our application.
+	-- If there is a lot of application service specific configuration, then to manage all of them, we can use --> configrations Properties.
+	-- Steps:
+		- You define your propeties in applicationProperties or your dev/prod profile for application properties.
+		- you have to create a controller with @ConfigurationServiceProperties and define the getter and setter.
+		- Have a contorller where you can create a route for calling the same.
+	
+3. Spring boot Embedded Services:
+	-- simplify deployment with Embeedeed SErvices.
+	1. War Approach [old approach]
+		- install java --> install web service like tomcat --> deploy application war [web archive].
+	2. Embedded server [simple]
+		- install java --> Run jar file. [server is include in the jar file]
+	-> That's why Jar is helpful than creating war file.
+	
+4. Spring boot actutor.
+	-> monitor and manage your application in prod.
+	-> add sprint-boot-starter-actuator in your pom.xml. --> then go to localhost:8080/actuator 
+	-> It provides you all links for monitoring the server.
+		-> All of the things which are auto-configered, you can check it under the /beans.
+		-> /configprops --> see all the things which are configured.
+		-> /env --> shows all details of the env.
+	NOTE: enabling all endpoints can consume a lot of memory, so being specific about the links you want to monitor is adviced.
+	
+5. Spring boot vs MVC vs spring
+	-> Spring framework [dependency Injection]
+		-> @Component, @Autowierd, Component Scan etc.
+		-> Just dependency injection is not sufficent --> You need other framework too.[ for Mockito, Hibernate/JPA]
+	
+	-> Spring MVC 
+		-> Simplify building web apps and REST API.
+		-> @Controller, @REstConstroller, @RequestMapping. 
+	
+	-> Spring boot 
+		-> It is a spring project. [build production-ready application]
+		-> starter project [easy to build varity of application]
+		-> Auto configuration [ Not need to config to setup spring, spring MVC and others]
+		-> Also Provides non-Fucntional reqs like 
+			1. Actuators [for monitoring]
+			2. Embedded servers [Jar over war] --> Easy deployment.
+			3. Logging and error Handling
+			4. Profile and Configuration properties.
+	NOTE:
+		-> Spring boot is a wrapper, that makes using spring MVC and spring easy and makes production ready application faster and easier.
+
+### Maven 
+	-> It is a software management and comprehension tool.
+	-> Important task in a spring boot project:
+		1. create new project
+		2. Manage dependecy and their verision
+		3. Build a jar
+		4. Run the application.
+		5. Run unit case etc.
+		Maven help with all this tasks	
+	-> pom.xml  --> Project object Model, It holds all the configuration to a Maven project.
+	-> It includes:
+		1. Maven Dependencies --> includes framework and libraries.
+			-> Under Maven depencies, based on what dependencies we define in pom.xml, It brings all the relevant jars.
+			-> The dependencies at pom.xml level has much more child dependencies. [Right-click and you can explore all the child dependencies] --> called transitive dependency.
+		NOTE: [imp]
+			-> maven dependencies --> these are the dependencies used to build project like spring-boot-starter, spring-boot-starter-web.
+			-> spring dependencies --> these are the dependencies of a specific classes based on correct annotation, spring will autowired it.
+		
+		2. Parent Pom 
+			-> at the top of the Pom file under the <parent> ... </parent>
+			-> most of the spring-boot-dependecies are coming from here.
+			-> under dependency management, we define the version of the dependencies for our project.
+			-> provides lot of plugins [used for running maven commands] and java.version and properties.
+		
+		3. Name of the artifactId [like a class name] and GroupId [like a package name].
+			-> if any other project wants to use our project, it will be specified by using the project, groupId and a version.
+			-> They can use our project by adding our project's groupId and artifactId in their pom.xml
+	-> 	Any issues with Pom.xml	[** takes a lot of time **]
+			-> Look at mvn help:effective-pom [gives the whole tree of dpendencies along with verison]
+			-> mvn dependency:tree
+	-> 	Maven build Life cycle:
+		-> sequece of steps whenever we run mvn command.
+		-> it validates and then compile the code [create class files], run the unit test cases and then deploy.	
+	-> How Maven works ?
+		-> Maven follows Convention over configuration.
+		-> provides a standard folder structure with all the maven project.
+		-> Maven central repo / milestone repo contains all the jars index by artifact ids.
+		-> The downloaded jar is stored in local space under c://user/.m2 folder
+	--> Common used mvn command:
+		1. mvn --version
+		2. mvn compile 
+		3. mvn test-compile 
+		4. mvn clean [clean the target folder]
+		5. mvn test [Runs unit tests]
+		6. mvn package [creates jar]
+		7. mvn help:effective-pom [creates an complete effective pom structure]
+	-> How Spring is versioned ?
+		-> common used: MAJOR-MINOR-PATCH [-Modifier] [eg: 5.2.3]
+		-> MAJOR: significant amount of work to upgrade. [eg: from 4.0.0 ==> 5.0.0]
+		-> MINOR: little to no work to upgrade.
+		-> PATCH: No work to upgrade.
+		-> Modifier: Optional MOdifer [if it's a release candidate, milestones or release [no modifier adder here]]
+		-> Order:
+			10.0.0-snapshot --> 10.0.0-M1 -> 10.0.0-M2 --> 10.0.0-RC1 -> 10.0.0-RC2 -> 10.0.0 [released version]
+	NOTE:
+		-> Dont user snapshot versions, they are work under progress.	
+		-> Used only released verison in prod.
+
+		
+### Gradle
+	-> 2 popular build tools in Java ecosystem: Maven and gradle.
+	-> Mvn is a platform dependenct tool [needs Java], Gradle is a cross platform tool.
+	   -> You can build any kind of the tool java or C++/C, Js or python.
+	-> Can Automate Everything. [Uses DSL -> Groovy]
+	-> Advantage:
+	   -> Builds are very faster than maven.
+	   -> Same project layout as Maven.
+	-> All dependencies are defined in build.gradle.
+	-> Project name and plugins are configured in settings.gradle.
+	-> plugins in Gradle:
+		1. Java: compliation + testing + bundle capability.
+		2. Dependency management. --> easy to add any dependency.
+		3. Spring boot gradle plugin.
+			-> spring boot gradele dependency automatically maintain any new dependency version. 
+	-> command to run gradle:
+		1. ./gradlew build --> builds the project.
+		2. ./gradlew bootrun --> Runs the springboot project.
+		
+NOTE: Had to set the JAVA_HOME to the latest java 17 for the build to work.
+		
+## Maven Vs Gradle.
+	-> Top Maven Advantage: Familiar, simple and Restrictive [strictly XML].
+	-> Top Gradle Advantage: Faster build times and less verbose.
+	-> Both are good, choose the tool as per need.
+	 
+
+[Date: 16th June] 
+### Building REST API with Spring boot.
+	-> dependencies that we have included at project initialization:
+		1. Spring web [Provides REST support]
+		2. JPA [handles spring data and hibernate]
+		3. H2 [in-memory database]
+		4. devtool [restarts the server automatically]
+
+	## created a hello-world REST Service.
+		-> created a new bean class and then used @RequestController and @GetMapping to create url that returns a JSON response.
+		-> Working:
+			-> All Req in spring MVC are handled by DispatchServlet.
+			-> it matches the request with the right controller method.
+			-> it is configured because of Auto Configuration.
+		-> How JSON response ?
+			-> @ResponseBody + JacksonHttpMessageConverters
+			-> @RestController --> has @ResponseBody --> message conversion happens --> default conversion is JacksonHttpMessageConverters [configured by auto configuration]
+		-> Who handling Errors ?
+			-> we get WhiteLabel Error Page.
+			-> Configured by Auto Configuration.
+			-> ErrorMvcAutoConfiguration class has the above WhiteLabel Error Page.
+			-> For any wrong url typed, the above class is called.
+		-> spring-boot-starter-web is handling all the jars that includes Spring, Spring MVC, tomcat.
+	NOTE:
+		2 things: Auto configuration and starter-web, this two handles most of the setup and automatically configures the REST services to work smoothly.
+		
+## Path Paramters ? 
+	-> eg: /users/{id}/todos/{id} 
+	-> the variables in the above are called path paramters.
+	-> use @pathVariable in the parameter of the @GetMapping method to extract path paramter form the url.
+	NOTE: the name of the paramter and path-parameter must match.
+	
+## Request Methods:
+	GET, POST, UPDATE, PATCH [Partial Update], DELETE.
+	
+NOTEs:
+	-- use plurals in url name  --> [Always preferred]
+	-- If a class is with @Component --> it's bean is automatically handled by the spring framework, While using this, you can use @autowired.
+	 eg: /users, /users/1, /users/1/posts, /users/1/posts/1. 
+	-- we created a bean class with data members, getter-setters, constructors and toString(). 
+	-- To handle data with a database, We need to create a DAO Object.
+		-> This DAO Class talk to database [via JPA/Hiberante] and we have methods to findall, save an Item or findOne Item from the database. 
+	--> To send the body in the Request, you need to use @RequestBody
+	--> Common Resp status:
+		404 ->  Resource is not found
+		500 -> service exception
+		404 -> validation err
+		200 -> success
+		201 -> created successfully
+		204 -> No Content
+		401 -> unauth
+		400 -> a bad req
+	-> ResponseEnitity --> can send the correct status from the controller.	
+	-> location header --> On success create, sends the uri of the newly created entity.
+	-> Handle the exception like for No data Found and server Error. [Baisc Exception Handling]
+	-> In Prod, devtool is disabled automatically evenif it is mentioned in po.xml
+	-> Exception is Handled by extending the default Exception class of -> -> ResponseEnitiyExceptionHandler that handles most of the exception in REST service.
+		-> We have overriden the methods and created our own Exception structure using ErrorDEtails class.
+	-> Data validation:
+		-> we have added a new dependency: spring-boot-starter-validation.
+		-> @Valid we need to add in the POST Controller. --> This runs the validaiton we define at the bean level.
+		-> At bean/class level, we have many validation constraint like @Size(), @Past etc, where we can define default error message too.
+		-> Validation errors are caught by default by handleMethodArgumentNotValid method in ResponseEntityExceptionHandler. --> we have override that to use our ErrorDEtails structure.
+	
+## Advanced REST API Features:
+	1. Dcoumentation for API [Swagger]
+		-> Challenged: Accuracy, Consistency
+		-> 2 Options: Manually Maintain or generate from code.
+		-> Swagger and Open API
+		-> Swagger UI enables us to Visualize and interact with the restAPI.
+		-> Library that we are going to use to docuemnt -> [springdoc openapi]
+		-> Added [org.springdoc] dependency in our project's pom.xml
+		-> Go to localhost:8080/swagger-ui.html
+		-> you can also view the openapi doc --> It will be a json docs with info of servers, path [details of all routes], components [schema of the routes is defined]
+		
+	2. Content Negotiation.
+		-> The response content representation can be different.
+		-> eg: For the same resource, I can have the response in JSON or in XML.
+		-> language of the resp can also be in a different.
+		-> a particular header: Accept => application/xml or application/json.
+		-> Accept-Language -> en, fr etc.
+		-> <groupId>com.fasterxml.jackson.dataformat</groupId> --> dependency is added have response back in xml if they send accept header as application/xml.
+		
+		
+	3. i18n
+		-> this enables multi-language support for our response.
+		-> needs a header: Accept-Language -> en, fr, zh etc [locale]
+		-> For Supporting this,
+			1. we need to define this internationalized value somewhere. -> under resource/messages_locale.properties.
+			2. Based on the accept-language header we need to pick the correct locale value.
+				-> use SourceMessage to pick the correct text based on locale.
+		
+	4. Versioning [Ref: VersioningPersonController]
+		-> Why need ? --> any update in API when you want to support both the new API with modifications and old API without modification.
+		-> versioning of REST API is needed.
+		-> ways of versioning:
+			1. url [have v1 or v2 in url]
+				-> Different class/bean handles different layout for the resp, which is triggered based on which url you hit.
+				-> used by Twitter
+			2. Request Paramter
+				-> eg: /person?version=1 or /person?version=2
+				-> @GetMapping -> takes path and params.  --> based on this we can trigger differemt methods for fetching different version data. 
+				-> used by Amazon
+			3. Header
+				-> eg: In headers, X-API-VERSION -> 1 
+				-> In header we will send the version info.
+				-> @GetMapping -> takes path and header --> based on this we can implement versioning.
+				-> used by Microsoft
+			4. Media Type
+				-> eg: In header, accept -> application/vnd.company.app-v1+json
+				-> This works same with Content negotiation.
+				->  @GetMapping -> takes path and produces. --> it captures what we send in Header with "accept"
+				-> used by github.
+		
+		Which one is Recommended ?
+			FActors: 
+				URI Pollution, 
+				Misuse of HTTP Headers, 
+				caching [based on url it cache.]
+				Can we execute on browser ?
+				API Documentation.
+		
+		NOTE:
+			-> Start at the begining for versioning. which approach to choose.
+			-> Maintain one versioning approach through out the Enterprise.
+			
+		
+	5. HATEOAS	
+		->  HyperMedia as the engine of application state.
+		-> Basically, When websites allow you see data and also perform Actions (using links).
+		-> You get links in the response to perform other operations.
+		-> implementation:
+			HAL (JSON Hypertext application Language) -> Simple format that gives a consitent and easy way to hyperlink between resources in API.
+			-> Implemented using Spring HATEOAS.
+			-> Add the dependency in pom.xml file -> spring-boot-starter-hateoas
+			-> Wrap the method into EntityModel, Create links using WebMvcLinkBuilder from Hateoas.
+			-> Add the link in the model and return the model.
+	
+	6. Filtering -> static and Dynamic
+		1. Serialization 
+			-> Converts Object to stream (eg: JSON)
+				-> most popualar JSON Serializtion in Java: Jackson.
+			-> we can customize the field name using @JsonProperty
+		
+		2. Filtering:
+			-> Return only selected fields. eg: We dont want password if it is added as property.
+			-> 2 types:
+				1. Static 
+					-> same filtering for a bean through out the REST API. 
+					-> When you always wants to filter out a particular field.
+					-> @JsonIgnoreProperties [at the class level], @JsonIgnore [at the field level]
+				
+				2. Dynamic
+					-> I can decide if to send a proeprty in the resp of a REST API needs or not.
+					-> @JsonFilter with FilterProvider.
+					-> implemented using MappingJacksonValue, FilterProvider and SimpleBeanPropertyFilter.
+					
+	7. Monitoring.
+		-> Monitor and Manage application using spring-boot-actuator.
+		-> Provides with a lot of links:
+			1. beans => all beans.
+			2. health
+			3. metrics
+			4. mappings.
+		-> go to localhost:8080/actuators --> Gives us few links
+		-> management.endpoints.web.exposure.include=* --> in application.properties shows all the end-points exposed.
+		-> we can check a variety of stuff related to env, health, beans, metrics, mapping etc.
+
+### HAL Explorer:
+	-> Returns hyperLinks in the response to Link resources in API.
+	-> HAL Explorer is a API explorer for Restful Hypermedia APIs using HAL.
+	-> Springboot HAL explorer auto-configures to view the REST APIs created using HAL.
+	-> Add dependency of spring-data-rest-hal-explorer under groupId org.springframework.data.
+	-> Then go to localhost:8080 to view the HAL explorer.
+	
+NOTE: 
+	-> Any changes to Pom.xml or application.properties --> Needs the server to restart.
+	-> @AutoWired 
+		-> When you want Spring to manage the object for a class, you need to use @Autowired.
+		-> NOTE: The class/bean you are @Autowired must have @Component in it's defination so that Spring can identify that bean during Component Scan.
+	
+### JPA and Hibernate with Spring Boot 
+	-> dependency we added -> Srping web, JDBC, JPA, H2 database.
+	-> First enable the h2 console.
+		-> In application.property add
+			spring.h2.console.enable -> true.
+		-> define a static JDBC Connection url for h2 database:
+			spring.datasource.url="jdbc_url" [If not specified, Everytime the server starts it will create a new url] 
+		NOTE: do restart the server after adding.
+		-> we need to create table in sql, so under resource we need to create schema.sql.
+			-> define the table structure inside the scheam.sql file.
+			-> JPA starter dependency that we added, will automatically pick the schema.sql and create the table. 
+			-> do restart the server. --> table will be created.
+			
+	## Spring CRUD Operations in Spring			
+		1. we will use SQL queries for both JDBC [need to write more code] and Spring JDBC [less code]
+		
+		2. Spring JDBC:
+			-> @Respository --> Is when a class talks to database.
+			-> Need JdbcTemplate class. =--> provides a way to execute sql.
+			-> NOTE: inside 3 quotes --> It is called text block. --> It can retain the formate of the query.
+			-> springJdbcTemplate.update --> can fire insert, update and delete query.
+			-> springJdbcTemplate.queryForObject -> can fetch only one result from database.
+			NOTE: In case of select Query --> You need to map the result to the bean.
+			-> IF the columns in db matches our bean property then we can use BeanPropertyRowMapper class to map ResultSet to bean.
+		
+		Note: 
+		  -> Writing query in JDBC approach can be problem when we have lot of tables.
+		
+		3. JPA:	
+			-> Enables us to maps our bean directly to the table in database.
+			-> @Entity [jakarta.persistence] --> On the bean will map this bean to database.
+			-> @Id for primiary key,
+			-> @Column(name = "database_table_table)
+			NOTE: If bean's name and property name is same as databse name and column, mentioning name is not mandatory.
+			-> use EntityManager to handle database operations on the Entity bean.
+			-> Operations by EntityManager:
+				1. merge --> isnert row in database.
+				2. find --> find a row by primary key,
+				3. remove -> remove an entity.
+		NOTE: 
+			- You need to add an annotation @Transactional on JpaRepository for it to talk to database. [This makes sure all calls are either completed or not at all i.e atomic nature]
+			- to see the sql queries: add spring.jpa.show-sql in application.properites.
+		
+		Advantages of JPA:
+			1. Dont not need to write queries like in JDBC [it takes care internally]
+			2. We just need to map bean to database using Entity and use correct Entitymanager methods to perform database operations.
+			
+		4. Spring Data JPA:
+			-> makes JPA more simple.
+			-> here just we need to create an interface extending JpaRepository. Specify the class name and the type for the primary key.
+			-> use the interface to get wide range of methods to perform database operation.
+			-> here the Entity is also going in background, making the process more efficient.
+			-> NOTE: Along with Paramterized constructor, If we add @Entity to a class, It must have a default constructor too. [**IMP**]
+			-> Operations:
+				1. .save -> Either insert or update a row
+				2. .deleteById -> delete by id.
+				3. .findById -> find a particular entry by id.
+			-> WE can have custom method for database operation under Spring data JPA.
+				-> We need to follow a naming convention -> findBy[Attribute name in the class]
+				
+### Hibernate Vs JPA:
+	-> Jpa defines an specidication. It is an API.
+		eg: it defines how to define Entity, ID [for primary key], Columns.
+	-> Hibernate is one of the most popular implementaions of JPA.
+	-> Why not using hibernate directly ?
+		-> it would result in a lock in to Hibernate.
+
+### Connecting RESTAPI with JPA and hibernate.
+	-> Make sure you have all the required dependency added in pom.xml.
+	-> Add @Entity to the class which we need to connect to dB using JPA
+	-> data.sql have the initial data to be loaded in the db.
+	NOTE: JPA will take care of creating the schema and loading the data in the db.
+	-> In applciation.property:
+		spring.jpa.defer-datasource-initialization=true --> wait for the datasource to be created before performing any operations.
+
+### Many to one relationship between 2 Entity.
+	-> a single user will have multiple posts Or Many posts is linked to a particualar user.
+	-> Changes in User Entity:
+		-> added a List of Posts property.
+		-> defined it as @OneToMany with this field mapped to "user" property in Post Entity.
+		-> 
+	-> Changs in Post Entity:
+		-> Added a user property here.
+		-> defined it as @ManyToOne.
+		-> and we dont want to fetch user details when we query posts. So Set fetch property to lazy instead of the default value of egar.
+	
+	-> This will create post table with a column user_id --> that associates with the user table.
+	-> Now, we have created a relationship data for users and posts.
+	-> we can build api routes around it.
+	NOTE:
+		=> Linking Post and User Enity is important --> That forms the relation between the schema.
+		-> Once it's done, using HETEOAS, for Link builder and JpaRepository interface for handling queries.
+		-> APIs endpoints can be handled. REf: UserJpaRespository [Handles both Users and Posts Endpoints]
+		-> Adding in application.properties -> spring.jpa.show-sql=true -> Shows sqls queires executed by Jpa.
+	
+### Updating the databaes from H2 to Mysql database.	
+	-> Switching from one database to another with Spring data JPa is easy.
+	-> data persisit in data, as it doesnot depend upon the server start/stop.
+	-> install docker --> run mysql compose file to bring up mysql db.
+	-> After installing Docker.
+		docker --version --> Should return something.
+	-> cmd to run mysql as docker container:
+		-> docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=social-media-user --env MYSQL_PASSWORD=dummypassword --env MYSQL_DATABASE=social-media-databaes --name mysql --publish 3306:3306 mysql:8-oracle.
+		
+	-> The above will install mysql as docker conainer.
+	-> docker container ls --> Shows all running docker containers.
+	
+NOTE:
+	-> sping boot autoconfiguration will create the table for database like h2 [in memory database] but it will not automatically create the table for mysql.
+	-> spring.jpa.hibernate.ddl-auto [in application.properties] will make sure at the start up of the server based on the entites it will create those tables.
+	-> You need to add mysql dialect also to work with mysql.
+	-> remove the h2 dependency from pom.xml --> Add the groupId -> mysql, artificatId -> mysql-conector-java
+	
+	
+### Basic Auth with Spring Security 
+	-> Add -> spring-boot-starter-security to pom.xml
+	-> As the server starts it will generate a password. [eg:  user/fef07d14-b9dd-4622-b98e-9f7e2c322dc6]
+	-> Now the APIs are secured by a cred and 401 auth error will come withtout the username and password.
+	-> Instead of default user name/password, we can secure our custom username and password.
+		-> In application.properties add spring.security.user.name and spring.security.user.password.
+		-> Restart server.
+	-> This is basic Auth.
+	
+Problem: Post, PUT Calls will return 403.
+	
+## SEcurity for prod-grade APIs.
+	-> Spring Security performs a series of filter chains when it intercepts an API.
+		-> All APIs must be authenticated.
+		-> If not, show a web page for login.
+		-> CSRF --> Doesn't allow POST, Put calls and many other checks.
+	-> We have to Modify this filter chains.
+		-> We will define a Bean to overwrite the default filter chain checks.
+	NOTE:
+		-> we have to deine @Configuration. to the SpringSEcurityConfiguration class where we can overwrite the filterChain method.
+		-> Things we need to do under filterChain.
+			1. All req must be authenticated.
+			2. If req is not auth, show a popup for authentication.
+			3. disable CSRF for post and put.
+			
+### Richardson Maturity Model:
+	-> Determines how restful your services are ?
+	
+	-> Level 0: Expose SOAP WEB SEvicers in REST Style
+	
+	-> Level 1: EXpose Your Resources with Proper URI.
+		eg: http://localhost:800/accounts/{id}
+	
+	-> Level 2: Level1 + Proper HTTP Method.
+		eg: GET http://localhost:800/accounts/{id}
+	
+	-> Level 3: Level2 + HATEOAS 
+	   -> determines not only sending resp is enought but also to send next possible actions.
+	   -> Send links.
+
+### Best Practise in RESTFUL design:
+	1. Always Customer first. [keep it simple] 
+		-> Have great docuemntation.
+	2. Make best use of HTTP.
+		-> use the right HTTP Method.
+		-> use the correct HTTP response Status.
+	3. No Secure info in URI.
+	4. Always use plurals: eg: /users/
+	5. For Exceptions define a consistent approach.
+		eg: /search
+		    PUT gits/{id}/star
+			
+### Java Important Features.
+	-> Java 8 -> Lamda expression and streams.
+	-> Java 9 -> Modularization.
+	-> Java 11 to now: [writing code simplified]
+		-> switch Expression
+		-> Text Blocks
+		-> Records.
+		-> Patter Matching.
+	-> Java 21 to now: 
+		-> Project Loom  --> virtual thread for high-performance concurrency. Thus, it is not longer linked to slow os thread.		
+		-> cloud and container ready. -> helpful for making cloud-native application.
+
+	-> record Person (String name, int age) {}
+	-> String res = switch(day) {
+			case Monday, friday -> "weekend";
+			default -> "Normal day";
+		}
+	-> Cloud ans container suuport -> efficient to run java application in cloud native env.
+	-> Improve Concurrency -> Introduced virtual Threads.
+	-> developer productivity -> provide better denugging tools and runtime efficientyl.
+		eg: jshell is a repel
+		-> Simpler main without class.
+		-> easy launch without compilation.
+	-> Reduce startup time,  better memory management and garbage collection and Backward compatibility.[old java code can run with latest java version]
+	
+## Imp Java Features:
+
+Java-5
+	1. enhanced for loop
+		for(int num: numbers) {}
+	2. Generic -> type safety in collections and methods.
+		public class HashMap<K,V> extends AbstractMap<K,V>
+	3. Enums:
+		-> provides a type-safe way to define constans
+		-> enum Season {
+			Winter, Spring, Summer, All
+		}
+	4. Autoboxing - Automatically converts premitive to wrapper class and vice-versa.
+		Integer integer = 5;
+		int i = integer;
+		
+Java-7		
+	5. Try-with-resources
+		-> Automatically add br.close() in finally.
+	6. Strings in Switch
+	
+Java-8
+	7. lambda Expressions.
+	8. stream APIs. -> Process Colelctions.
+	9. Functional Programming. -> Intro to high-order functions and immutability[variable whose value wont change]
+	
+Java-9
+	10. Modularization. [better scalability]
+	11. Jshell
+	
+Java-10
+	12. Lcoal variable Type Inferernce (var).
+		-> var numbers = new ArrayList<String>();
+		-> var map = new hashmap<Integer, String>();
+		
+Java-14:
+	13: Switch Expression.
+	
+Java-15:
+    14. Text Block (""" .... """)
+
+Java 16: 
+	15: Pattern matching for instanceof.
+	 eg: if(obj instanceof String s){...}
+	17: Record classes.
+		-> compact syntax for immutable data Objects.
+		-> public record Person(
+			String name, String email, String phoneNumber) {}
+
+Java 17:
+	18: Sealed Classes:
+		-> Controlled Inheritance of yout class hierearchies.
+		-> sealed Class Vehicale permists Car, Truck, Bike {} -> only the mentioned classes are allowed.
+		=> finally class Car extends Vehicle --> Cannot be extends furthur.
+		-> non-sealed classes.
+
+Java 21:
+	19: Virtual Thread: -> improves concurrency with lightweight thread.
+		-> before it uses platform threads which uses os threads. 
+	
+	20. Sequenced Collections.
+	21. Record Patterns -> supports deconstruction, including nested patterns.
+	22. Pattern matching for switch.
+
+Java 22:
+	23. Unnamed Variable & Patterns. -> Allows ignoring unused variabels.
+	
+Java 23:
+	24. Markdown Documentation Comments.
+	
+Java 24:
+	25. Stream Gatherers -> new ways to aggregate stream data.
+		-> gather is a intermediate operation.
+		
+
+### Functional Programming with Java:
+	-> [lambda, streams or Filters]
+	-> how functional Programming is different from structured Approach[Tradational Approach] ?
+		-> In Structured Approach --> We worry about how can we solve the problem.
+			-> we loop around and print the data one by one.
+		-> In Fucntional Appraoch --> WE need to Focus on what to do ?
+			List<integer> numbers = new ArrayList<>();
+			numbers.steam()
+				   .forEach(className::printMethod);
+		-> ClassName::printMethod is called using method reference. className has a static method called printMethod, that you are calling.
+		eg: System.out::println --> Call the System.out's class println method.
+		-> We can add .filter method to filter the stream of data with lambda expression ["->", annonymous functions with simpler syntax]
+			numbers.stream()
+					.filter(item -> item%2 == 0)
+					.forEach(System.out::println);
+		-> Class Optional
+			-> it helps to solve the problem with null.
+			-> Optional<String> optional = arrayStream.stream().filter(item -> item.startsWith("v")).findFirst().
+			-> here optional might contain or not contain a value.
+			-> Methods available on optional:	
+				.isEmpty(), .isPresent(), .get() 
+			-> Optional<String> emptyVal = Optional.empty() --> This make sure emptyVal will have empty value.
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
